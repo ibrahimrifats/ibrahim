@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ibrahim Rifat - Portfolio, Algorithms, Backend, Git, GitHub</title>
+        <meta name="description" content="Welcome to Ibrahim Rifat's portfolio website. Explore algorithms, backend development, Git, GitHub, and more.">
+        <meta name="keywords" content="Ibrahim Rifat, Portfolio, Algorithms, Searching, Sorting, Backend, Git, GitHub">
+        <meta name="author" content="Ibrahim Rifat">
+        <link rel="icon" type="image/png" href="images/rifat.jpg">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+<body>
+    <header>
+        <a href="#" class="logo">
+            <img src="images/rifat.jpg" class="rifat" alt="Icon" width="50" height="50"> Ibrahim Rifat
+        </a>
+        <div class="social-icons-container">
+            <button class="about">
+                <a href="about.html">About</a>
+            </button>
+            <button class="blog">Blog</button>
+            <button class="projects">Projects</button>
+            <button class="business">Start-UP</button>
+            <a href="https://www.linkedin.com/in/ibrahimrifatcse/"><img src="images/linkedin.png" alt="LinkedIn" class="social-icon"></a>
+            <a href="https://twitter.com/RifuRifat1"><img src="images/twitter.png" alt="Twitter" class="social-icon"></a>
+            <a href="https://www.facebook.com/ibrahimrifat18"><img src="images/facebook.png" alt="Facebook" class="social-icon"></a>
+            <a href="https://www.github.com/ibrahimrifatcse"><img src="images/github.png" alt="Facebook" class="social-icon"></a>
+            <a href="https://www.youtube.com/@ibrahimrifat221"><img src="images/youtube.png" alt="Youtube" class="social-icon"></a>
+
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="left-sidebar">
+         
+            <div class="sticky-image">
+                <img src="images/dev.jpeg" alt="this website under construction" width="100%" height="auto">
+                
+                    <a href="https://education.github.com/students">
+                        <img src="photo_post/gitn.jpeg" alt="Description" width="100%" height="auto">
+                    </a>
+                    
+                    <textarea id="custom-textarea">--GitHub-- Program Applications open in February 2024.
+
+                        Hi 👋,
+                        The GitHub Education team is getting all set for the next batch
+                        of GitHub Campus Experts.Applications to the program will open 
+                        in February 2024, and you'll have a full month to submit.
+                        Don't miss the opportunity to become part of the next generation
+                        of student community leaders by subscribing to our mailing list
+                        and get notified when program applications open.</textarea>
+
+                    
+            </div>
+            
+            <div class="caption"><h2>Notice</h2></div>
+            
+        </div>
+
+
+       
+
+        <div class="main-content">
+            <!-- Your main content here -->
+        </div>
+
+        <div class="post-container">
+
+            <div class="horizontal-bar">
+                <span class="bar-text">Algorithm article start from here</span>
+            </div>
+
+            <div class="user-profile">
+                <img src="images/rifat.jpg" alt="rifat" class="profile-icon">
+                <div>
+                    <p>Ibrahim Rifat</p>
+                    <span>Sept 15, 2023 <i class="fas fa-caret-down"></i> </span>
+                </div>
+            </div>
+
+            <!-- <h3>Binary search Algorithm</h3>
+            <p class="post-text">Binary search Algorithm <span>Algorithm with code</span>
+            This is an algorithm of Binary search. <a href="#">This is python code</a> <a href="#">#YouTubeChannel</a></p> -->
+
+
+            <h2>Binary Search Algorithm</h2>
+
+            <p class="post-text">Binary search, also known as the binary chop, is a powerful algorithm used to efficiently locate a specific element within a sorted collection of data. It's a fundamental concept in computer science and programming, known for its speed and effectiveness.</p>
+            
+            <p class="post-text">The core idea behind binary search is to repeatedly divide the search space in half, narrowing down the possibilities with each step. This results in a significantly faster search process compared to linear search algorithms.</p>
+            
+            
+            
+            <p class="post-text">Let's explore a Python code snippet that demonstrates the binary search algorithm:</p>
+            
+
+            <img src="photo_post/check.png" class="post-img">
+            <a href="https://www.oreilly.com/library/view/algorithms-in-a/9780596516246/ch05s03.html">image source</a>
+
+
+            <p class="post-text">This Python code demonstrates a typical binary search implementation, showcasing its efficiency in finding a target element in a sorted array.</p>
+
+            <h3>Conclusion</h3>
+            
+            <p class="post-text">In summary, the Binary Search Algorithm is a valuable tool for quickly locating items in sorted data structures. Its efficiency and simplicity make it a fundamental concept for anyone interested in programming and computer science.</p>
+            
+            <p class="post-text">If you'd like to learn more about algorithms, data structures, and programming techniques, consider exploring our #YouTubeChannel for educational content and tutorials.</p>
+            
+            <img src="photo_post/check.png" class="post-img" alt="Binary Search Visualization">
+            
+            <p class="post-text">Thank you for reading, and happy coding!</p>
+
+            <h3>Python Code Example</h3>
+
+            <div class="editor-container">
+                <div id="editor5" class="editor">def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+                                
+    while left <= right:
+        mid = left + (right - left) // 2  # Calculate the middle index
+                                
+        if arr[mid] == target:
+            return mid  # Element found, return its index
+        elif arr[mid] < target:
+            left = mid + 1  # Adjust the left bound
+        else:
+            right = mid - 1  # Adjust the right bound
+                                
+        return -1  # Element not found in the array
+                                
+# Example usage:
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+target = 5
+result = binary_search(arr, target)
+                                
+if result != -1:
+    print(f"Element {target} found at index {result}")
+else:
+    print(f"Element {target} not found in the array")
+
+
+
+                </div>
+            </div>
+
+            <div class="horizontal-bar">
+                <span class="bar-text">Algorithm article end here</span>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+
+            <div class="horizontal-bar">
+                <span class="bar-text">Data Structure article start from here</span>
+            </div>
+
+
+
+
+
+
+           
+           
+
+
+
+            <div class="user-profile">
+                <img src="images/rifat.jpg" alt="rifat" class="profile-icon">
+                <div>
+                    <p>Ibrahim Rifat</p>
+                    <span>Sept 15, 2023 <i class="fas fa-caret-down"></i> </span>
+                </div>
+            </div>
+
+            <h2>Insertion Sort Algorithm</h2>
+
+<p class="post-text">The Insertion Sort algorithm is a simple yet effective sorting method that builds the final sorted array one item at a time. It is particularly useful for sorting small datasets and is often used as part of more complex sorting algorithms, such as the Timsort used in Python.</p>
+
+<p class="post-text">The basic idea behind Insertion Sort is to divide the array into two parts: a sorted part and an unsorted part. It repeatedly takes an element from the unsorted part and inserts it into its correct position in the sorted part of the array.</p>
+
+<h3>Python Code Example</h3>
+
+<p class="post-text">Let's explore a Python code snippet that demonstrates the Insertion Sort algorithm:</p>
+
+            <img src="photo_post/insertionsort.png" class="post-img">
+
+
+            <p class="post-text">This Python code demonstrates the Insertion Sort algorithm in action, sorting an array of integers. It showcases the incremental approach of building the sorted array.</p>
+
+            <h3>Conclusion</h3>
+            
+            <p class="post-text">In summary, the Insertion Sort algorithm is a straightforward and efficient sorting technique that is particularly suitable for small datasets. While it may not be the fastest sorting method for large arrays, it remains a valuable concept in the realm of computer science and algorithms.</p>
+            
+            <p class="post-text">If you're interested in learning more about sorting algorithms, data structures, and programming, feel free to explore our #YouTubeChannel for educational content and tutorials.</p>
+            
+             
+            
+            <p class="post-text">Thank you for reading, and happy coding!</p>
+
+            <div class="editor-container">
+                <div id="editor5" class="editor">def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+    while j >= 0 and key < arr[j]:
+        arr[j + 1] = arr[j]
+        j -= 1
+        arr[j + 1] = key
+                
+# Example usage:
+arr = [12, 11, 13, 5, 6]
+insertion_sort(arr)
+print("Sorted array is:", arr)  
+
+                </div>
+              </div>
+
+ 
+            <div class="horizontal-bar">
+                <span class="bar-text">Data structure article end here</span>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="horizontal-bar">
+                <span class="bar-text">Git and Github article start from here</span>
+            </div>
+
+            <div class="horizontal-bar">
+                <span class="bar-text">Git and Github article end here</span>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <div class="right-sidebar">
+            <div class="sidebar-title">
+                <h2 class="right-blog">Blog Index</h2>
+            </div>
+            <div class="vertical-buttons">
+                <div class="expandable-button" onclick="toggleContent('algorithm-button')">Algorithm</div>
+                <div id="algorithm-button" class="expandable-button-content">
+                    <button onclick="scrollToTopic('insertion-sort')">Insertion Sort</button>
+                    <button onclick="scrollToTopic('selection-sort')">Selection Sort</button>
+                    <button onclick="scrollToTopic('binary-search')">Binary Search</button>
+                </div>
+            </div>
+            <div class="vertical-buttons">
+                <div class="expandable-button" onclick="toggleContent('data-structure-button')">Data Structure</div>
+                <div id="data-structure-button" class="expandable-button-content">
+                    <button onclick="scrollToTopic('stack')">Stack</button>
+                    <button onclick="scrollToTopic('queue')">Queue</button>
+                    <button onclick="scrollToTopic('linked-list')">Linked List</button>
+                </div>
+            </div>
+            <div class="vertical-buttons">
+                <div class="expandable-button" onclick="toggleContent('git-and-github-button')">Git and Github</div>
+                <div id="git-and-github-button" class="expandable-button-content">
+                    <button onclick="scrollToTopic('diff-and-push')">Diff and Push</button>
+                    <button onclick="scrollToTopic('pull-request')">Pull Request</button>
+                    <button onclick="scrollToTopic('code-review')">Code Review</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ace.js"></script>
+    <script src="system.js"></script>
+</body>
+</html>
