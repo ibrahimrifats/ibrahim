@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Dictionary</title>
+    <meta name="description" content="Welcome to Ibrahim Rifat's portfolio website. Explore algorithms, backend development, Git, GitHub, and more.">
+    <meta name="keywords" content="Ibrahim Rifat, Portfolio, Algorithms, Searching, Sorting, Backend, Git, GitHub">
+    <meta name="author" content="Ibrahim Rifat">
+    <link rel="icon" type="image/png" href="images/py.png">
+     
+     
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #001d7a;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #0074cc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-top: 20px;
+            border: 1px solid #cccccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Styles for the code container */
+        #codeContainer {
+            margin-top: 20px;
+            border: 1px solid #004ef7;
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+            background-color: #292929;
+        }
+
+        
+        /* Additional styles for the navigation bar */
+        .navbar {
+            background-color: #0074cc;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000; /* To ensure it appears above other content */
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        /* Add margin to the body to prevent content from being obscured by the fixed navigation bar */
+        body {
+            margin-top: 50px; /* Adjust this value as needed */
+        }
+        .home:hover,
+        .src:hover{
+            background-color: rgb(0, 63, 14);
+            color:blue;
+        }
+        .home,.src{
+            background-color: hsl(0, 95%, 33%);
+            color: black;
+        }
+
+
+         .notice {
+            background-color: #ff0000; /* Red background color */
+            color: #fff; /* White text color */
+            padding: 10px;
+            text-align: center;
+           
+            position: absolute;
+            top: 50px; /* Adjust the top value as needed to position it below the navbar */
+            width: 100%;
+        }
+
+        @keyframes noticeAnimation {
+            0%, 100% {
+                transform: translateY(0); /* Start and end position */
+            }
+            50% {
+                transform: translateY(-10px); /* Middle position (upward) */
+            }
+        }
+
+        /* Add margin to the body to prevent content from being obscured by the fixed navigation bar */
+        body {
+            margin-top: 50px; /* Adjust this value as needed */
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div class="navbar">
+       <button class="home"> <a href="index.html" >Home</a></button>
+       <button class="src">  <a href="https://github.com/ibrahimrifatcse/python-projects/tree/main/python_dictionary" target="_blank" class="src">Source Code</a></button>
+    </div>
+
+
+    <div class="notice">
+        This project serves as a template for my Python project. It does not contain extensive data. For the full Python source code, please visit the following link.
+    </div>
+
+    <div class="container">
+        <h1>Python Dictionary</h1>
+        <input type="text" id="searchInput" placeholder="Enter a word to search">
+        <button id="searchButton">Search</button>
+        <button id="clearButton">Clear Search</button>
+        <div id="output"></div>
+        <div id="codeContainer"></div> <!-- Container for code display -->
+    </div>
+
+    <script>
+        const allAboutPythonData = {
+            "abs(x)": {
+                "definition": "Return the absolute value of a number.",
+                "code": "abs(x)",
+                "output": "The output will be the absolute value of the number."
+            },
+            "aiter(async_iterable)": {
+                "definition": "Return an asynchronous iterator for an asynchronous iterable.",
+                "code": "aiter(async_iterable)",
+                "output": "This will return an asynchronous iterator."
+            },
+            "abs(x)": {
+                "definition": "Return the absolute value of a number.",
+                "code": "abs(x)",
+                "output": "The output will be the absolute value of the number."
+            },
+            "aiter(async_iterable)": {
+                "definition": "Return an asynchronous iterator for an asynchronous iterable.",
+                "code": "aiter(async_iterable)",
+                "output": "This will return an asynchronous iterator."
+            },
+            "all(iterable)": {
+                "definition": "Return True if all elements of the iterable are true (or if the iterable is empty). Equivalent to:",
+                "code": `
+        function all(iterable) {
+            for (const element of iterable) {
+                if (!element) {
+                    return false;
+                }
+            }
+            return true;
+        }`,
+                "output": "This will return True if all elements are true or False if the iterable is empty."
+            },
+            "any(iterable)": {
+                "definition": "Return True if any element of the iterable is true. If the iterable is empty, return False. Equivalent to:",
+                "code": `
+        function any(iterable) {
+            for (const element of iterable) {
+                if (element) {
+                    return true;
+                }
+            }
+            return false;
+        }`,
+                "output": "This will return True if any element in the iterable is true, or False if the iterable is empty."
+            },
+            "anext(async_iterator)": {
+                "definition": "When awaited, return the next item from the given asynchronous iterator, or default if given and the iterator is exhausted.",
+                "code": "async function anext(async_iterator) { /* Implementation here */ }",
+                "output": "Returns the next item from the given asynchronous iterator."
+            },
+            "ascii(object)": {
+                "definition": "As repr(), return a string containing a printable representation of an object, but escape the non-ASCII characters in the string returned by repr() using \\x, \\u, or \\U escapes.",
+                "code": "function ascii(object) { /* Implementation here */ }",
+                "output": "Returns a string containing a printable representation of the object with non-ASCII characters escaped."
+            },
+            "bin(x)": {
+                "definition": "Convert an integer number to a binary string prefixed with “0b”.",
+                "code": "function bin(x) { /* Implementation here */ }",
+                "output": "Returns a binary string representation of the integer number."
+            },
+            "bool(x)": {
+                "definition": "Convert a value to a Boolean, using the standard truth testing procedure.",
+                "code": "function bool(x) { /* Implementation here */ }",
+                "output": "Returns True if the value is true, False otherwise."
+            },
+            "breakpoint(...args)": {
+                "definition": "This function drops you into the debugger at the call site.",
+                "code": "function breakpoint(...args) { /* Implementation here */ }",
+                "output": "When called, this function opens the debugger at the call site."
+            },
+            "bytearray(iterable_of_ints)": {
+                "definition": "Return a bytearray object.",
+                "code": "function bytearray(iterable_of_ints) { /* Implementation here */ }",
+                "output": "Returns a new bytearray object initialized from the given iterable of integers."
+            },
+            "bytes(iterable_of_ints)": {
+                "definition": "Return a bytes object.",
+                "code": "function bytes(iterable_of_ints) { /* Implementation here */ }",
+                "output": "Returns a new bytes object initialized from the given iterable of integers."
+            },
+            "callable(object)": {
+                "definition": "Return True if the object appears callable, False otherwise.",
+                "code": "function callable(object) { /* Implementation here */ }",
+                "output": "Returns True if the object can be called (e.g., functions, classes, instances), False otherwise."
+            },
+            "chr(i)": {
+                "definition": "Return the string representing a character whose Unicode code point is the integer i.",
+                "code": "function chr(i) { /* Implementation here */ }",
+                "output": "Returns a string representing the character with the given Unicode code point."
+            },
+            "classmethod(function)": {
+                "definition": "Return a class method for function.",
+                "code": `
+        class C {
+            static f(arg1, arg2) {
+                // Implementation here
+            }
+        }`,
+                "output": "Returns a class method object that can be called on the class."
+            },
+            "compile(source, filename, mode, flags=0, dont_inherit=false, optimize=-1)": {
+                "definition": "Compile the source into a code or AST object.",
+                "code": "function compile(source, filename, mode, flags=0, dont_inherit=false, optimize=-1) { /* Implementation here */ }",
+                "output": "Returns a code object or an abstract syntax tree (AST) object."
+            },
+            "complex(real, imag=0)": {
+                "definition": "Create a complex number.",
+                "code": "function complex(real, imag=0) { /* Implementation here */ }",
+                "output": "Returns a complex number with the given real and imaginary parts."
+            },
+            "delattr(object, name)": {
+                "definition": "Delete a named attribute on an object.",
+                "code": "function delattr(object, name) { /* Implementation here */ }",
+                "output": "Deletes the named attribute from the object."
+            },
+            "dict()": {
+                "definition": "Create a new dictionary.",
+                "code": "function dict() { /* Implementation here */ }",
+                "output": "Returns a new empty dictionary."
+            },
+            "dir(object)": {
+                "definition": "Without arguments, return the list of names in the current local scope.\nWith an argument, attempt to return a list of valid attributes for that object.",
+                "code": "function dir(object) { /* Implementation here */ }",
+                "output": "Returns a list of names in the current local scope or valid attributes for the given object."
+            },
+            "divmod(a, b)": {
+                "definition": "Return the tuple (a//b, a%b).",
+                "code": "function divmod(a, b) { /* Implementation here */ }",
+                "output": "Returns the quotient and remainder when a is divided by b."
+            },
+            "Stack": {
+                "definition": "A stack is a linear data structure that follows the Last In, First Out (LIFO) principle.",
+                "code": "class Stack {\n    constructor() {\n        this.items = [];\n    }\n\n    push(item) {\n        this.items.push(item);\n    }\n\n    pop() {\n        if (!this.isEmpty()) {\n            return this.items.pop();\n        }\n    }\n\n    peek() {\n        if (!this.isEmpty()) {\n            return this.items[this.items.length - 1];\n        }\n    }\n\n    isEmpty() {\n        return this.items.length === 0;\n    }\n\n    size() {\n        return this.items.length;\n    }\n}",
+                "output": "The Stack class allows you to push items onto the stack, pop items from the top, peek at the top item without removing it, check if the stack is empty, and get the size of the stack."
+              },
+              "Queue": {
+                "definition": "A queue is a linear data structure that follows the First In, First Out (FIFO) principle.",
+                "code": "class Queue {\n    constructor() {\n        this.items = [];\n    }\n\n    enqueue(item) {\n        this.items.push(item);\n    }\n\n    dequeue() {\n        if (!this.isEmpty()) {\n            return this.items.shift();\n        }\n    }\n\n    isEmpty() {\n        return this.items.length === 0;\n    }\n\n    size() {\n        return this.items.length;\n    }\n}",
+                "output": "The Queue class allows you to enqueue items at the rear, dequeue items from the front, check if the queue is empty, and get the size of the queue."
+              },
+              "Union-Find (Disjoint Set)": {
+                "definition": "Union-Find is a data structure that efficiently keeps track of disjoint sets and supports merging them together.",
+                "code": "class UnionFind {\n    constructor(n) {\n        this.parent = Array.from({ length: n }, (_, i) => i);\n        this.rank = Array(n).fill(0);\n    }\n\n    find(x) {\n        if (this.parent[x] !== x) {\n            this.parent[x] = this.find(this.parent[x]);\n        }\n        return this.parent[x];\n    }\n\n    union(x, y) {\n        const rootX = this.find(x);\n        const rootY = this.find(y);\n        if (rootX !== rootY) {\n            if (this.rank[rootX] > this.rank[rootY]) {\n                this.parent[rootY] = rootX;\n            } else if (this.rank[rootX] < this.rank[rootY]) {\n                this.parent[rootX] = rootY;\n            } else {\n                this.parent[rootY] = rootX;\n                this.rank[rootX]++;\n            }\n        }\n    }\n}",
+                "output": "The UnionFind class allows you to efficiently find the representative of a set and merge two sets together."
+              },
+              "Linked List (Add, Delete, Search)": {
+                "definition": "A linked list is a linear data structure consisting of nodes, where each node points to the next node in the sequence.",
+                "code": "class Node {\n    constructor(data) {\n        this.data = data;\n        this.next = null;\n    }\n}\n\nclass LinkedList {\n    constructor() {\n        this.head = null;\n    }\n\n    add(data) {\n        const newNode = new Node(data);\n        if (!this.head) {\n            this.head = newNode;\n        } else {\n            let current = this.head;\n            while (current.next) {\n                current = current.next;\n            }\n            current.next = newNode;\n        }\n    }\n\n    delete(key) {\n        let current = this.head;\n        let prev = null;\n        while (current) {\n            if (current.data === key) {\n                if (prev) {\n                    prev.next = current.next;\n                } else {\n                    this.head = current.next;\n                }\n                return;\n            }\n            prev = current;\n            current = current.next;\n        }\n    }\n\n    search(key) {\n        let current = this.head;\n        while (current) {\n            if (current.data === key) {\n                return true;\n            }\n            current = current.next;\n        }\n        return false;\n    }\n}",
+                "output": "The LinkedList class allows you to add elements to the end of the list, delete elements with a given value, and search for elements in the list."
+              },
+              "Quick Find (Dynamic Connectivity)": {
+                "definition": "Quick Find is an algorithm used to solve the dynamic connectivity problem, where the goal is to connect two elements in a set.",
+                "code": "class QuickFind {\n    constructor(n) {\n        this.n = n;\n        this.id = Array.from({ length: n }, (_, i) => i);\n    }\n\n    connected(p, q) {\n        return this.id[p] === this.id[q];\n    }\n\n    union(p, q) {\n        const pid = this.id[p];\n        const qid = this.id[q];\n        if (pid !== qid) {\n            for (let i = 0; i < this.n; i++) {\n                if (this.id[i] === pid) {\n                    this.id[i] = qid;\n                }\n            }\n        }\n    }\n}",
+                "output": "The QuickFind class allows you to check if two elements are connected and merge two sets together efficiently."
+              },
+              "Quick Union (Dynamic Connectivity)": {
+                "definition": "Quick Union is an algorithm used to solve the dynamic connectivity problem, where the goal is to connect two elements in a set.",
+                "code": "class QuickUnion {\n    constructor(n) {\n        this.n = n;\n        this.parent = Array.from({ length: n }, (_, i) => i);\n    }\n\n    root(i) {\n        while (i !== this.parent[i]) {\n            i = this.parent[i];\n        }\n        return i;\n    }\n\n    connected(p, q) {\n        return this.root(p) === this.root(q);\n    }\n\n    union(p, q) {\n        const i = this.root(p);\n        const j = this.root(q);\n        this.parent[i] = j;\n    }\n}",
+                "output": "The QuickUnion class allows you to check if two elements are connected and merge two sets together efficiently using tree structures."
+              },
+              "Generics": {
+                "definition": "In JavaScript, there is no explicit support for generics like in some other programming languages.",
+                "code": "function swap(a, b) {\n    [a, b] = [b, a];\n}",
+                "output": "The swap function is a generic function that takes two arguments of any type and swaps their values."
+              },
+              "Iterators": {
+                "definition": "Iterators allow you to iterate over a sequence of elements one by one.",
+                "code": "class MyIterator {\n    constructor(data) {\n        this.data = data;\n        this.index = 0;\n    }\n\n    [Symbol.iterator]() {\n        return this;\n    }\n\n    next() {\n        if (this.index < this.data.length) {\n            const result = this.data[this.index];\n            this.index++;\n            return { value: result, done: false };\n        } else {\n            return { done: true };\n        }\n    }\n}\n\nconst my_list = [1, 2, 3, 4, 5];\nconst my_iterator = new MyIterator(my_list);\n\nfor (const item of my_iterator) {\n    console.log(item);\n}",
+                "output": "The MyIterator class allows you to create custom iterators to traverse elements in a sequence one by one."
+              },
+              "Stack Applications": {
+                "definition": "Stacks have various applications, including function call management, expression evaluation, and undo/redo functionality.",
+                "code": "",
+                "output": "Stacks can be used to manage function calls, evaluate expressions, and implement undo/redo functionality in text editors and other applications."
+              },
+              "Queue Applications": {
+                "definition": "Queues have various applications, including task scheduling, message passing, and print job management.",
+                "code": "",
+                "output": "Queues can be used to schedule tasks, pass messages between threads or processes, and manage print jobs in a print spooler."
+              },
+              "Sorting Algorithms (Selection Sort, Insertion Sort, Shell Sort)": {
+                "definition": "Sorting algorithms arrange elements in a specific order, such as ascending or descending.",
+                "code": "function selectionSort(arr) {\n    for (let i = 0; i < arr.length; i++) {\n        let minIndex = i;\n        for (let j = i + 1; j < arr.length; j++) {\n            if (arr[j] < arr[minIndex]) {\n                minIndex = j;\n            }\n        }\n        [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];\n    }\n}\n\nfunction insertionSort(arr) {\n    for (let i = 1; i < arr.length; i++) {\n        let key = arr[i];\n        let j = i - 1;\n        while (j >= 0 && arr[j] > key) {\n            arr[j + 1] = arr[j];\n            j--;\n        }\n        arr[j + 1] = key;\n    }\n}\n\nfunction shellSort(arr) {\n    let gap = Math.floor(arr.length / 2);\n    while (gap > 0) {\n        for (let i = gap; i < arr.length; i++) {\n            let temp = arr[i];\n            let j = i;\n            while (j >= gap && arr[j - gap] > temp) {\n                arr[j] = arr[j - gap];\n                j -= gap;\n            }\n            arr[j] = temp;\n        }\n        gap = Math.floor(gap / 2);\n    }\n}",
+                "output": "The functions selectionSort, insertionSort, and shellSort implement their respective sorting algorithms on a given array."
+              },
+              "Shuffling": {
+                "definition": "Shuffling is the process of rearranging elements in a random order.",
+                "code": "function shuffle(arr) {\n    for (let i = arr.length - 1; i > 0; i--) {\n        const j = Math.floor(Math.random() * (i + 1));\n        [arr[i], arr[j]] = [arr[j], arr[i]];\n    }\n}\n\nconst my_list = [1, 2, 3, 4, 5];\nshuffle(my_list);\nconsole.log(my_list);",
+                "output": "The output will be the elements of the array randomly rearranged."
+              },
+              "Convex Hull (Graham Scan Algorithm)": {
+                "definition": "The convex hull is the smallest convex polygon that encloses all given points in a set.",
+                "code": "function orientation(p, q, r) {\n    const val = (q[1] - p[1]) * (r[0] - q[0]) - (q[0] - p[0]) * (r[1] - q[1]);\n    if (val === 0) {\n        return 0;\n    }\n    return val > 0 ? 1 : 2;\n}\n\nfunction convexHull(points) {\n    const n = points.length;\n    if (n < 3) {\n        return points;\n    }\n\n    points.sort((a, b) => a[0] - b[0] || a[1] - b[1]);\n\n    const upperHull = [points[0], points[1]];\n    for (let i = 2; i < n; i++) {\n        while (upperHull.length > 1 && orientation(upperHull[upperHull.length - 2], upperHull[upperHull.length - 1], points[i]) !== 2) {\n            upperHull.pop();\n        }\n        upperHull.push(points[i]);\n    }\n\n    const lowerHull = [points[n - 1], points[n - 2]];\n    for (let i = n - 3; i >= 0; i--) {\n        while (lowerHull.length > 1 && orientation(lowerHull[lowerHull.length - 2], lowerHull[lowerHull.length - 1], points[i]) !== 2) {\n            lowerHull.pop();\n        }\n        lowerHull.push(points[i]);\n    }\n\n    return upperHull.concat(lowerHull.slice(1));\n}",
+                "output": "The convexHull function takes a list of points as input and returns the convex hull of those points using the Graham Scan algorithm."
+              },
+              "Merge Sort": {
+                "definition": "Merge Sort is a divide-and-conquer sorting algorithm that divides the input array into two halves, recursively sorts them, and then merges the two sorted halves.",
+                "code": "function mergeSort(arr) {\n    if (arr.length > 1) {\n        const mid = Math.floor(arr.length / 2);\n        const leftHalf = arr.slice(0, mid);\n        const rightHalf = arr.slice(mid);\n\n        mergeSort(leftHalf);\n        mergeSort(rightHalf);\n\n        let i = 0, j = 0, k = 0;\n\n        while (i < leftHalf.length && j < rightHalf.length) {\n            if (leftHalf[i] < rightHalf[j]) {\n                arr[k] = leftHalf[i];\n                i++;\n            } else {\n                arr[k] = rightHalf[j];\n                j++;\n            }\n            k++;\n        }\n\n        while (i < leftHalf.length) {\n            arr[k] = leftHalf[i];\n            i++;\n            k++;\n        }\n\n        while (j < rightHalf.length) {\n            arr[k] = rightHalf[j];\n            j++;\n            k++;\n        }\n    }\n}",
+                "output": "The mergeSort function takes an unsorted array as input and returns the array sorted in ascending order using the Merge Sort algorithm."
+              },
+              "Bottom-Up Merge Sort": {
+                "definition": "Bottom-Up Merge Sort is a variation of the Merge Sort algorithm that iteratively divides the input list into sublists and merges them.",
+                "code": "function bottomUpMergeSort(arr) {\n    const n = arr.length;\n    let width = 1;\n    while (width < n) {\n        for (let i = 0; i < n; i += width * 2) {\n            const left = i;\n            const mid = Math.min(i + width, n);\n            const right = Math.min(i + width * 2, n);\n            const merged = [...arr.slice(left, mid), ...arr.slice(mid, right)].sort((a, b) => a - b);\n            arr.splice(left, right - left, ...merged);\n        }\n        width *= 2;\n    }\n}",
+                "output": "The bottomUpMergeSort function takes an unsorted array as input and returns the array sorted in ascending order using the Bottom-Up Merge Sort algorithm."
+              },
+              "Sorting Complexity": {
+                "definition": "Sorting complexity refers to the time and space requirements of sorting algorithms.",
+                "code": "",
+                "output": "Sorting algorithms can have different time and space complexities, such as O(n log n) for Merge Sort and Quick Sort, O(n^2) for Selection Sort and Insertion Sort, and O(n) for Counting Sort."
+              },
+              "Comparators and Stability": {
+                "definition": "A comparator is a function that defines the order of elements during sorting. Stability in sorting refers to preserving the relative order of equal elements in the input.",
+                "code": "",
+                "output": "A comparator can be customized to sort elements based on specific attributes or keys. A stable sorting algorithm maintains the relative order of equal elements."
+              },
+              "Quicksort": {
+                "definition": "Quicksort is a divide-and-conquer sorting algorithm that selects a pivot element, partitions the array into two subarrays, and recursively sorts them.",
+                "code": "function quicksort(arr) {\n    if (arr.length <= 1) {\n        return arr;\n    }\n    const pivot = arr[Math.floor(arr.length / 2)];\n    const left = [];\n    const middle = [];\n    const right = [];\n\n    for (const item of arr) {\n        if (item < pivot) {\n            left.push(item);\n        } else if (item === pivot) {\n            middle.push(item);\n        } else {\n            right.push(item);\n        }\n    }\n\n    return [...quicksort(left), ...middle, ...quicksort(right)];\n}",
+                "output": "The quicksort function takes an unsorted array as input and returns the array sorted in ascending order using the Quicksort algorithm."
+              },
+              "Duplicate Keys": {
+                "definition": "Duplicate keys refer to having multiple elements with the same sorting key in the input.",
+                "code": "",
+                "output": "Sorting algorithms can handle duplicate keys differently. Some algorithms maintain the order of equal elements, while others may not."
+              },
+              "System Sort": {
+                "definition": "System Sort refers to using the built-in sorting function or method provided by the programming language or system.",
+                "code": "",
+                "output": "In JavaScript, you can use the built-in Array.prototype.sort() method to perform system sort using an efficient sorting algorithm like QuickSort or MergeSort."
+              },
+              "Priority Queue and Binary Heaps": {
+                "definition": "A priority queue is a data structure that allows efficient access to the element with the highest priority. Binary Heaps are commonly used to implement priority queues.",
+                "code": "class PriorityQueue {\n    constructor() {\n        this.heap = [];\n    }\n\n    enqueue(item) {\n        this.heap.push(item);\n        this.bubbleUp();\n    }\n\n    dequeue() {\n        if (this.isEmpty()) {\n            return null;\n        }\n        if (this.heap.length === 1) {\n            return this.heap.pop();\n        }\n        const root = this.heap[0];\n        this.heap[0] = this.heap.pop();\n        this.bubbleDown();\n        return root;\n    }\n\n    peek() {\n        return this.isEmpty() ? null : this.heap[0];\n    }\n\n    isEmpty() {\n        return this.heap.length === 0;\n    }\n\n    bubbleUp() {\n        let currentIdx = this.heap.length - 1;\n        while (currentIdx > 0) {\n            const parentIdx = Math.floor((currentIdx - 1) / 2);\n            if (this.heap[currentIdx] >= this.heap[parentIdx]) {\n                break;\n            }\n            [this.heap[currentIdx], this.heap[parentIdx]] = [this.heap[parentIdx], this.heap[currentIdx]];\n            currentIdx = parentIdx;\n        }\n    }\n\n    bubbleDown() {\n        let currentIdx = 0;\n        let leftChildIdx, rightChildIdx, smallerChildIdx;\n\n        while (currentIdx < this.heap.length - 1) {\n            leftChildIdx = 2 * currentIdx + 1;\n            rightChildIdx = 2 * currentIdx + 2;\n            smallerChildIdx =\n                rightChildIdx < this.heap.length &&\n                this.heap[rightChildIdx] < this.heap[leftChildIdx]\n                    ? rightChildIdx\n                    : leftChildIdx;\n\n            if (\n                this.heap[currentIdx] <= this.heap[smallerChildIdx]\n            ) {\n                break;\n            }\n\n            [this.heap[currentIdx], this.heap[smallerChildIdx]] = [\n                this.heap[smallerChildIdx],\n                this.heap[currentIdx],\n            ];\n\n            currentIdx = smallerChildIdx;\n        }\n    }\n}",
+                "output": "The PriorityQueue class allows you to enqueue elements with a priority and dequeue the element with the highest priority efficiently."
+              },
+              "Binary Search Tree": {
+                "definition": "A Binary Search Tree (BST) is a binary tree data structure where each node has at most two child nodes, and the values in the left subtree are less than or equal to the root value, while the values in the right subtree are greater.",
+                "code": "class TreeNode {\n    constructor(value) {\n        this.value = value;\n        this.left = null;\n        this.right = null;\n    }\n}\n\nclass BinarySearchTree {\n    constructor() {\n        this.root = null;\n    }\n\n    insert(value) {\n        const newNode = new TreeNode(value);\n        if (!this.root) {\n            this.root = newNode;\n            return this;\n        }\n        let current = this.root;\n        while (true) {\n            if (value === current.value) {\n                return undefined;\n            }\n            if (value < current.value) {\n                if (!current.left) {\n                    current.left = newNode;\n                    return this;\n                }\n                current = current.left;\n            } else {\n                if (!current.right) {\n                    current.right = newNode;\n                    return this;\n                }\n                current = current.right;\n            }\n        }\n    }\n\n    find(value) {\n        if (!this.root) {\n            return false;\n        }\n        let current = this.root;\n        let found = false;\n        while (current && !found) {\n            if (value < current.value) {\n                current = current.left;\n            } else if (value > current.value) {\n                current = current.right;\n            } else {\n                found = true;\n            }\n        }\n        if (!found) {\n            return false;\n        }\n        return current;\n    }\n}",
+                "output": "The BinarySearchTree class allows you to insert values into a binary search tree and search for values within the tree."
+              },
+              "Hash Table (Dictionary)": {
+                "definition": "A hash table, also known as a dictionary or map, is a data structure that stores key-value pairs and allows for efficient retrieval of values based on their keys.",
+                "code": "class HashTable {\n    constructor(size = 53) {\n        this.keyMap = new Array(size);\n    }\n\n    _hash(key) {\n        let total = 0;\n        const PRIME = 31;\n        for (let i = 0; i < Math.min(key.length, 100); i++) {\n            const char = key[i];\n            const charCode = char.charCodeAt(0) - 96;\n            total = (total * PRIME + charCode) % this.keyMap.length;\n        }\n        return total;\n    }\n\n    set(key, value) {\n        const index = this._hash(key);\n        if (!this.keyMap[index]) {\n            this.keyMap[index] = [];\n        }\n        this.keyMap[index].push([key, value]);\n    }\n\n    get(key) {\n        const index = this._hash(key);\n        if (this.keyMap[index]) {\n            for (const pair of this.keyMap[index]) {\n                if (pair[0] === key) {\n                    return pair[1];\n                }\n            }\n        }\n        return undefined;\n    }\n\n    keys() {\n        const keysArray = [];\n        for (const keyPair of this.keyMap) {\n            if (keyPair) {\n                for (const pair of keyPair) {\n                    keysArray.push(pair[0]);\n                }\n            }\n        }\n        return keysArray;\n    }\n\n    values() {\n        const valuesArray = [];\n        for (const keyPair of this.keyMap) {\n            if (keyPair) {\n                for (const pair of keyPair) {\n                    if (!valuesArray.includes(pair[1])) {\n                        valuesArray.push(pair[1]);\n                    }\n                }\n            }\n        }\n        return valuesArray;\n    }\n}",
+                "output": "The HashTable class allows you to store key-value pairs and perform operations like setting a value for a key, getting the value for a key, and retrieving all keys or values."
+              },
+              "Graphs (Adjacency List)": {
+                "definition": "A graph is a data structure that consists of a set of nodes (vertices) and a set of edges that connect pairs of nodes. An adjacency list is a common way to represent graphs.",
+                "code": "class Graph {\n    constructor() {\n        this.adjacencyList = {};\n    }\n\n    addVertex(vertex) {\n        if (!this.adjacencyList[vertex]) {\n            this.adjacencyList[vertex] = [];\n        }\n    }\n\n    addEdge(vertex1, vertex2) {\n        if (this.adjacencyList[vertex1] && this.adjacencyList[vertex2]) {\n            this.adjacencyList[vertex1].push(vertex2);\n            this.adjacencyList[vertex2].push(vertex1);\n        }\n    }\n\n    removeEdge(vertex1, vertex2) {\n        if (this.adjacencyList[vertex1]) {\n            this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(\n                (v) => v !== vertex2\n            );\n        }\n        if (this.adjacencyList[vertex2]) {\n            this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(\n                (v) => v !== vertex1\n            );\n        }\n    }\n\n    removeVertex(vertex) {\n        if (this.adjacencyList[vertex]) {\n            while (this.adjacencyList[vertex].length) {\n                const adjacentVertex = this.adjacencyList[vertex].pop();\n                this.removeEdge(vertex, adjacentVertex);\n            }\n            delete this.adjacencyList[vertex];\n        }\n    }\n}",
+                "output": "The Graph class allows you to create and manipulate graphs using an adjacency list representation."
+              },
+              "Topological Sorting": {
+                "definition": "Topological sorting is an ordering of the nodes (vertices) in a directed acyclic graph (DAG) such that for every directed edge (u, v), node u comes before node v in the ordering.",
+                "code": "class Graph {\n    constructor() {\n        this.adjacencyList = {};\n    }\n\n    addVertex(vertex) {\n        if (!this.adjacencyList[vertex]) {\n            this.adjacencyList[vertex] = [];\n        }\n    }\n\n    addEdge(vertex1, vertex2) {\n        if (this.adjacencyList[vertex1] && this.adjacencyList[vertex2]) {\n            this.adjacencyList[vertex1].push(vertex2);\n        }\n    }\n\n    topologicalSort() {\n        const stack = [];\n        const visited = {};\n\n        const dfs = (vertex) => {\n            visited[vertex] = true;\n            for (const neighbor of this.adjacencyList[vertex]) {\n                if (!visited[neighbor]) {\n                    dfs(neighbor);\n                }\n            }\n            stack.push(vertex);\n        };\n\n        for (const vertex in this.adjacencyList) {\n            if (!visited[vertex]) {\n                dfs(vertex);\n            }\n        }\n\n        return stack.reverse();\n    }\n}",
+                "output": "The topologicalSort method in the Graph class allows you to perform topological sorting on a directed acyclic graph (DAG) represented as an adjacency list."
+              },
+        };
+
+        function calculateSimilarity(word1, word2) {
+            const commonCharacters = new Set([...word1].filter(char => word2.includes(char)));
+            return commonCharacters.size / Math.max(word1.length, word2.length);
+        }
+
+        function getSimilarWords(inputWord, wordsList, numSimilar = 5) {
+            const similarWords = [];
+            for (const word of wordsList) {
+                const similarity = calculateSimilarity(inputWord, word);
+                if (similarity > 0.01) {
+                    similarWords.push({ word, similarity });
+                }
+            }
+            similarWords.sort((a, b) => b.similarity - a.similarity);
+            return similarWords.slice(0, numSimilar).map(item => item.word);
+        }
+
+        function displayCode(code) {
+            const codeContainer = document.getElementById("codeContainer");
+            codeContainer.innerHTML = `<pre><code>${code}</code></pre>`;
+        }
+
+        function searchWord() {
+            const searchInput = document.getElementById("searchInput");
+            const output = document.getElementById("output");
+            const searchButton = document.getElementById("searchButton");
+            const clearButton = document.getElementById("clearButton");
+
+            searchButton.addEventListener("click", () => {
+                const userInput = searchInput.value.trim().toLowerCase();
+
+                if (userInput === "**add" || userInput === "**move") {
+                    // Handle add or move logic here
+                    return;
+                }
+
+                const foundKeywords = [];
+                for (const keyword in allAboutPythonData) {
+                    if (keyword.toLowerCase().includes(userInput)) {
+                        foundKeywords.push(keyword);
+                    }
+                }
+
+                output.innerHTML = "";
+
+                if (!foundKeywords.length) {
+                    if (userInput.length < 3) {
+                        const recommendedWords = getSimilarWords(userInput, Object.keys(allAboutPythonData), 5);
+                        if (recommendedWords.length) {
+                            output.innerHTML = `<p>You are probably searching for this word!</p><ul>${recommendedWords.map(word => `<li>${word}</li>`).join("")}</ul>`;
+                        } else {
+                            output.innerHTML = "<p>No words found for this character in the dictionary.</p>";
+                        }
+                    } else {
+                        const recommendedWords = getSimilarWords(userInput, Object.keys(allAboutPythonData), 5);
+                        if (recommendedWords.length) {
+                            output.innerHTML = `<p>You are probably searching for this word!</p><ul>${recommendedWords.map(word => `<li>${word}</li>`).join("")}</ul>`;
+                        } else {
+                            output.innerHTML = "<p>Keyword not found.</p>";
+                        }
+                    }
+                } else {
+                    if (foundKeywords.length === 1) {
+                        const word = foundKeywords[0];
+                        const wordData = allAboutPythonData[word];
+                        output.innerHTML = `
+                            <p><strong>Keyword name:</strong> ${word}</p>
+                            <p><strong>Definition:</strong> ${wordData.definition}</p>
+                            <p><strong>Code:</strong> ${wordData.code}</p>
+                            <p><strong>Output:</strong> ${wordData.output}</p>
+                        `;
+
+                        // Display code when a keyword is selected
+                        displayCode(wordData.code.substring(wordData.code.indexOf("function")));
+                    } else {
+                        output.innerHTML = "<p>Possibly your searching answer:</p><ul>";
+                        for (const word of foundKeywords) {
+                            const wordData = allAboutPythonData[word];
+                            output.innerHTML += `
+                                <li><strong>Keyword:</strong> ${word}</li>
+                                <li><strong>Definition:</strong> ${wordData.definition}</li>
+                                <li><strong>Code:</strong> ${wordData.code}</li>
+                                <li><strong>Output:</strong> ${wordData.output}</li>
+                            `;
+                        }
+                        output.innerHTML += "</ul>";
+                    }
+                }
+            });
+
+            clearButton.addEventListener("click", () => {
+                searchInput.value = "";
+                output.innerHTML = "";
+                // Clear the code display
+                document.getElementById("codeContainer").innerHTML = "";
+            });
+        }
+
+        searchWord();
+    </script>
+
+    
+</body>
+</html>
