@@ -137,7 +137,7 @@
 
 
     <div class="notice">
-        This project serves as a template for my Python project. It does not contain extensive data and not working properly. For the full Python source code, please visit the following link.
+        This project serves as a template for my Python project. It does not contain extensive data. For the full Python source code, please visit the following link.
     </div>
 
     <div class="container">
@@ -149,7 +149,7 @@
         <div id="codeContainer"></div> <!-- Container for code display -->
     </div>
 
-    <script>
+   <script>
         const allAboutPythonData = {
             "abs(x)": {
                 "definition": "Return the absolute value of a number.",
@@ -171,52 +171,40 @@
                 "code": "aiter(async_iterable)",
                 "output": "This will return an asynchronous iterator."
             },
-            "all(iterable)": {
-                "definition": "Return True if all elements of the iterable are true (or if the iterable is empty). Equivalent to:",
-                "code": `
-        function all(iterable) {
-            for (const element of iterable) {
-                if (!element) {
-                    return false;
-                }
-            }
-            return true;
-        }`,
-                "output": "This will return True if all elements are true or False if the iterable is empty."
-            },
-            "any(iterable)": {
-                "definition": "Return True if any element of the iterable is true. If the iterable is empty, return False. Equivalent to:",
-                "code": `
-        function any(iterable) {
-            for (const element of iterable) {
-                if (element) {
-                    return true;
-                }
-            }
-            return false;
-        }`,
-                "output": "This will return True if any element in the iterable is true, or False if the iterable is empty."
-            },
-            "anext(async_iterator)": {
-                "definition": "When awaited, return the next item from the given asynchronous iterator, or default if given and the iterator is exhausted.",
-                "code": "async function anext(async_iterator) { /* Implementation here */ }",
-                "output": "Returns the next item from the given asynchronous iterator."
-            },
-            "ascii(object)": {
-                "definition": "As repr(), return a string containing a printable representation of an object, but escape the non-ASCII characters in the string returned by repr() using \\x, \\u, or \\U escapes.",
-                "code": "function ascii(object) { /* Implementation here */ }",
-                "output": "Returns a string containing a printable representation of the object with non-ASCII characters escaped."
-            },
-            "bin(x)": {
-                "definition": "Convert an integer number to a binary string prefixed with “0b”.",
-                "code": "function bin(x) { /* Implementation here */ }",
-                "output": "Returns a binary string representation of the integer number."
-            },
-            "bool(x)": {
-                "definition": "Convert a value to a Boolean, using the standard truth testing procedure.",
-                "code": "function bool(x) { /* Implementation here */ }",
-                "output": "Returns True if the value is true, False otherwise."
-            },
+
+            
+             "all(iterable)": {
+                    "definition": "Return True if all elements of the iterable are true (or if the iterable is empty). Equivalent to:",
+                    "code": "function all(iterable) {\n    for (const element of iterable) {\n        if (!element) {\n            return false;\n        }\n    }\n    return true;\n}",
+                    "output": "This will return True if all elements are true or False if the iterable is empty."
+                },
+                "any(iterable)": {
+                    "definition": "Return True if any element of the iterable is true. If the iterable is empty, return False. Equivalent to:",
+                    "code": "function any(iterable) {\n    for (const element of iterable) {\n        if (element) {\n            return true;\n        }\n    }\n    return false;\n}",
+                    "output": "This will return True if any element in the iterable is true, or False if the iterable is empty."
+                },
+                "anext(async_iterator)": {
+                    "definition": "When awaited, return the next item from the given asynchronous iterator, or default if given and the iterator is exhausted.",
+                    "code": "async function anext(async_iterator) { /* Implementation here */ }",
+                    "output": "Returns the next item from the given asynchronous iterator."
+                },
+                "ascii(object)": {
+                    "definition": "As repr(), return a string containing a printable representation of an object, but escape the non-ASCII characters in the string returned by repr() using \\x, \\u, or \\U escapes.",
+                    "code": "function ascii(object) { /* Implementation here */ }",
+                    "output": "Returns a string containing a printable representation of the object with non-ASCII characters escaped."
+                },
+                "bin(x)": {
+                    "definition": "Convert an integer number to a binary string prefixed with “0b”.",
+                    "code": "function bin(x) { /* Implementation here */ }",
+                    "output": "Returns a binary string representation of the integer number."
+                },
+                "bool(x)": {
+                    "definition": "Convert a value to a Boolean, using the standard truth testing procedure.",
+                    "code": "function bool(x) { /* Implementation here */ }",
+                    "output": "Returns True if the value is true, False otherwise."
+                },
+            
+            
             "breakpoint(...args)": {
                 "definition": "This function drops you into the debugger at the call site.",
                 "code": "function breakpoint(...args) { /* Implementation here */ }",
@@ -242,16 +230,7 @@
                 "code": "function chr(i) { /* Implementation here */ }",
                 "output": "Returns a string representing the character with the given Unicode code point."
             },
-            "classmethod(function)": {
-                "definition": "Return a class method for function.",
-                "code": `
-        class C {
-            static f(arg1, arg2) {
-                // Implementation here
-            }
-        }`,
-                "output": "Returns a class method object that can be called on the class."
-            },
+            
             "compile(source, filename, mode, flags=0, dont_inherit=false, optimize=-1)": {
                 "definition": "Compile the source into a code or AST object.",
                 "code": "function compile(source, filename, mode, flags=0, dont_inherit=false, optimize=-1) { /* Implementation here */ }",
@@ -510,6 +489,22 @@
         searchWord();
     </script>
 
+    <script>
+        const inputElement = document.getElementById("searchInput");
+        const textToType = ["Enter a word to search", "quicksort", "mergesort", "quick find"];
+        let currentIndex = 0;
+        
+        function typeText() {
+          inputElement.placeholder = textToType[currentIndex];
+          currentIndex = (currentIndex + 1) % textToType.length;
+        
+          setTimeout(typeText, 1000); // Change the placeholder every 2 seconds (2000 milliseconds)
+        }
+        
+        typeText(); // Start the typing animation loop immediately
+        
+
+    </script>
     
 </body>
 </html>
