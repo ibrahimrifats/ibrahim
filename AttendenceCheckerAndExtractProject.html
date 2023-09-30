@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID Extraction Tool</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            resize: vertical;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background-color: #f9f9f9;
+            white-space: pre-line;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            margin-right: 10px;
+        }
+
+        .btn-container {
+            text-align: center;
+        }
+
+        .home-btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 20px;
+            display: inline-block;
+            border-radius: 3px;
+        }
+
+        .home-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ID Extraction Tool</h1>
+        <a href="index.html">
+            <button class="home-btn">Home</button>
+          </a>
+          
+    </header>
+    <div class="container">
+        <h2>Option 1: Extract IDs from Text</h2>
+        <label for="text1">Paste or enter text:</label>
+        <textarea id="text1" rows="6"></textarea>
+        <!-- Add an input for desired length -->
+        <label for="length1">Enter the desired student ID length (between 4 and 20):</label>
+        <input type="number" id="length1" min="4" max="20">
+        <button id="button1">Extract IDs</button>
+        <!-- Add download buttons for Option 1 -->
+        <div class="btn-container">
+            <a id="download1-txt" href="#" style="display: none;" download="extracted_ids.txt">Download TXT</a>
+            <a id="download1-xlsx" href="#" style="display: none;" download="extracted_ids.xlsx">Download XLSX</a>
+        </div>
+        <div id="result1"></div>
+
+        <h2>Option 2: Find Missing IDs</h2>
+        <label for="text2">Enter all student IDs:</label>
+        <textarea id="text2" rows="4"></textarea>
+        <label for="text3">Enter IDs with garbage data:</label>
+        <textarea id="text3" rows="4"></textarea>
+        <label for="length2">Enter the desired student ID length (between 4 and 20):</label>
+        <input type="number" id="length2" min="4" max="20">
+        <button id="button2">Find Missing IDs</button>
+        <!-- Add download buttons for Option 2 -->
+        <div class="btn-container">
+            <a id="download2-txt" href="#" style="display: none;" download="missing_ids.txt">Download TXT</a>
+            <a id="download2-xlsx" href="#" style="display: none;" download="missing_ids.xlsx">Download XLSX</a>
+        </div>
+        <div id="result2"></div>
+
+        <!-- Home button to return to the main page -->
+        <a class="home-btn" href="/">Home</a>
+    </div>
+
+    <script>
+        // Option 1: Extract IDs from Text
+        document.getElementById("button1").addEventListener("click", function () {
+            const text = document.getElementById("text1").value;
+            const desired_length = parseInt(document.getElementById("length1").value);
+
+            if (desired_length < 4 || desired_length > 20) {
+                alert("Please enter a desired length between 4 and 20.");
+                return;
+            }
+
+            const ids = extractIDs(text, desired_length);
+            displayIDs(ids, "result1");
+
+            if (ids.length > 0) {
+                // Enable the download buttons
+                document.getElementById("download1-txt").style.display = "inline";
+                document.getElementById("download1-xlsx").style.display = "inline";
+            } else {
+                // Disable the download buttons if no IDs are found
+                document.getElementById("download1-txt").style.display = "none";
+                document.getElementById("download1-xlsx").style.display = "none";
+            }
+        });
+
+        // Option 2: Find Missing IDs
+        document.getElementById("button2").addEventListener("click", function () {
+            const all_ids = document.getElementById("text2").value.split("\n");
+            const garbage_ids = document.getElementById("text3").value.split("\n");
+            const desired_length = parseInt(document.getElementById("length2").value);
+
+            if (desired_length < 4 || desired_length > 20) {
+                alert("Please enter a desired length between 4 and 20.");
+                return;
+            }
+
+            const missing_ids = findMissingIDs(all_ids, garbage_ids, desired_length);
+            displayIDs(missing_ids, "result2");
+
+            if (missing_ids.length > 0) {
+                // Enable the download buttons
+                document.getElementById("download2-txt").style.display = "inline";
+                document.getElementById("download2-xlsx").style.display = "inline";
+            } else {
+                // Disable the download buttons if no missing IDs are found
+                document.getElementById("download2-txt").style.display = "none";
+                document.getElementById("download2-xlsx").style.display = "none";
+            }
+        });
+
+        // Function to extract unique IDs of the specified length from a text
+        function extractIDs(text, desired_length) {
+            const lines = text.split("\n");
+            const ids = new Set();
+
+            for (const line of lines) {
+                const words = line.split(" ");
+                for (const word of words) {
+                    const cleaned = word.replace(/[^0-9]/g, "");
+                    if (cleaned.length === desired_length) {
+                        ids.add(cleaned);
+                    }
+                }
+            }
+
+            return Array.from(ids);
+        }
+
+        // Function to find missing IDs
+        function findMissingIDs(all_ids, garbage_ids, desired_length) {
+            const allSet = new Set(all_ids);
+            const garbageSet = new Set(garbage_ids);
+            const missing_ids = [...allSet].filter(id => !garbageSet.has(id) && id.length === desired_length);
+            return missing_ids;
+        }
+
+        // Function to display IDs in a result div
+        function displayIDs(ids, resultDivId) {
+            const resultDiv = document.getElementById(resultDivId);
+            resultDiv.textContent = ids.join("\n");
+        }
+
+        // Function to download IDs as a text file
+        document.getElementById("download1-txt").addEventListener("click", function () {
+            const ids = document.getElementById("result1").textContent;
+            const blob = new Blob([ids], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "extracted_ids.txt";
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        // Function to download IDs as an XLSX file
+        document.getElementById("download1-xlsx").addEventListener("click", function () {
+            const ids = document.getElementById("result1").textContent.split("\n");
+            const wb = XLSX.utils.book_new();
+            const ws = XLSX.utils.aoa_to_sheet([["Extracted IDs"], ...ids.map(id => [id])]);
+            XLSX.utils.book_append_sheet(wb, ws, "Extracted IDs");
+            XLSX.writeFile(wb, "extracted_ids.xlsx");
+        });
+
+        // Function to download missing IDs as a text file
+        document.getElementById("download2-txt").addEventListener("click", function () {
+            const missing_ids = document.getElementById("result2").textContent;
+            const blob = new Blob([missing_ids], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "missing_ids.txt";
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        // Function to download missing IDs as an XLSX file
+        document.getElementById("download2-xlsx").addEventListener("click", function () {
+            const missing_ids = document.getElementById("result2").textContent.split("\n");
+            const wb = XLSX.utils.book_new();
+            const ws = XLSX.utils.aoa_to_sheet([["Missing IDs"], ...missing_ids.map(id => [id])]);
+            XLSX.utils.book_append_sheet(wb, ws, "Missing IDs");
+            XLSX.writeFile(wb, "missing_ids.xlsx");
+        });
+    </script>
+</body>
+</html>
