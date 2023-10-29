@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mailing List Subscription</title>
+    <link rel="icon" type="image/png" href="mail.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Subscribe to our Mailing List</h1>
+        <form id="subscription-form">
+            <input type="email" id="email" placeholder="Your Email" required>
+            <select id="section" required>
+                <option value="" disabled selected>Select Section</option>
+                <option value="Algorithm">Algorithm</option>
+                <option value="Database">Database</option>
+                <option value="Database Lab">Database Lab</option>
+                <option value="Computer Architecture">Computer Architecture</option>
+                <option value="EEE Lab">EEE Lab</option>
+                <option value="EEE Theory">EEE Theory</option>
+                <option value="Engineering Drawing">Engineering Drawing</option>
+            </select>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+    <div class="mail-animation"></div>
+    <script src="script.js"></script>
+</body>
+</html>
