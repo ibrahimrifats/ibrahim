@@ -1,5 +1,5 @@
         // Counter variable
-        let visitorCount = 0;
+        let visitorCount = 1000;
 
         // Function to increment the counter
         function incrementCounter() {
