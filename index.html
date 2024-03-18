@@ -1,263 +1,350 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ibrahim Rifat - Portfolio, Algorithms, Backend, Git, GitHub</title>
-        <meta name="description" content="Welcome to Ibrahim Rifat's portfolio website. Explore algorithms, backend development, Git, GitHub, and more.">
-        <meta name="keywords" content="Ibrahim Rifat, Portfolio, Algorithms, Searching, Sorting, Backend, Git, GitHub">
-        <meta name="author" content="Ibrahim Rifat">
-        <link rel="icon" type="image/png" href="images/rifat.jpg">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ibrahim rifat</title>
+    <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/icon.css">
+    <link rel="stylesheet" href="styles/blog/sidebar.css">
+    <link rel="stylesheet" href="styles/blog/post.css">
+    <link rel="stylesheet" href="styles/blog/code.css">
+    <link rel="stylesheet" href="styles/home/home.css">
+    <link rel="stylesheet" href="styles/home/scroll.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css">
+
+
+
+
+</head>
 <body>
-    <header>
-        <a href="#" class="logo">
-            <img src="images/rifat.jpg" class="rifat" alt="Icon" width="50" height="50"> Ibrahim Rifat
-        </a>
-        <div class="social-icons-container">
-            <button class="about">
-                <a href="about.html">About</a>
-            </button>
-            <button class="blog">Blog</button>
-             <div class="dropdown">
-                <button class="projects">Projects</button>
-                <div class="dropdown-content">
-                  <ul>
-                    <li><a href="https://replit.com/@Ibrahim-RifatRi/python-Dictionary">Python DSA Project</a></li>
-                    <li><a href="python and data structure dictionary.html">Python DSA Web</a></li>
-                    <li><a href="AttendenceCheckerAndExtractProject.html">Absentee Tracker & ID Extraction Tool</a></li>
-                      <li><a href="mailing.html">Mailing list to receive CR information</a></li>
-                      <li><a href="https://github.com/ibrahimrifatcse/Chatbot-by-gemini?tab=readme-ov-file">Own Google Gemini chatbot</a></li>
-                      <li><a href="github.com/ibrahimrifatcse">Restaurant App using flask and database</a></li>
-                  </ul>
-                </div>
-              </div>
+    <div class="header">
+        <h3 class="shahada">اَشْهَدُ اَنْ لَّآ اِلٰهَ اِلَّا اللّٰهُ وَحْدَهٗ لَا شَرِيْكَ لَهٗ وَاَشْهَدُ اَنَّ مُحَمَّدًا عَبْدُهٗ وَرَسُوْلُهٗ : I bear witness that there is no god but Allah alone, without any partner, and I bear witness that Muhammad is His servant and Messenger.</h3>
+    </div>
 
- <button class="about">
-               <a href="palestine-tube.html"> Palestine Tube</a> 
-            </button>
-            
-            <button class="business">Start-UP</button>
-            <a href="https://www.linkedin.com/in/ibrahimrifatcse/"><img src="images/linkedin.png" alt="LinkedIn" class="social-icon"></a>
-            <a href="https://twitter.com/RifuRifat1"><img src="images/twitter.png" alt="Twitter" class="social-icon"></a>
-            <a href="https://www.github.com/ibrahimrifatcse"><img src="images/github.png" alt="Facebook" class="social-icon"></a>
-            <a href="https://www.youtube.com/@ibrahimrifat221"><img src="images/youtube.png" alt="Youtube" class="social-icon"></a>
-             <a href=" https://leetcode.com/ibrahimrifat221/"><img src="images/leet.png" alt="Leetcode" class="social-icon"></a>
+    <nav class="navbar">
+        <a href="home.html" target="_top" id="home">Home</a>
+        <a href="index.html" target="_self" id="blog">Blog</a>
+        <a href="project.html" target="_blank" id="project">Projects</a>
+        <a href="#resources" id="resources">Resources</a>
+        <a href="#publication" id="publication">Publication</a>
+        <a href="#contact" id="contact">Contact</a>
+        <a href="about.html" target="_blank" id="about">About</a>
+        <a href="palestine-tube.html" target="_blank" id="about">PalestineTube</a>
+    </nav>
 
-
-           
-
-        </div>
-    </header>
 
     <div class="container">
 
-        <div class="left-sidebar">
-         
-           
-            
-            <div class="caption"><h2>Notice</h2></div>
+        <div class="left-side">
             
         </div>
 
-
-       
-
-        <div class="main-content">
-            <!-- Your main content here -->
-        </div>
-
-        <div class="post-container">
-
-            <div class="horizontal-bar">
-                <span class="bar-text">Algorithm article start from here</span>
-            </div>
-
-            <div class="user-profile">
-                <img src="images/rifat.jpg" alt="rifat" class="profile-icon">
-                <div>
-                    <p>Ibrahim Rifat</p>
-                    <span>Sept 15, 2023 <i class="fas fa-caret-down"></i> </span>
-                </div>
-            </div>
-
-            <!-- <h3>Binary search Algorithm</h3>
-            <p class="post-text">Binary search Algorithm <span>Algorithm with code</span>
-            This is an algorithm of Binary search. <a href="#">This is python code</a> <a href="#">#YouTubeChannel</a></p> -->
-
-
-            <h2>Binary Search Algorithm</h2>
-
-            <p class="post-text">Binary search, also known as the binary chop, is a powerful algorithm used to efficiently locate a specific element within a sorted collection of data. It's a fundamental concept in computer science and programming, known for its speed and effectiveness.</p>
-            
-            <p class="post-text">The core idea behind binary search is to repeatedly divide the search space in half, narrowing down the possibilities with each step. This results in a significantly faster search process compared to linear search algorithms.</p>
-            
-            
-            
-            <p class="post-text">Let's explore a Python code snippet that demonstrates the binary search algorithm:</p>
-            
-
-            <img src="photo_post/check.png" class="post-img">
-            <a href="https://www.oreilly.com/library/view/algorithms-in-a/9780596516246/ch05s03.html">image source</a>
-
-
-            <p class="post-text">This Python code demonstrates a typical binary search implementation, showcasing its efficiency in finding a target element in a sorted array.</p>
-
-            <h3>Conclusion</h3>
-            
-            <p class="post-text">In summary, the Binary Search Algorithm is a valuable tool for quickly locating items in sorted data structures. Its efficiency and simplicity make it a fundamental concept for anyone interested in programming and computer science.</p>
-            
-            <p class="post-text">If you'd like to learn more about algorithms, data structures, and programming techniques, consider exploring our #YouTubeChannel for educational content and tutorials.</p>
-            
+        <div class="newsfeed">
+        
           
-            
-            <p class="post-text">Thank you for reading, and happy coding!</p>
 
-            <h3>Python Code Example</h3>
+            <div class="textArea" id="div1">
+              <div class="user-details" style="margin-left:-14px; margin-bottom:5px;">
+                <div class="profile">
+                    <img class="pic-jpg" src="images/dp.jpg">
+                </div>
 
-            <h1>Python Online Compiler</h1>
+                <div class="user-info">
+                    <p class="name">Mohamad Ibrahim Rifat</p>
+                    <p class="date">12.03.2024</p>
+                </div>
 
-  <!-- Embed the JDoodle Python compiler within the container -->
-  <div class="ide-container">
-    <iframe id="jdoodle-embed" src="https://www.jdoodle.com/iembed/v0/Nfq"></iframe>
-  </div>
-
-            <div class="horizontal-bar">
-                <span class="bar-text">Algorithm article end here</span>
-            </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-
-
-            <div class="horizontal-bar">
-                <span class="bar-text">Data Structure article start from here</span>
-            </div>
-
-
-
-
-
-
-           
-           
-
-
-
-            <div class="user-profile">
-                <img src="images/rifat.jpg" alt="rifat" class="profile-icon">
-                <div>
-                    <p>Ibrahim Rifat</p>
-                    <span>Sept 15, 2023 <i class="fas fa-caret-down"></i> </span>
+                <div class="verified">
+                    <img class="verify">
+                    <img class="verify-icon" src="images/verified.png">
                 </div>
             </div>
 
-            <h2>Insertion Sort Algorithm</h2>
+              <h3>Linked List with python</h3>
+              <p style="color:gray">
+              <ul class="list-no">
+                <li class="list-no">A linked list is a linear data structure where elements (nodes) are not stored contiguously in memory. </li>
+                <li class="list-no">Each node contains data and a reference (pointer) to the next node, creating a chain-like structure.</li>
+                <li class="list-no">Linked lists are ideal for dynamic data (frequently added or removed elements) due to efficient insertion and deletion operations, as opposed to arrays/lists that require shifting elements.
+                </li>
+              </ul>
+              </p>
+              
 
-<p class="post-text">The Insertion Sort algorithm is a simple yet effective sorting method that builds the final sorted array one item at a time. It is particularly useful for sorting small datasets and is often used as part of more complex sorting algorithms, such as the Timsort used in Python.</p>
-
-<p class="post-text">The basic idea behind Insertion Sort is to divide the array into two parts: a sorted part and an unsorted part. It repeatedly takes an element from the unsorted part and inserts it into its correct position in the sorted part of the array.</p>
-
-<h3>Python Code Example</h3>
-
-<p class="post-text">Let's explore a Python code snippet that demonstrates the Insertion Sort algorithm:</p>
-
-            <img src="photo_post/insertionsort.png" class="post-img">
-
-
-            <p class="post-text">This Python code demonstrates the Insertion Sort algorithm in action, sorting an array of integers. It showcases the incremental approach of building the sorted array.</p>
-
-            <h3>Conclusion</h3>
+              <div class="image-item">
+                <img class="image" src="images/blog/linkedlist.png">
+            </div>
+            <div class="containers">
+              <button class="copy-button" onclick="copyCode()">Copy</button>
+              <pre><code class="language-python">
+ class Node:
+     def __init__(self, data):
+          self.data = data
+          self.next = None
             
-            <p class="post-text">In summary, the Insertion Sort algorithm is a straightforward and efficient sorting technique that is particularly suitable for small datasets. While it may not be the fastest sorting method for large arrays, it remains a valuable concept in the realm of computer science and algorithms.</p>
-            
-            <p class="post-text">If you're interested in learning more about sorting algorithms, data structures, and programming, feel free to explore our #YouTubeChannel for educational content and tutorials.</p>
-            
-             
-            
-            <p class="post-text">Thank you for reading, and happy coding!</p>
+ class Blog:
+     def __init__(self):
+         self.head = None  # Head node, initially None
 
-            <h1>Python Online Compiler</h1>
+    def add_post(self, title, content):
+        # Create a new node
+        new_post = Node({"title": title, "content": content})
 
-            <!-- Embed the JDoodle Python compiler within the container -->
-            <div class="ide-container">
-              <iframe id="jdoodle-embed" src="https://www.jdoodle.com/embed/v0/6DsM"></iframe>
+        # If the list is empty, set the new node as the head
+        if self.head is None:
+            self.head = new_post
+            return
+
+        # Traverse to the last node
+        current = self.head
+        while current.next:
+            current = current.next
+
+        # Append the new node to the end
+        current.next = new_post
+
+    def print_posts(self):
+        current = self.head
+        while current:
+            print(f"Title: {current.data['title']}")
+            print(f"Content: {current.data['content']}")
+            print("-" * 20)
+            current = current.next
+            
+              </code></pre>
+          </div>
             </div>
 
- 
-            <div class="horizontal-bar">
-                <span class="bar-text">Data structure article end here</span>
-            </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
+            <div class="textArea" id="div1">
+              <div class="user-details" style="margin-left:-14px; margin-bottom:5px;">
+                <div class="profile">
+                    <img class="pic-jpg" src="images/dp.jpg">
+                </div>
 
-            <div class="horizontal-bar">
-                <span class="bar-text">Git and Github article start from here</span>
+                <div class="user-info">
+                    <p class="name">Mohamad Ibrahim Rifat</p>
+                    <p class="date">12.03.2024</p>
+                </div>
+
+                <div class="verified">
+                    <img class="verify">
+                    <img class="verify-icon" src="images/verified.png">
+                </div>
             </div>
 
-            <div class="horizontal-bar">
-                <span class="bar-text">Git and Github article end here</span>
+              <h3>Linked List with python</h3>
+              <p style="color:gray">
+              <ul class="list-no">
+                <li class="list-no">A linked list is a linear data structure where elements (nodes) are not stored contiguously in memory. </li>
+                <li class="list-no">Each node contains data and a reference (pointer) to the next node, creating a chain-like structure.</li>
+                <li class="list-no">Linked lists are ideal for dynamic data (frequently added or removed elements) due to efficient insertion and deletion operations, as opposed to arrays/lists that require shifting elements.
+                </li>
+              </ul>
+              </p>
+              
+
+              <div class="image-item">
+                <img class="image" src="images/blog/linkedlist.png">
             </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
+            <div class="containers">
+              <button class="copy-button" onclick="copyCode()">Copy</button>
+              <pre><code class="language-python">
+ class Node:
+     def __init__(self, data):
+          self.data = data
+          self.next = None
+            
+ class Blog:
+     def __init__(self):
+         self.head = None  # Head node, initially None
+
+    def add_post(self, title, content):
+        # Create a new node
+        new_post = Node({"title": title, "content": content})
+
+        # If the list is empty, set the new node as the head
+        if self.head is None:
+            self.head = new_post
+            return
+
+        # Traverse to the last node
+        current = self.head
+        while current.next:
+            current = current.next
+
+        # Append the new node to the end
+        current.next = new_post
+
+    def print_posts(self):
+        current = self.head
+        while current:
+            print(f"Title: {current.data['title']}")
+            print(f"Content: {current.data['content']}")
+            print("-" * 20)
+            current = current.next
+            
+              </code></pre>
+          </div>
+            </div>
+
+            <div class="textArea" id="div1">
+              <div class="user-details" style="margin-left:-14px; margin-bottom:5px;">
+                <div class="profile">
+                    <img class="pic-jpg" src="images/dp.jpg">
+                </div>
+
+                <div class="user-info">
+                    <p class="name">Mohamad Ibrahim Rifat</p>
+                    <p class="date">12.03.2024</p>
+                </div>
+
+                <div class="verified">
+                    <img class="verify">
+                    <img class="verify-icon" src="images/verified.png">
+                </div>
+            </div>
+
+              <h3>Linked List with python</h3>
+              <p style="color:gray">
+              <ul class="list-no">
+                <li class="list-no">A linked list is a linear data structure where elements (nodes) are not stored contiguously in memory. </li>
+                <li class="list-no">Each node contains data and a reference (pointer) to the next node, creating a chain-like structure.</li>
+                <li class="list-no">Linked lists are ideal for dynamic data (frequently added or removed elements) due to efficient insertion and deletion operations, as opposed to arrays/lists that require shifting elements.
+                </li>
+              </ul>
+              </p>
+              
+
+              <div class="image-item">
+                <img class="image" src="images/blog/linkedlist.png">
+            </div>
+            <div class="containers">
+              <button class="copy-button" onclick="copyCode()">Copy</button>
+              <pre><code class="language-python">
+ class Node:
+     def __init__(self, data):
+          self.data = data
+          self.next = None
+            
+ class Blog:
+     def __init__(self):
+         self.head = None  # Head node, initially None
+
+    def add_post(self, title, content):
+        # Create a new node
+        new_post = Node({"title": title, "content": content})
+
+        # If the list is empty, set the new node as the head
+        if self.head is None:
+            self.head = new_post
+            return
+
+        # Traverse to the last node
+        current = self.head
+        while current.next:
+            current = current.next
+
+        # Append the new node to the end
+        current.next = new_post
+
+    def print_posts(self):
+        current = self.head
+        while current:
+            print(f"Title: {current.data['title']}")
+            print(f"Content: {current.data['content']}")
+            print("-" * 20)
+            current = current.next
+            
+              </code></pre>
+          </div>
+            </div>
+        
+
         </div>
-
-
-
-
-
-
-
 
 
 
 
         <div class="right-sidebar">
-            <div class="sidebar-title">
-                <h2 class="right-blog">Blog Index</h2>
-            </div>
-            <div class="vertical-buttons">
-                <div class="expandable-button" onclick="toggleContent('algorithm-button')">Algorithm</div>
-                <div id="algorithm-button" class="expandable-button-content">
-                    <button onclick="scrollToTopic('insertion-sort')">Insertion Sort</button>
-                    <button onclick="scrollToTopic('selection-sort')">Selection Sort</button>
-                    <button onclick="scrollToTopic('binary-search')">Binary Search</button>
+
+            <div class="heading-name">
+                <h1>Blog Index</h1>
+                <div class="artical">
+                    <img class="artical-icon" src="images/article.png">
                 </div>
+                
             </div>
-            <div class="vertical-buttons">
-                <div class="expandable-button" onclick="toggleContent('data-structure-button')">Data Structure</div>
-                <div id="data-structure-button" class="expandable-button-content">
-                    <button onclick="scrollToTopic('stack')">Stack</button>
-                    <button onclick="scrollToTopic('queue')">Queue</button>
-                    <button onclick="scrollToTopic('linked-list')">Linked List</button>
+                <div class="index-name">
+                  <ul class="unorder-list">
+                    <li>
+                        <span class="caption-index">Data structure</span>
+                        <ul>
+                            <li>  
+                              <button class="show-button" data-index="0">linked list</button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="caption-index">Git and GitHub </span>
+                        <ul>
+                          <li>  
+                            <button class="show-button" data-index="1">introduction</button>
+                          </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                      <span class="caption-index">Python and Django </span>
+                      <ul>
+                          <li>
+                            <button class="show-button" data-index="0">introduction</button>
+
+                          </li>
+                      </ul>
+                  </li>
+                    
+                </ul>
+                
                 </div>
+                
             </div>
-            <div class="vertical-buttons">
-                <div class="expandable-button" onclick="toggleContent('git-and-github-button')">Git and Github</div>
-                <div id="git-and-github-button" class="expandable-button-content">
-                    <button onclick="scrollToTopic('diff-and-push')">Diff and Push</button>
-                    <button onclick="scrollToTopic('pull-request')">Pull Request</button>
-                    <button onclick="scrollToTopic('code-review')">Code Review</button>
-                </div>
-            </div>
-        </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ace.js"></script>
-    <script src="system.js"></script>
+
+
+
+
+
+
+    
+    <script src="scripts/nav.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const showButtons = document.querySelectorAll(".show-button");
+        const posts = document.querySelectorAll(".textArea");
+    
+        showButtons.forEach((button, index) => {
+            button.addEventListener("click", function() {
+                scrollToPost(posts[index]);
+            });
+        });
+    
+        function scrollToPost(textArea) {
+            const postPosition = textArea.offsetTop;
+            window.scrollTo({
+                top: postPosition,
+                behavior: "smooth"
+            });
+        }
+    });
+    
+      
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+    
+
+
 </body>
 </html>

@@ -1,292 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibrahim Rifat</title>
-    <link rel="icon" type="image/png" href="images/rifat.jpg">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-               /* Add your custom styles here */
-               body {
-                font-family: 'Arial', sans-serif;
-                background-color: #f0f0f0;
-                margin: 0;
-                padding: 0;
-            }
+    <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/icon.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  float: left;
+  margin-left: 100px;
+  margin-top: 80px;
+  padding: 0 20px 0 20px;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+.about-info{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 800px;
+    margin-left: 600px;
+    margin-top: 100px;
+    position: absolute;
+    padding: 10px 20px 10px 20px;
     
-            header {
-                background-color: #333;
-                color: #fff;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 10px 5%;
-            }
-    
-            .logo {
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                color: #fff;
-            }
-    
-            .logo img {
-                width: 50px;
-                height: 50px;
-                margin-right: 10px;
-            }
-    
-            .social-icons-container {
-                display: flex;
-            }
-    
-            .social-icon {
-                margin: 0 10px;
-                width: 30px;
-                height: 30px;
-            }
-    
-            nav {
-                background-color: #333;
-                display: flex;
-                justify-content: flex-end;
-                padding: 10px 5%;
-            }
-    
-            button {
-                background-color: transparent;
-                color: #fff;
-                border: none;
-                cursor: pointer;
-                font-size: 16px;
-                margin-right: 20px;
-                transition: color 0.3s;
-            }
-    
-            button:hover {
-                color: #00a1e0;
-            }
-    
-            .container {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 20px 5%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-    
-            .content {
-                flex-basis: 60%; /* Adjust the width of the content */
-            }
-    
-            .content h3 {
-                font-size: 24px;
-                margin-bottom: 10px;
-                color: #333;
-            }
-    
-            .content p {
-                font-size: 16px;
-                line-height: 1.6;
-                color: #666;
-            }
-    
-            .image {
-                flex-basis: 40%; /* Adjust the width of the image */
-            }
-    
-            .image img {
-                max-width: 100%;
-                height: auto;
-            }
+}
+.about-paragraph{
+    word-spacing: 5px;
+    color: gray;
+    font-size: 20px;
+}
+.highlight{
+    color:red;
+}
 
 
 
-
-
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-            
-            /* Global styles */
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f5f5f5;
-                color: #333;
-                line-height: 1.5;
-            }
-            
-            h1, h2 {
-                margin-bottom: 20px;
-            }
-            
-            img {
-                display: block;
-                margin: 0 auto;
-                width: 200px;
-                height: 200px;
-                object-fit: cover;
-                border-radius: 1%;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            }
-            
-            main {
-                max-width: 800px;
-                margin: 0 auto;
-                padding: 20px;
-                text-align: justify;
-            }
-            
-            a {
-                color: #1a73e8;
-                text-decoration: none;
-            }
-            
-            
-            
-            nav {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                height: 80px;
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0 20px;
-            }
-            
-            nav ul {
-                display: flex;
-                list-style: none;
-            }
-            
-            nav ul li {
-                margin-right: 20px;
-            }
-            
-            nav ul li:last-child {
-                margin-right: 0;
-            }
-            
-            nav ul li a {
-                color: #ffffff;
-                text-decoration: none;
-                font-weight: bold;
-                text-transform: uppercase;
-                transition: color 0.3s ease-in-out;
-            }
-            
-            nav ul li a:hover {
-                color: #dad8d8;
-            }
-            
-            .social-media {
-                display: flex;
-            }
-            
-            .social-media a {
-                margin-right: 10px;
-                transition: transform 0.3s ease-in-out;
-            }
-            
-            .social-media a:hover {
-                transform: scale(1.2);
-            }
-            
-            /* Media queries */
-            @media (max-width: 768px) {
-                nav {
-                    flex-direction: column;
-                    height: auto;
-                }
-                
-                nav ul {
-                    flex-direction: column;
-                }
-                
-                nav ul li {
-                    margin: 10px 0;
-                }
-            }
-            .photo {
-                float: right;
-                width: 50%;
-                margin-left: 20px;
-              }
-        </style>
-
-
+</style>
 </head>
 <body>
-    <header>
-        <a href="#" class="logo">
-            <img src="images/rifat.jpg" class="rifat" alt="Icon" width="50" height="50"> Ibrahim Rifat
-        </a>
-        <div class="social-icons-container">
-
-            <button class="about">
-                <a href="about.html">About</a>
-            </button>
-            
-            <button class="about">
-                <a href="index.html">Blog</a>
-            </button>
-             <button class="about">
-                <a href="palestine-tube.html">Palestine Tube</a>
-            </button>
-            
-            <button class="projects">Projects</button>
-            <button class="business">Start-UP</button>
-            <a href="https://www.linkedin.com/in/ibrahimrifatcse/"><img src="images/linkedin.png" alt="LinkedIn" class="social-icon"></a>
-            <a href="https://twitter.com/RifuRifat1"><img src="images/twitter.png" alt="Twitter" class="social-icon"></a>
-            
-            
-        </div>
-    </header>
-
-
-<br>
-<br>
-<br>
-<br>
-    <div class="container">
-        <div class="content">
-            <section> 
-            <h3>Ibrahim Rifat</h3>
-            <p>I'm Ibrahim Rifat, an undergraduate student currently studying at Green University of Bangladesh. I'm in my second year of undergraduate studies, pursuing a degree in Computer Science. I'm deeply passionate about cutting-edge technologies such as Machine Learning, Artificial Intelligence, software development, and Web Development. I aspire to create my own tech business. I believe that these fields have tremendous potential to transform the world, and I'm eager to be part of this transformation. </p>
-        </section>
-        </div>
-        <div class="image">
-            <img src="images/rifat.jpg" alt="Ibrahim Rifat Image">
-        </div>
+    <div class="header">
+        <h3 class="shahada">اَشْهَدُ اَنْ لَّآ اِلٰهَ اِلَّا اللّٰهُ وَحْدَهٗ لَا شَرِيْكَ لَهٗ وَاَشْهَدُ اَنَّ مُحَمَّدًا عَبْدُهٗ وَرَسُوْلُهٗ : I bear witness that there is no god but Allah alone, without any partner, and I bear witness that Muhammad is His servant and Messenger.</h3>
     </div>
-    <div class="horizontal-bar">
-        <span class="bar-text">Under constraction</span>
-    </div>
-    <main>
-               
-        <section>
-        <h2>Projects list</h2>
-        <ul>
-       <li><h3>Click on project name 👇</h3></li>
-       <li><a href="https://replit.com/@Ibrahim-RifatRi/python-Dictionary?v=1"><button style="background-color: blue; color: white;">Python and Data Structure Dictionary</button></a></li>            
-      <li><a href="python and data structure dictionary.html"><button style="background-color: blue; color: white;">Python and Data Structure Dictionary using JS</button></a></li>
-      <li><a href="AttendenceCheckerAndExtractProject.html"><button style="background-color: blue; color: white;">Absentee Tracker & ID Extraction Tool</button></a></li>
-      <li><a href="mailing.html"><button style="background-color: blue; color: white;">Mailing list to receive CR information</button></a></li>
-      <li><a href="https://github.com/ibrahimrifatcse/Chatbot-by-gemini?tab=readme-ov-file"><button style="background-color: blue; color: white;">Own Google Gemini chatbot</button></a></li>
-      <li><a href="github.com/ibrahimrifatcse"><button style="background-color: blue; color: white;">Restaurant App using flask and database</button></a></li>
-        </ul>
-        </section>
-        </main>
-        <footer>
-        <p>Copyright © 2023 ibrahim rifat.</p>
-        </footer>
 
- 
-    <script src="system.js"></script>
+    <nav class="navbar">
+        <a href="home.html" target="_top" id="home">Home</a>
+        <a href="index.html" target="_self" id="blog">Blog</a>
+        <a href="project.html" target="_blank" id="project">Projects</a>
+        <a href="#resources" id="resources">Resources</a>
+        <a href="#publication" id="publication">Publication</a>
+        <a href="contact.html" id="contact">Contact</a>
+        <a href="about.html" target="_blank" id="about">About</a>
+    </nav>
+
+<div class="card">
+  <img src="images/dp.jpg" alt="John" style="width:100%">
+  <h1>Mohammad Ibrahim Rifat</h1>
+  <p class="title">Student</p>
+  <p>Green University</p>
+  <div style="margin: 24px 0;">
+    <a href="https://twitter.com/RifuRifat1"><i class="fa fa-twitter"></i></a>  
+    <a href="https://www.linkedin.com/in/ibrahimrifatcse/"><i class="fa fa-linkedin"></i></a>  
+    <a href="https://www.facebook.com/ibrahimrifat18/"><i class="fa fa-facebook"></i></a> 
+  </div>
+  <p><button>Contact</button></p>
+</div>
+
+<div class="about-info">
+    <p class="about-paragraph">
+        I'm Ibrahim Rifat, an undergraduate student currently studying at Green University of Bangladesh. I'm in my <span class="highlight"> third year</span> of undergraduate studies, pursuing a degree in Computer Science. I'm deeply passionate about cutting-edge technologies such as Machine Learning, Artificial Intelligence, software development, and Web Development. I aspire to create my own tech business. I believe that these fields have tremendous potential to transform the world, and I'm eager to be part of this transformation. 
+    </p>
+
+    <div class="resume">
+      <button class="resume-button">
+        Donwload Resume
+      </button>
+    </div>
+</div>
+
+
 </body>
 </html>
