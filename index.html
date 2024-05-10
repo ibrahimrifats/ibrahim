@@ -48,14 +48,14 @@
 
         <div class="left-side">
             <ul class="index">
-                <li><a href="oop.html">OOP</a>
+                <li><a href="oop.html"><span style="color:blue">OOP</span></a>
                     <ul>
                         <li><a href="oop.html">OOP Concept</a></li>
                         <li><a href="oop.html">Class</a></li>
                         <li><a href="oop.html">Object</a></li>
                     </ul>
                 </li>
-                <li><a href="#Data-structure">Data Structure</a>
+                <li><a href="#Data-structure"><span style="color:brown">Data Structure</span></a>
                     <ul>
                         <li><a href="#linked-list">Linked List</a></li>
                         <li><a href="#stack">Stack</a></li>
@@ -156,8 +156,9 @@
                       <img class="verify-icon" src="images/verified.png">
                   </div>
               </div>
+              <h2 style="color:brown">Introduction to Class and Object</h2>
   
-              <h3>Concept of OOP</h3>
+              <h3 id="concept">Concept of OOP</h3>
               <p style="color:gray">
               <ul class="list-no">
                   <li class="list-no"> Provides a means of structuring programs so that properties and behaviors are bundles into individual objects.</li>
@@ -171,7 +172,7 @@
                   <img class="image" src="images/oop/pillars.png">
               </div>
   
-              <h3>Class</h3>
+              <h3 id="class">Class</h3>
               <p style="color:gray">
                   <ul class="list-no">
                       <li class="list-no">A class is the blueprint for the objects created from that class </li>
@@ -180,7 +181,7 @@
                   </ul>
               </p>
   
-              <h3>Object</h3>
+              <h3 id="object">Object</h3>
               <p style="color:gray">
                   <ul class="list-no">
                       <li class="list-no">Object are basic run time entities in an object oriented system. </li>
@@ -192,21 +193,59 @@
                 <div class="image-item">
                   <img class="image" src="images/oop/object.png">
               </div>
-
-             
-
+  
+              <h3 id="cAO">Class & Object Example</h3>
+              <p style="color:gray">
+                  In object-oriented programming, a class serves as a blueprint for creating objects. Just like a blueprint for a building specifies its structure, a class specifies the structure and behavior of objects created from it. For example, if a class represents a building with 100 windows, each object instantiated from that class would initially have 100 windows. However, the properties of objects can often be manipulated after instantiation, allowing for dynamic changes to their characteristics
+              </p>
+  
+              <div class="image-item">
+                <img class="image" src="images/oop/co.png">
+            </div>
+  
+            <h3 id="Cconcept">Class components</h3>
+            <ul>
+              <li>Data(<span style="color:blueviolet">the attribute about it</span>)</li>
+              <li>behavior(<span style="color:blueviolet">the mothods</span>)</li>
+            </ul>
+            <div class="image-item">
+              <img class="image" src="images/oop/ccom.png">
+          </div>
+  
+          <h3 id="method">Method</h3>
+          <ul>
+              <li>A python method is like a python function</li>
+              <li>It mus be called on an object</li>
+              <li>It ust put it inside a class</li>
+              <li>A method has a name, and may take parameters and have any a raturn statement.</li>
+          </ul>
+  
+          <h3>class and object example</h3>
+          <div class="image-item">
+              <img class="image" src="images/oop/cAo.png">
+          </div>
               <div class="containers">
-                <button class="copy-button" onclick="copyCode()">Copy</button>
-                <pre><code class="language-python">
-   class Node:
-       def __init__(self, data):
-            self.data = data
-            self.next = None
-              
-   class Blog:
-       def __init__(self):
-           self.head = None  # Head node, initially None
-                </code></pre>
+              <button class="copy-button" onclick="copyCode()">Copy</button>
+              <pre><code class="language-python">
+  class Car:
+      def __init__(self, color, brand):
+      self.color = color
+      self.brand = brand
+  
+      def display(self):
+          print(f"This car is a {self.color} {self.brand}")
+  
+  # Create objects
+  mustang = Car("green", "Ford")
+  prius = Car("red", "Toyota")
+  golf = Car("blue", "Volkswagen")
+  
+  # Call the display method
+  mustang.display()
+  prius.display()
+  golf.display()
+  
+  </code></pre>
             </div>
               </div>
         
