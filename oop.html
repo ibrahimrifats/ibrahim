@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ibrahim rifat</title>
+    <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/icon.css">
+    <link rel="stylesheet" href="styles/blog/sidebar.css">
+    <link rel="stylesheet" href="styles/blog/post.css">
+    <link rel="stylesheet" href="styles/blog/code.css">
+    <link rel="stylesheet" href="styles/home/home.css">
+    <link rel="stylesheet" href="styles/home/scroll.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css">
+    <link rel="stylesheet" href="styles/leftsidebar.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Basic&family=Noto+Serif+Bengali:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="header">
+        <img class="lailaha" src="images/lailaha.png" alt="La ilaha illallah" height="30px">
+    </div>
+    
+
+    <nav class="navbar">
+        <a href="home.html" target="_top" id="home">Home</a>
+        <a href="index.html" target="_self" id="blog">Blog</a>
+        <a href="project.html" target="_blank" id="project">Projects</a>
+        <a href="startup.html" id="startUp">StartUp</a>
+        <a href="#publication" id="publication">Publication</a>
+        <a href="#contact" id="contact">Contact</a>
+        <a href="about.html" target="_blank" id="about">About</a>
+        <a href="palestine-tube.html" target="_blank" id="about">PalestineTube</a>
+    </nav>
+
+
+    <div class="container">
+
+        <div class="left-side">
+            <ul class="index">
+                <li><a href="#OOP">OOP</a>
+                    <ul>
+                        <li><a href="#oop-concept">OOP Concept</a></li>
+                        <li><a href="#class">Class</a></li>
+                        <li><a href="#abstraction">Object</a></li>
+                    </ul>
+                </li>
+                <li><a href="#Data-structure">Data Structure</a>
+                    <ul>
+                        <li><a href="#linked-list">Linked List</a></li>
+                        <li><a href="#stack">Stack</a></li>
+                        <li><a href="#queue">Queue</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+
+        <div class="newsfeed">
+        
+
+            <div class="textArea" id="div1">
+              <div class="user-details" style="margin-left:-14px; margin-bottom:5px;">
+                <div class="profile">
+                    <img class="pic-jpg" src="images/dp.jpg">
+                </div>
+
+                <div class="user-info">
+                    <p class="name">Mohamad Ibrahim Rifat</p>
+                    <p class="date">12.03.2024</p>
+                </div>
+
+                <div class="verified">
+                    <img class="verify">
+                    <img class="verify-icon" src="images/verified.png">
+                </div>
+            </div>
+
+            <h3>Concept of OOP</h3>
+            <p style="color:gray">
+            <ul class="list-no">
+                <li class="list-no"> Provides a means of structuring programs so that properties and behaviors are bundles into individual objects.</li>
+                <li class="list-no">OOP reflects the real world behavior of how things work</li>
+                <li class="list-no">It make visualization easier because it is closest to real world scenarios.</li>
+                <li class="list-no">We can reuse the code through inheritance, this saves time, and shrinks our project.</li>
+                <li class="list-no">There are flexibility throug polymorphism</li>
+            </ul>
+            </p>
+            <div class="image-item">
+                <img class="image" src="images/oop/pillars.png">
+            </div>
+
+            <h3>Class</h3>
+            <p style="color:gray">
+                <ul class="list-no">
+                    <li class="list-no">A class is the blueprint for the objects created from that class </li>
+                    <li class="list-no">Each class contains some data definitions(called fields), together with methods to manipulate that data.</li>
+                    <li class="list-no">when the object is instantiated from the class, an instance variable is created for each filed in the class.</li>
+                </ul>
+            </p>
+
+            <h3>Object</h3>
+            <p style="color:gray">
+                <ul class="list-no">
+                    <li class="list-no">Object are basic run time entities in an object oriented system. </li>
+                    <li class="list-no">It is an instance of class </li>
+                    <li class="list-no">we can say that objects are the variables of the type class. </li>
+                </ul>
+            </p>
+
+              <div class="image-item">
+                <img class="image" src="images/oop/object.png">
+            </div>
+            <div class="containers">
+              <button class="copy-button" onclick="copyCode()">Copy</button>
+              <pre><code class="language-python">
+ class Node:
+     def __init__(self, data):
+          self.data = data
+          self.next = None
+            
+ class Blog:
+     def __init__(self):
+         self.head = None  # Head node, initially None
+              </code></pre>
+          </div>
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    
+    <script src="scripts/nav.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const showButtons = document.querySelectorAll(".show-button");
+        const posts = document.querySelectorAll(".textArea");
+    
+        showButtons.forEach((button, index) => {
+            button.addEventListener("click", function() {
+                scrollToPost(posts[index]);
+            });
+        });
+    
+        function scrollToPost(textArea) {
+            const postPosition = textArea.offsetTop;
+            window.scrollTo({
+                top: postPosition,
+                behavior: "smooth"
+            });
+        }
+    });
+    
+      
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+    
+
+
+</body>
+</html>

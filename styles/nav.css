@@ -4,7 +4,7 @@
     align-items: center; /* Vertically center align items */
     position: fixed;
     width: 100%; /* Ensure the nav spans the entire width */
-    z-index: 50;
+    z-index: 150;
     background-color: #000000; /* Example background color */
     padding-top:5px;
     padding-bottom: 5px;
@@ -34,27 +34,21 @@
 
 
 .header {
-    
-    background-color: rgb(12, 41, 111);    width: 100%;
+    width: 100%;
     height: 40px;
-    position: fixed; 
+    position: fixed;
     top: 0;
     z-index: 100;
-    
+    display: flex;
+    justify-content: center; /* Horizontally center align items */
+    align-items: center; /* Vertically center align items */
+    background-color: white;
 }
 
-.shahada {
-    color: white;
-    margin: 0;  
-    padding: 10px;
-    text-align: center;
-    font-family: Arial;
-    word-spacing: 1.3;
-    font-size: 16px;
-    line-height: 1.2;  
-    max-width: 90%; 
-    overflow: hidden;
-    text-overflow: ellipsis;  
-    white-space: nowrap;  
+.lailaha {
+    height: 30px; 
+    height: 80px;
+   
 }
+
 

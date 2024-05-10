@@ -1,0 +1,38 @@
+.left-side {
+    position: sticky;
+    top: 0;
+    height: calc(100vh - 60px);
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    overflow-y:auto ;
+    margin-top: 50px;
+}
+
+.index {
+    list-style-type: none;
+    padding: 0;
+}
+
+.index li {
+    margin-bottom: 10px;
+}
+
+.index a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.index ul {
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
+.index ul li {
+    margin-bottom: 5px;
+}
+
+.index ul a {
+    font-weight: normal;
+}
