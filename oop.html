@@ -52,6 +52,8 @@
                         <li><a href="#cAO">Class and Object</a></li>
                         <li><a href="#Ccom">class components</a></li>
                         <li><a href="#method">method</a></li>
+                        <li><a href="constructor">constructor</a></li>
+                        <li><a href="init">__init__</a></li>
                     </ul>
                 </li>
                 <li><a href="#Data-structure">Data Structure</a>
@@ -153,12 +155,12 @@
             <img class="image" src="images/oop/cAo.png">
         </div>
             <div class="containers">
-            <button class="copy-button" onclick="copyCode()">Copy</button>
+            <button class="copy-button" onclick="copyCode(this)">Copy</button>
             <pre><code class="language-python">
 class Car:
     def __init__(self, color, brand):
-    self.color = color
-    self.brand = brand
+        self.color = color
+        self.brand = brand
 
     def display(self):
         print(f"This car is a {self.color} {self.brand}")
@@ -196,7 +198,7 @@ golf.display()
       </div>
   </div>
     
-    <h3> Constructor</h3>
+    <h3 id="constructor"> Constructor</h3>
     <p style="color:gray">
     <ul class="list-no">
       <li class="list-no">A special kind of method we use to initialize instance members of that class </li>
@@ -213,7 +215,7 @@ golf.display()
     </ul>
     </p>
 
-    <h3>Python <span style="color:blueviolet">__init__</span></h3>
+    <h3 id="init">Python <span style="color:blueviolet">__init__</span></h3>
     <p style="color:gray">
         <ul class="list-no">
           <li class="list-no"> <span style="color:blueviolet">__init__</span> is a reserved method in python classes.   </li>
@@ -225,36 +227,131 @@ golf.display()
         </ul>
         </p>
     
+ <h3>Non-parameterized Constructor(default constructor)</h3>
+ <p style="color:gray">
+    <ul class="list-no">
+      <li class="list-no"> When we do not include the constructor in the class or forget to declare it, then that becomes the default constructor.</li>
+      <li class="list-no">It does not perform any task but initializes the objects </li>
+      <li class="list-no">In the following example, we do not have a constructor but still we are able to create an object for the class. </li>
+    </ul>
+    </p>
 
-
-
-
-
-    <div class="image-item">
-      <img class="image" src="images/oop/">
-  </div>
-  <div class="containers">
-    <button class="copy-button" onclick="copyCode()">Copy</button>
+ <div class="containers">
+    <button class="copy-button" onclick="copyCode(this)">Copy</button>
     <pre><code class="language-python">
-class Node:
-def __init__(self, data):
-self.data = data
-self.next = None
+class Employee:
+        pass 
+emp1 = Employee()
+emp2 = Employee()
     </code></pre>
 </div>
-  </div>
-        </div>
+<div class="containers">
+    <button class="copy-button" onclick="copyCode(this)">Copy</button>
+    <pre><code class="language-python">
+class Employee:
+        def __init__(self):
+            print("Employee object created")
+emp1 = Employee()
+emp2 = Employee()
+    </code></pre>
+</div>
+<h3>Output</h3>
+<div class="containers">
+    <pre><code class="language-python">
+        Employee object created
+        Employee object created
+    </code></pre>
+</div>
 
+<h3>Python Parameterized Constructor</h3>
+<ul>
+    <li>The Parameterized constructor has multiple parameters along with the <span style="color:blue">self</span></li>
+    <li>It accepts the arguments during object creation</li>
+</ul>
 
+<div class="containers">
+    <button class="copy-button" onclick="copyCode(this)">Copy</button>
+    <pre><code class="language-python">
+class Employee:
+        def __init__(self, name):
+            self.name = name 
+            print(self.name, "created")
+emp1 = Employee("John")
+emp2 = Employee("Bob")
+    </code></pre>
+</div>
+<h3>Output</h3>
+<div class="containers">
+    <pre><code class="language-python">
+John created 
+Bob created
+    </code></pre>
+</div>
 
+<h3>Instance method</h3>
+<p style="color:gray">
+    <ul class="list-no">
+      <li class="list-no">Instance method are methods which require an object of its class to be created before it can be called.</li>
+      <li class="list-no">Instance methods need a class instance and can access the instance through self.</li>
+      <li class="list-no">Instance method takes more that one parameter, self, which points to an instance of class when the method is called</li>
+      <li class="list-no">The self parameter, instance methods can freely access attributes and other methods on the same object</li>
+    </ul>
+    </p>
 
+    <div class="containers">
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+        <pre><code class="language-python">
+    class Employee:
+            # Parameterized constructor
+            def __init__(self, name, id):
+                self.id = id # instance variable
+                self.name = name # instance variable
+                print(self.name, "created")
+
+            # instance method
+            def display(self):
+                print(self.name, self.id)
+
+    emp1 = Employee("John", 333)
+    emp2 = Employee("Bob", 063)
+        </code></pre>
+    </div>
+    <h3>Output</h3>
+    <div class="containers">
+        <pre><code class="language-python">
+    John 333
+    Bob 063
+        </code></pre>
+    </div>
 
     </div>
 
 
 
 
-
+    <script>
+        function copyCode(button) {
+            // Find the parent container of the button clicked
+            var container = button.closest('.containers');
+            // Find the code element within the container
+            var codeElement = container.querySelector('code');
+            // Create a temporary textarea element to hold the code
+            var tempTextarea = document.createElement('textarea');
+            // Set the value of the textarea to the code
+            tempTextarea.value = codeElement.textContent;
+            // Append the textarea to the document body
+            document.body.appendChild(tempTextarea);
+            // Select the text within the textarea
+            tempTextarea.select();
+            // Copy the selected text to the clipboard
+            document.execCommand('copy');
+            // Remove the temporary textarea
+            document.body.removeChild(tempTextarea);
+            // Provide some feedback (optional)
+            alert('Code copied!');
+        }
+    </script>
+    
 
 
     
@@ -281,6 +378,10 @@ self.next = None
     
       
     </script>
+ 
+
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
     
