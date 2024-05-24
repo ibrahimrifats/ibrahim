@@ -3,293 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ibrahim rifat</title>
-    <link rel="stylesheet" href="styles/nav.css">
-    <link rel="stylesheet" href="styles/icon.css">
-    <link rel="stylesheet" href="styles/blog/sidebar.css">
-    <link rel="stylesheet" href="styles/blog/post.css">
-    <link rel="stylesheet" href="styles/blog/code.css">
-    <link rel="stylesheet" href="styles/home/home.css">
-    <link rel="stylesheet" href="styles/home/scroll.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css">
-    <link rel="stylesheet" href="styles/leftsidebar.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Basic&family=Noto+Serif+Bengali:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap" rel="stylesheet">
+    <title>Ibrahim Rifat</title>
+    <link rel="icon" href="images/dp.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-image: url('https://source.unsplash.com/1600x900/?nature,water'); /* Replace with your background image URL */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
 
- 
+        .scrollable-bar {
+            white-space: nowrap;
+            overflow-x: auto;
+            height: 80px;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* Internet Explorer 10+ */
+        }
+        .scrollable-bar::-webkit-scrollbar {
+            display: none; /* WebKit */
+        }
+        .scrollable-bar div {
+            display: inline-block;
+            height: 80px;
+            width: 100px;
+            background-color: #f0f0f0;
+            margin-right: 5px;
+        }
+    </style>
 
 
 </head>
-<body>
-    
+<body class="h-screen overflow-hidden">
 
-    <nav class="navbar">
-        <a href="home.html" target="_top" id="home">Home</a>
-        <a href="index.html" target="_self" id="blog">Blog</a>
-        <a href="project.html" target="_blank" id="project">Projects</a>
-        <a href="startup.html" id="startUp">StartUp</a>
-        <a href="#publication" id="publication">Publication</a>
-        <a href="#contact" id="contact">Contact</a>
-        <a href="about.html" target="_blank" id="about">About</a>
-        <a href="palestine-tube.html" target="_blank" id="about">PalestineTube</a>
-    </nav>
-
-    <div class="header">
-        <img class="lailaha" src="images/lailaha.png" alt="La ilaha illallah" height="30px">
-    </div>
-    <div class="container">
-
-        <div class="left-side">
-            <ul class="index">
-                <li><a href="oop.html"><span style="color:blue">OOP</span></a>
-                    <ul>
-                        <li><a href="oop.html">OOP Concept</a></li>
-                        <li><a href="oop.html">Class</a></li>
-                        <li><a href="oop.html">Object</a></li>
-                    </ul>
-                </li>
-                <li><a href="#Data-structure"><span style="color:brown">Data Structure</span></a>
-                    <ul>
-                        <li><a href="#linked-list">Linked List</a></li>
-                        <li><a href="#stack">Stack</a></li>
-                        <li><a href="#queue">Queue</a></li>
-                    </ul>
-                </li>
-            </ul>
+    <!-- Scrollable Bar -->
+    <div class="scrollable-bar mt-2 mb-4 px-4" id="scrollable-bar">
+        <div>
+            <div  onclick="loadContent('oop.html')">
+                <img src="images/oop/pillars.png" alt="OOP Thumbnail" class="w-full  object-cover mb-2">
+                <h3 class="text-lg font-bold">OOP</h3>
+                
+            </div>
         </div>
-
-        <div class="newsfeed">
-        
-
-            <div class="textArea" id="div1">
-              <div class="user-details" style="margin-left:-14px; margin-bottom:5px;">
-                <div class="profile">
-                    <img class="pic-jpg" src="images/dp.jpg">
-                </div>
-
-                <div class="user-info">
-                    <p class="name">Mohamad Ibrahim Rifat</p>
-                    <p class="date">12.03.2024</p>
-                </div>
-
-                <div class="verified">
-                    <img class="verify">
-                    <img class="verify-icon" src="images/verified.png">
-                </div>
+        <div>
+            <div  onclick="loadContent('project.html')">
+                <img src="images/thumbnail/project.png" alt="Python Project Thumbnail" >
+                <h3 class="text-lg font-bold">Python Project</h3>
+                
             </div>
-
-              <h3>Linked List with python</h3>
-              <p style="color:gray">
-              <ul class="list-no">
-                <li class="list-no">A linked list is a linear data structure where elements (nodes) are not stored contiguously in memory. </li>
-                <li class="list-no">Each node contains data and a reference (pointer) to the next node, creating a chain-like structure.</li>
-                <li class="list-no">Linked lists are ideal for dynamic data (frequently added or removed elements) due to efficient insertion and deletion operations, as opposed to arrays/lists that require shifting elements.
-                </li>
-              </ul>
-              </p>
-              
-
-              <div class="image-item">
-                <img class="image" src="images/blog/linkedlist.png">
-            </div>
-            <div class="containers">
-              <button class="copy-button" onclick="copyCode()">Copy</button>
-              <pre><code class="language-python">
- class Node:
-     def __init__(self, data):
-          self.data = data
-          self.next = None
-            
- class Blog:
-     def __init__(self):
-         self.head = None  # Head node, initially None
-
-    def add_post(self, title, content):
-        # Create a new node
-        new_post = Node({"title": title, "content": content})
-
-        # If the list is empty, set the new node as the head
-        if self.head is None:
-            self.head = new_post
-            return
-
-        # Traverse to the last node
-        current = self.head
-        while current.next:
-            current = current.next
-
-        # Append the new node to the end
-        current.next = new_post
-
-    def print_posts(self):
-        current = self.head
-        while current:
-            print(f"Title: {current.data['title']}")
-            print(f"Content: {current.data['content']}")
-            print("-" * 20)
-            current = current.next
-            
-              </code></pre>
-          </div>
-            </div>
-
-            <div class="textArea" id="div1">
-                <div class="user-details" style="margin-left:-14px; margin-bottom:5px;">
-                  <div class="profile">
-                      <img class="pic-jpg" src="images/dp.jpg">
-                  </div>
-  
-                  <div class="user-info">
-                      <p class="name">Mohamad Ibrahim Rifat</p>
-                      <p class="date">12.03.2024</p>
-                  </div>
-  
-                  <div class="verified">
-                      <img class="verify">
-                      <img class="verify-icon" src="images/verified.png">
-                  </div>
-              </div>
-              <h2 style="color:brown">Introduction to Class and Object</h2>
-  
-              <h3 id="concept">Concept of OOP</h3>
-              <p style="color:gray">
-              <ul class="list-no">
-                  <li class="list-no"> Provides a means of structuring programs so that properties and behaviors are bundles into individual objects.</li>
-                  <li class="list-no">OOP reflects the real world behavior of how things work</li>
-                  <li class="list-no">It make visualization easier because it is closest to real world scenarios.</li>
-                  <li class="list-no">We can reuse the code through inheritance, this saves time, and shrinks our project.</li>
-                  <li class="list-no">There are flexibility throug polymorphism</li>
-              </ul>
-              </p>
-              <div class="image-item">
-                  <img class="image" src="images/oop/pillars.png">
-              </div>
-  
-              <h3 id="class">Class</h3>
-              <p style="color:gray">
-                  <ul class="list-no">
-                      <li class="list-no">A class is the blueprint for the objects created from that class </li>
-                      <li class="list-no">Each class contains some data definitions(called fields), together with methods to manipulate that data.</li>
-                      <li class="list-no">when the object is instantiated from the class, an instance variable is created for each filed in the class.</li>
-                  </ul>
-              </p>
-  
-              <h3 id="object">Object</h3>
-              <p style="color:gray">
-                  <ul class="list-no">
-                      <li class="list-no">Object are basic run time entities in an object oriented system. </li>
-                      <li class="list-no">It is an instance of class </li>
-                      <li class="list-no">we can say that objects are the variables of the type class. </li>
-                  </ul>
-              </p>
-  
-                <div class="image-item">
-                  <img class="image" src="images/oop/object.png">
-              </div>
-  
-              <h3 id="cAO">Class & Object Example</h3>
-              <p style="color:gray">
-                  In object-oriented programming, a class serves as a blueprint for creating objects. Just like a blueprint for a building specifies its structure, a class specifies the structure and behavior of objects created from it. For example, if a class represents a building with 100 windows, each object instantiated from that class would initially have 100 windows. However, the properties of objects can often be manipulated after instantiation, allowing for dynamic changes to their characteristics
-              </p>
-  
-              <div class="image-item">
-                <img class="image" src="images/oop/co.png">
-            </div>
-  
-            <h3 id="Cconcept">Class components</h3>
-            <ul>
-              <li>Data(<span style="color:blueviolet">the attribute about it</span>)</li>
-              <li>behavior(<span style="color:blueviolet">the mothods</span>)</li>
-            </ul>
-            <div class="image-item">
-              <img class="image" src="images/oop/ccom.png">
-          </div>
-  
-          <h3 id="method">Method</h3>
-          <ul>
-              <li>A python method is like a python function</li>
-              <li>It mus be called on an object</li>
-              <li>It ust put it inside a class</li>
-              <li>A method has a name, and may take parameters and have any a raturn statement.</li>
-          </ul>
-  
-          <h3>class and object example</h3>
-          <div class="image-item">
-              <img class="image" src="images/oop/cAo.png">
-          </div>
-              <div class="containers">
-              <button class="copy-button" onclick="copyCode()">Copy</button>
-              <pre><code class="language-python">
-  class Car:
-      def __init__(self, color, brand):
-      self.color = color
-      self.brand = brand
-  
-      def display(self):
-          print(f"This car is a {self.color} {self.brand}")
-  
-  # Create objects
-  mustang = Car("green", "Ford")
-  prius = Car("red", "Toyota")
-  golf = Car("blue", "Volkswagen")
-  
-  # Call the display method
-  mustang.display()
-  prius.display()
-  golf.display()
-  
-  </code></pre>
-            </div>
-              </div>
-        
-
         </div>
-
-
-
-
-
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
 
+    <div class="flex h-full">
+        <!-- Left Sidebar -->
+        <div class="w-1/7 bg-gray-200 h-full overflow-y-auto p-4" id="sidebar">
+            <div class="mb-4 flex justify-between items-center">
+                <button id="toggleSidebar" class="focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <ul id="navList" class="space-y-4">
+                <li class="flex items-center space-x-2 cursor-pointer" onclick="loadContent('home.html')">
+                    <i class="fas fa-home"></i>
+                    <span class="hidden md:inline-block">Home</span>
+                </li>
+                <li class="flex items-center space-x-2 cursor-pointer" onclick="window.location.href='index.html'">
+                    <i class="fas fa-blog"></i>
+                    <span class="hidden md:inline-block">Blog</span>
+                </li>
+                
+                <li class="flex items-center space-x-2 cursor-pointer" onclick="loadContent('project.html')">
+                    <i class="fas fa-project-diagram"></i>
+                    <span class="hidden md:inline-block">Projects</span>
+                </li>
+                <li class="flex items-center space-x-2 cursor-pointer" onclick="loadContent('startup.html')">
+                    <i class="fas fa-rocket"></i>
+                    <span class="hidden md:inline-block">StartUp</span>
+                </li>
+                <li class="flex items-center space-x-2 cursor-pointer" onclick="loadContent('publication.html')">
+                    <i class="fas fa-book"></i>
+                    <span class="hidden md:inline-block">Publication</span>
+                </li>
+                <li class="flex items-center space-x-2 cursor-pointer" onclick="loadContent('contact.html')">
+                    <i class="fas fa-envelope"></i>
+                    <span class="hidden md:inline-block">Contact</span>
+                </li>
+                <li class="flex items-center space-x-2 cursor-pointer" onclick="loadContent('about.html')">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="hidden md:inline-block">About</span>
+                </li>
+                <li class="flex items-center space-x-2 cursor-pointer" onclick="openInNewTab('palestine-tube.html')">
+                    <i class="fas fa-video"></i>
+                    <span class="hidden md:inline-block">PalestineTube</span>
+                </li>
+            </ul>
+            
+        </div>
 
+        <!-- Main Content -->
+        <div class="w-3/4 bg-white h-full overflow-y-auto p-4 my-0" id="mainContent">
+            <h1 class="text-2xl font-bold mb-4">Main Content</h1>
+            <div id="content">
+                <h2 class="text-xl font-semibold mb-2">Welcome!</h2>
+                
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 my-40">
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('oop.html')">
+                    <img src="images/oop/pillars.png" alt="OOP Thumbnail" class="w-full  object-cover mb-2">
+                    <h3 class="text-lg font-bold">OOP</h3>
+                    <p class="text-sm">Object-Oriented Programming concepts and practices.</p>
+                </div>
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('linkedlist.html')">
+                    <img src="images/blog/linkedlist.png" alt="Linked List Thumbnail" class="w-full object-cover mb-2">
+                    <h3 class="text-lg font-bold">Linked List</h3>
+                    <p class="text-sm">Understanding linked list data structures.</p>
+                </div>
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('datastructure.html')">
+                    <img src="images/thumbnail/dsa.jpg" alt="Data Structure Thumbnail" class="w-full h-40 object-cover mb-2">
+                    <h3 class="text-lg font-bold">Data Structure</h3>
+                    <p class="text-sm">Learn about various data structures.</p>
+                </div>
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('backend.html')">
+                    <img src="images/thumbnail/backend.png" alt="Backend Engineering Thumbnail" class="w-full h-32 object-cover mb-2">
+                    <h3 class="text-lg font-bold">Backend Engineering</h3>
+                    <p class="text-sm">Backend development practices and tools.</p>
+                </div>
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('gitgithub.html')">
+                    <img src="images/thumbnail/git.png" alt="Git and GitHub Thumbnail" class="w-full h-32 object-cover mb-2">
+                    <h3 class="text-lg font-bold">Git and GitHub</h3>
+                    <p class="text-sm">Version control with Git and GitHub.</p>
+                </div>
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('postgresql.html')">
+                    <img src="images/thumbnail/postgree.png" alt="PostgreSQL Thumbnail" class="w-full h-32 object-cover mb-2">
+                    <h3 class="text-lg font-bold">PostgreSQL</h3>
+                    <p class="text-sm">Database management with PostgreSQL.</p>
+                </div>
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('project.html')">
+                    <img src="images/thumbnail/project.png" alt="Python Project Thumbnail" class="w-full h-32 object-cover mb-2">
+                    <h3 class="text-lg font-bold">Python Project</h3>
+                    <p class="text-sm">Python projects and applications.</p>
+                </div>
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('matplotlib.html')">
+                    <img src="images/thumbnail/dv.png" alt="Matplotlib Thumbnail" class="w-full h-32 object-cover mb-2">
+                    <h3 class="text-lg font-bold">Matplotlib</h3>
+                    <p class="text-sm">Data visualization with Matplotlib.</p>
+                </div>
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('startup.html')">
+                    <img src="images/thumbnail/startup.png" alt="StartUp Thumbnail" class="w-full h-32 object-cover mb-2">
+                    <h3 class="text-lg font-bold">StartUp</h3>
+                    <p class="text-sm">StartUp strategies and success stories.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
-
-
-
-    
-    <script src="scripts/nav.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        const showButtons = document.querySelectorAll(".show-button");
-        const posts = document.querySelectorAll(".textArea");
-    
-        showButtons.forEach((button, index) => {
-            button.addEventListener("click", function() {
-                scrollToPost(posts[index]);
-            });
+        document.getElementById('scrollable-bar').addEventListener('wheel', function(event) {
+            if (event.deltaY !== 0) {
+                event.preventDefault();
+                this.scrollLeft += event.deltaY;
+            }
         });
-    
-        function scrollToPost(textArea) {
-            const postPosition = textArea.offsetTop;
-            window.scrollTo({
-                top: postPosition,
-                behavior: "smooth"
-            });
+
+        const sidebar = document.getElementById('sidebar');
+        const toggleSidebar = document.getElementById('toggleSidebar');
+        const navList = document.getElementById('navList');
+        
+        toggleSidebar.addEventListener('click', function() {
+            if (sidebar.classList.contains('w-16')) {
+                sidebar.classList.remove('w-16');
+                sidebar.classList.add('w-1/4');
+                navList.querySelectorAll('span').forEach(span => span.classList.remove('hidden'));
+                navList.querySelectorAll('span').forEach(span => span.classList.add('inline-block'));
+            } else {
+                sidebar.classList.remove('w-1/4');
+                sidebar.classList.add('w-16');
+                navList.querySelectorAll('span').forEach(span => span.classList.remove('inline-block'));
+                navList.querySelectorAll('span').forEach(span => span.classList.add('hidden'));
+            }
+        });
+
+        function loadContent(page) {
+            fetch(page)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('mainContent').innerHTML = data;
+                    // Re-initialize any scripts needed for the new content
+                    const scriptElements = document.querySelectorAll('#mainContent script');
+                    scriptElements.forEach(script => {
+                        const newScript = document.createElement('script');
+                        newScript.text = script.text;
+                        document.body.appendChild(newScript);
+                        document.body.removeChild(newScript);
+                    });
+                })
+                .catch(error => console.error('Error loading page:', error));
         }
-    });
-    
-      
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script>
+        function openInNewTab(url) {
+            window.open(url, '_blank');
+        }
+    </script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
     
-
 
 </body>
 </html>
