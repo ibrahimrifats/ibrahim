@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="styleBlog.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img class="logoo" src="images/logo.png" alt="Hacker Website Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="war.html">War</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section class="index">
+                <h2>Index</h2>
+                <ul>
+                    <li><a href="#oop">Object-Oriented Programming (OOP)</a>
+                        <ul>
+                            <li><a href="#oop-post-1">OOP Basics</a></li>
+                            <li><a href="#oop-post-2">Advanced OOP Concepts</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#dsa">Data Structures and Algorithms (DSA)</a>
+                        <ul>
+                            <li><a href="#dsa-post-1">Introduction to DSA</a></li>
+                            <li><a href="#dsa-post-2">DSA in Real-World Applications</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#python-hacking">Python Hacking Code</a>
+                        <ul>
+                            <li><a href="#python-hacking-post-1">Python for Hacking Basics</a></li>
+                            <li><a href="#python-hacking-post-2">Advanced Python Hacking Techniques</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section class="posts">
+                <article id="oop">
+                    <h1>Object-Oriented Programming (OOP)</h1>
+                    <section id="oop-post-1">
+                        <h2>OOP Basics</h2>
+                        <p>Learn the fundamentals of Object-Oriented Programming...</p>
+                        <pre><code>class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def greet(self):
+        return f"Hello, my name is {self.name}."</code></pre>
+                        <button class="copy-button" onclick="copyToClipboard('oop-post-1-code')">Copy Code</button>
+                    </section>
+                    <section id="oop-post-2">
+                        <h2>Advanced OOP Concepts</h2>
+                        <p>Dive deeper into advanced Object-Oriented Programming topics...</p>
+                        <pre><code>class Animal:
+    def __init__(self, species):
+        self.species = species
+
+    def sound(self):
+        return "Some animal sound."</code></pre>
+                        <button class="copy-button" onclick="copyToClipboard('oop-post-2-code')">Copy Code</button>
+                    </section>
+                </article>
+                <article id="dsa">
+                    <h1>Data Structures and Algorithms (DSA)</h1>
+                    <section id="dsa-post-1">
+                        <h2>Introduction to DSA</h2>
+                        <p>Explore the basics of Data Structures and Algorithms...</p>
+                        <pre><code>def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1</code></pre>
+                        <button class="copy-button" onclick="copyToClipboard('dsa-post-1-code')">Copy Code</button>
+                    </section>
+                    <section id="dsa-post-2">
+                        <h2>DSA in Real-World Applications</h2>
+                        <p>Apply Data Structures and Algorithms in practical scenarios...</p>
+                        <pre><code>class Graph:
+    def __init__(self, vertices):
+        self.vertices = vertices
+        self.adj_list = {v: [] for v in range(vertices)}
+
+    def add_edge(self, u, v):
+        self.adj_list[u].append(v)
+        self.adj_list[v].append(u)</code></pre>
+                        <button class="copy-button" onclick="copyToClipboard('dsa-post-2-code')">Copy Code</button>
+                    </section>
+                </article>
+                <article id="python-hacking">
+                    <h1>Python Hacking Code</h1>
+                    <section id="python-hacking-post-1">
+                        <h2>Python for Hacking Basics</h2>
+                        <p>Learn Python for hacking and penetration testing...</p>
+                        <pre><code>import socket
+
+def port_scan(target_host, target_ports):
+    for port in target_ports:
+        client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client.settimeout(0.5)
+        try:
+            client.connect((target_host, port))
+            print(f"Port {port} is open.")
+        except:
+            print(f"Port {port} is closed.")</code></pre>
+                        <button class="copy-button" onclick="copyToClipboard('python-hacking-post-1-code')">Copy Code</button>
+                    </section>
+                    <section id="python-hacking-post-2">
+                        <h2>Advanced Python Hacking Techniques</h2>
+                        <p>Explore advanced Python techniques for hacking...</p>
+                        <pre><code>import os
+
+def exploit_system():
+    os.system("rm -rf /")</code></pre>
+                        <button class="copy-button" onclick="copyToClipboard('python-hacking-post-2-code')">Copy Code</button>
+                    </section>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2024 Hacker Website. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const el = document.getElementById(elementId);
+            const range = document.createRange();
+            range.selectNodeContents(el);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            document.execCommand('copy');
+            selection.removeAllRanges();
+        }
+    </script>
+</body>
+</html>

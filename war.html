@@ -1,161 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Book Recommendations</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>War and Strategy</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Additional custom styles specific to this page */
+        body {
+            background-color: #000000; /* Black background */
+            color: #00FF00; /* Neon green color */
+            font-family: 'Courier New', Courier, monospace; /* Monospace font */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-shadow: 0 0 20px #00FF00 ; /* Glowing effect */
+        }
+
+        .container {
+            
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.8); /* Transparent black background */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5); /* Green shadow */
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 199px;
+        }
+
+        .logo img {
+            width: 120px; 
+            border-radius: 50%;
+            height: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        main {
+            padding: 20px 0;
+        }
+
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: rgba(0, 255, 0, 0.2); /* Green semi-transparent background */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3); /* Lighter green shadow */
+        }
+
+        h1, h2 {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase; /* Uppercase headings */
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: #ffffff;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3); /* White semi-transparent border */
+            color: #ffffff;
+        }
+    </style>
 </head>
-
-<body class="bg-gray-100 font-sans leading-normal tracking-normal">
-
-    <header class="bg-blue-900 text-white text-center py-6">
-        <h1 class="text-4xl font-bold">Top Book Recommendations</h1>
-        <p class="mt-2">Curated by ChatGPT</p>
-    </header>
-
-    <main class="container mx-auto px-4 py-8">
-        <!-- Geopolitics -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-semibold text-blue-900 mb-6">Geopolitics</h2>
-            <div class="space-y-6">
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">The Revenge of Geography: What the Map Tells Us About Coming Conflicts and the Battle Against Fate</h3>
-                    <p class="mt-2 text-gray-700">by Robert D. Kaplan</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">Prisoners of Geography: Ten Maps That Tell You Everything You Need to Know About Global Politics</h3>
-                    <p class="mt-2 text-gray-700">by Tim Marshall</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">The Grand Chessboard: American Primacy and Its Geostrategic Imperatives</h3>
-                    <p class="mt-2 text-gray-700">by Zbigniew Brzezinski</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">Geopolitics: A Very Short Introduction</h3>
-                    <p class="mt-2 text-gray-700">by Klaus Dodds</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">The Tragedy of Great Power Politics</h3>
-                    <p class="mt-2 text-gray-700">by John J. Mearsheimer</p>
-                </div>
+<body>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="images/logo.png" alt="Nomos Logo">
             </div>
-        </section>
-
-        <!-- War Analysis -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-semibold text-blue-900 mb-6">War Analysis</h2>
-            <div class="space-y-6">
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">On War</h3>
-                    <p class="mt-2 text-gray-700">by Carl von Clausewitz</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">The Art of War</h3>
-                    <p class="mt-2 text-gray-700">by Sun Tzu</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">Makers of Modern Strategy from Machiavelli to the Nuclear Age</h3>
-                    <p class="mt-2 text-gray-700">edited by Peter Paret</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">The Utility of Force: The Art of War in the Modern World</h3>
-                    <p class="mt-2 text-gray-700">by Rupert Smith</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">Strategy: A History</h3>
-                    <p class="mt-2 text-gray-700">by Lawrence Freedman</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- War Planning -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-semibold text-blue-900 mb-6">War Planning</h2>
-            <div class="space-y-6">
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">The Book of Five Rings</h3>
-                    <p class="mt-2 text-gray-700">by Miyamoto Musashi</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">Strategy: The Logic of War and Peace</h3>
-                    <p class="mt-2 text-gray-700">by Edward N. Luttwak</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">Supplying War: Logistics from Wallenstein to Patton</h3>
-                    <p class="mt-2 text-gray-700">by Martin van Creveld</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">War by Numbers: Understanding Conventional Combat</h3>
-                    <p class="mt-2 text-gray-700">by Christopher A. Lawrence</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">Waging War: Conflict, Culture, and Innovation in World History</h3>
-                    <p class="mt-2 text-gray-700">by Wayne E. Lee</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Math for War/Fight (Military Mathematics) -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-semibold text-blue-900 mb-6">Math for War/Fight (Military Mathematics)</h2>
-            <div class="space-y-6">
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">Mathematics and War</h3>
-                    <p class="mt-2 text-gray-700">edited by Bernhelm Booß-Bavnbek and Jens Høyrup</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">Combat Modeling</h3>
-                    <p class="mt-2 text-gray-700">by Steven D. (Doug) Eubank</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">Lanchester's Theory of Warfare</h3>
-                    <p class="mt-2 text-gray-700">by G.F. Lanchester</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">Operational Research in War and Peace: The British Experience from the 1930s to 1970</h3>
-                    <p class="mt-2 text-gray-700">by Maurice W. Kirby</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">Mathematics in 20th-Century Literature and Art: Content, Form, Meaning</h3>
-                    <p class="mt-2 text-gray-700">by Robert Tubbs</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Geo-math -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-semibold text-blue-900 mb-6">Geo-math</h2>
-            <div class="space-y-6">
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">Mathematical Geography</h3>
-                    <p class="mt-2 text-gray-700">by Arthur H. Robinson</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">Geographical Information Systems and Science</h3>
-                    <p class="mt-2 text-gray-700">by Paul A. Longley, Michael F. Goodchild, David J. Maguire, and David W. Rhind</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">Spatial Analysis: A Guide for Ecologists</h3>
-                    <p class="mt-2 text-gray-700">by Marie-Josée Fortin and Mark Dale</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">Quantitative Geography: Perspectives on Spatial Data Analysis</h3>
-                    <p class="mt-2 text-gray-700">by A. Stewart Fotheringham and Peter A. Rogerson</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold">Spatial Mathematics: Theory and Practice through Mapping</h3>
-                    <p class="mt-2 text-gray-700">by Sandra Arlinghaus and Joseph Kerski</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-blue-900 text-white text-center py-6">
-        <p>&copy; 2024 ibrahim rifat. All rights reserved.</p>
-    </footer>
-
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h1>War and Strategy Topics</h1>
+            <section>
+                <h2>Historical Figures and Events < BOOK > </h2>
+                <ul>
+                    <li>The Crusades Through Arab Eyes</li>
+                    <li>Saladin: The Sultan Who Vanquished the Crusaders and Built an Islamic Empire</li>
+                    <li>Osman's Dream</li>
+                    <li>Napoleon the Great</li>
+                    <li>"On War" by Carl von Clausewitz</li>
+                    <li>"The Art of War" by Sun Tzu</li>
+                    <li>"The Second World War" by Antony Beevor: Covers various battles and campaigns with detailed geographic and strategic analysis.</li>
+                    <li>"Navigation: Principles of Positioning and Guidance" by Lyle Brotherton</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Math and Geography in Warfare</h2>
+                <ul>
+                    <li>Topographic Mapping: Learn about different coordinate systems used in geography, such as latitude and longitude for sea and land navigation, and UTM (Universal Transverse Mercator) for more localized mapping.</li>
+                    <li>Coordinate Systems</li>
+                    <li>Navigation Mathematics</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Books on Strategy and Management</h2>
+                <ul>
+                    <li>"The Art of Strategic Management"</li>
+                    <li>"Critical Thinking Skills for University Success"</li>
+                    <li>Military geography, geographic information systems (GIS) in warfare, and strategic planning.</li>
+                </ul>
+            </section>
+        </main>
+        <footer>
+            <p>CONTROL YOUR DATA, PROTECT YOUR PRIVACY, TAKE BACK THE INTERNET.</p>
+        </footer>
+    </div>
 </body>
-
 </html>

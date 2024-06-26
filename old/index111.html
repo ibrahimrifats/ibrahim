@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibrahim Rifat</title>
+    <link rel="icon" href="images/dp.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-image: url('https://source.unsplash.com/1600x900/?nature,water'); /* Replace with your background image URL */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        .scrollable-bar {
+            white-space: nowrap;
+            overflow-x: auto;
+            height: 80px;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* Internet Explorer 10+ */
+        }
+        .scrollable-bar::-webkit-scrollbar {
+            display: none; /* WebKit */
+        }
+        .scrollable-bar div {
+            display: inline-block;
+            height: 80px;
+            width: 100px;
+            background-color: #f0f0f0;
+            margin-right: 5px;
+        }
+    </style>
+
+
+</head>
+<body class="h-screen overflow-hidden">
+
+    <!-- Scrollable Bar -->
+    <div class="scrollable-bar mt-2 mb-4 px-4" id="scrollable-bar">
+        <div>
+            <div  onclick="loadContent('oop.html')">
+                <img src="images/oop/pillars.png" alt="OOP Thumbnail" class="w-full  object-cover mb-2">
+                <h3 class="text-lg font-bold">OOP</h3>
+                
+            </div>
+        </div>
+        <div>
+            <div  onclick="loadContent('project.html')">
+                <img src="images/thumbnail/project.png" alt="Python Project Thumbnail" >
+                <h3 class="text-lg font-bold">Python Project</h3>
+                
+            </div>
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div class="flex h-full">
+        <!-- Left Sidebar -->
+        <div class="w-1/7 bg-gray-200 h-full overflow-y-auto p-4" id="sidebar">
+            <div class="mb-4 flex justify-between items-center">
+                <button id="toggleSidebar" class="focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <ul id="navList" class="space-y-4">
+                <li class="flex items-center space-x-2 cursor-pointer" onclick="loadContent('home.html')">
+                    <i class="fas fa-home"></i>
+                    <span class="hidden md:inline-block">Home</span>
+                </li>
+                <li class="flex items-center space-x-2 cursor-pointer" onclick="window.location.href='index.html'">
+                    <i class="fas fa-blog"></i>
+                    <span class="hidden md:inline-block">Blog</span>
+                </li>
+                
+                <li class="flex items-center space-x-2 cursor-pointer" onclick="loadContent('project.html')">
+                    <i class="fas fa-project-diagram"></i>
+                    <span class="hidden md:inline-block">Projects</span>
+                </li>
+                <li class="flex items-center space-x-2 cursor-pointer" onclick="loadContent('startup.html')">
+                    <i class="fas fa-rocket"></i>
+                    <span class="hidden md:inline-block">StartUp</span>
+                </li>
+                <li class="flex items-center space-x-2 cursor-pointer" onclick="loadContent('war.html')">
+                    <i class="fas fa-book"></i>
+                    <span class="hidden md:inline-block">Publication</span>
+                </li>
+                <li class="flex items-center space-x-2 cursor-pointer" onclick="loadContent('contact.html')">
+                    <i class="fas fa-envelope"></i>
+                    <span class="hidden md:inline-block">Contact</span>
+                </li>
+                <li class="flex items-center space-x-2 cursor-pointer" onclick="loadContent('about.html')">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="hidden md:inline-block">About</span>
+                </li>
+                <li class="flex items-center space-x-2 cursor-pointer" onclick="openInNewTab('palestine-tube.html')">
+                    <i class="fas fa-video"></i>
+                    <span class="hidden md:inline-block">PalestineTube</span>
+                </li>
+            </ul>
+            
+        </div>
+
+        <!-- Main Content -->
+        <div class="w-3/4 bg-white h-full overflow-y-auto p-4 my-0" id="mainContent">
+            <h1 class="text-2xl font-bold mb-4">Main Content</h1>
+            <div id="content">
+                <h2 class="text-xl font-semibold mb-2">Welcome!</h2>
+                
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 my-40">
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('oop.html')">
+                    <img src="images/oop/pillars.png" alt="OOP Thumbnail" class="w-full  object-cover mb-2">
+                    <h3 class="text-lg font-bold">OOP</h3>
+                    <p class="text-sm">Object-Oriented Programming concepts and practices.</p>
+                </div>
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('linkedlist.html')">
+                    <img src="images/blog/linkedlist.png" alt="Linked List Thumbnail" class="w-full object-cover mb-2">
+                    <h3 class="text-lg font-bold">Linked List</h3>
+                    <p class="text-sm">Understanding linked list data structures.</p>
+                </div>
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('datastructure.html')">
+                    <img src="images/thumbnail/dsa.jpg" alt="Data Structure Thumbnail" class="w-full h-40 object-cover mb-2">
+                    <h3 class="text-lg font-bold">Data Structure</h3>
+                    <p class="text-sm">Learn about various data structures.</p>
+                </div>
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('backend.html')">
+                    <img src="images/thumbnail/backend.png" alt="Backend Engineering Thumbnail" class="w-full h-32 object-cover mb-2">
+                    <h3 class="text-lg font-bold">Backend Engineering</h3>
+                    <p class="text-sm">Backend development practices and tools.</p>
+                </div>
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('gitgithub.html')">
+                    <img src="images/thumbnail/git.png" alt="Git and GitHub Thumbnail" class="w-full h-32 object-cover mb-2">
+                    <h3 class="text-lg font-bold">Git and GitHub</h3>
+                    <p class="text-sm">Version control with Git and GitHub.</p>
+                </div>
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('postgresql.html')">
+                    <img src="images/thumbnail/postgree.png" alt="PostgreSQL Thumbnail" class="w-full h-32 object-cover mb-2">
+                    <h3 class="text-lg font-bold">PostgreSQL</h3>
+                    <p class="text-sm">Database management with PostgreSQL.</p>
+                </div>
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('project.html')">
+                    <img src="images/thumbnail/project.png" alt="Python Project Thumbnail" class="w-full h-32 object-cover mb-2">
+                    <h3 class="text-lg font-bold">Python Project</h3>
+                    <p class="text-sm">Python projects and applications.</p>
+                </div>
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('matplotlib.html')">
+                    <img src="images/thumbnail/dv.png" alt="Matplotlib Thumbnail" class="w-full h-32 object-cover mb-2">
+                    <h3 class="text-lg font-bold">Matplotlib</h3>
+                    <p class="text-sm">Data visualization with Matplotlib.</p>
+                </div>
+                <div class="bg-blue-500 text-white p-4 cursor-pointer" onclick="loadContent('startup.html')">
+                    <img src="images/thumbnail/startup.png" alt="StartUp Thumbnail" class="w-full h-32 object-cover mb-2">
+                    <h3 class="text-lg font-bold">StartUp</h3>
+                    <p class="text-sm">StartUp strategies and success stories.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('scrollable-bar').addEventListener('wheel', function(event) {
+            if (event.deltaY !== 0) {
+                event.preventDefault();
+                this.scrollLeft += event.deltaY;
+            }
+        });
+
+        const sidebar = document.getElementById('sidebar');
+        const toggleSidebar = document.getElementById('toggleSidebar');
+        const navList = document.getElementById('navList');
+        
+        toggleSidebar.addEventListener('click', function() {
+            if (sidebar.classList.contains('w-16')) {
+                sidebar.classList.remove('w-16');
+                sidebar.classList.add('w-1/4');
+                navList.querySelectorAll('span').forEach(span => span.classList.remove('hidden'));
+                navList.querySelectorAll('span').forEach(span => span.classList.add('inline-block'));
+            } else {
+                sidebar.classList.remove('w-1/4');
+                sidebar.classList.add('w-16');
+                navList.querySelectorAll('span').forEach(span => span.classList.remove('inline-block'));
+                navList.querySelectorAll('span').forEach(span => span.classList.add('hidden'));
+            }
+        });
+
+        function loadContent(page) {
+            fetch(page)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('mainContent').innerHTML = data;
+                    // Re-initialize any scripts needed for the new content
+                    const scriptElements = document.querySelectorAll('#mainContent script');
+                    scriptElements.forEach(script => {
+                        const newScript = document.createElement('script');
+                        newScript.text = script.text;
+                        document.body.appendChild(newScript);
+                        document.body.removeChild(newScript);
+                    });
+                })
+                .catch(error => console.error('Error loading page:', error));
+        }
+    </script>
+    <script>
+        function openInNewTab(url) {
+            window.open(url, '_blank');
+        }
+    </script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+    
+
+</body>
+</html>

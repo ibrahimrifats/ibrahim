@@ -1,0 +1,68 @@
+body {
+    background-color: #000000; /* Black background */
+    color: #00FF00; /* Neon green color */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-shadow: 0 0 40px #00FF00, 0 0 50px #00FF00; /* Glowing effect */
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    
+}
+.container {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #00FF00;
+    box-shadow: 0 0 15px #00FF00;
+    margin-bottom: 40px;
+}
+
+header .logo img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 10px #00FF00);
+}
+
+.logoo {
+    border-radius: 50%;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #00FF00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main {
+    margin: 20px 0;
+}
+
+main h1 {
+    font-size: 2em;
+}
+
+
+footer {
+    font-size: 1em;
+    margin-top: 20px;
+    border-top: 1px solid #00FF00;
+    padding-top: 10px;
+    text-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00, 0 0 40px #00FF00, 0 0 50px ; /* Glowing effect */
+}

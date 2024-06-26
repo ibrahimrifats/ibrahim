@@ -1,0 +1,161 @@
+/* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+
+/* Body styles */
+body {
+    background-color: #0f0f0f; /* Dark background */
+    color: #00FF00; /* Neon green color */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-shadow: 0 0 10px #00FF00; /* Glowing effect */
+}
+
+/* Container styles */
+.container {
+    width: 90%; /* Adjust width as needed */
+    max-width: 1200px; /* Maximum width */
+    background-color: #1a1a1a; /* Dark background */
+    padding: 20px;
+    border: 2px solid #00FF00;
+    box-shadow: 0 0 15px #00FF00;
+    margin-top: 1400px;
+}
+
+/* Header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 5px #00FF00);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #00FF00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Main styles */
+main {
+    display: flex;
+    justify-content: space-between;
+}
+
+.index {
+    width: 25%; /* Adjust width as needed */
+    background-color: #333333;
+    color: #ffffff;
+    padding: 20px;
+    border-right: 1px solid #00FF00;
+}
+
+.index h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.index ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.index ul ul {
+    margin-left: 15px;
+}
+
+.index ul li {
+    margin-bottom: 10px;
+}
+
+.index ul li a {
+    color: #00FF00;
+    text-decoration: none;
+}
+
+.posts {
+    width: 70%; /* Adjust width as needed */
+}
+
+.posts article {
+    margin-bottom: 30px;
+}
+
+.posts h1 {
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.posts h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.posts p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+/* Code block styles */
+pre {
+    background-color: #222;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin-bottom: 10px;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Copy button styles */
+.copy-button {
+    background-color: #00FF00;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.copy-button:hover {
+    background-color: #00cc00;
+}
+
+/* Footer styles */
+footer {
+    margin-top: 20px;
+    border-top: 1px solid #00FF00;
+    padding-top: 10px;
+    font-size: 0.8em;
+    text-align: center;
+    text-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00, 0 0 20px #00FF00;
+}
