@@ -3,51 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Docs Website</title>
+    <title>Book list</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f5f5f5;
         }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
+
         nav {
-            background-color: #f0f0f0;
-            padding: 10px 0;
+            background-color: #444;
+            color: white;
+            padding: 0.5rem;
             text-align: center;
         }
         nav a {
+            color: white;
+            margin: 0 1rem;
             text-decoration: none;
-            color: #333;
-            padding: 0 10px;
         }
-        .container {
-            width: 100%;
-            margin: auto;
+        table {
+            width: 80%;
+            margin: 2rem auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
             text-align: center;
-            padding: 20px;
         }
-        iframe {
-            width: 100%;
-            height: 600px; /* Adjust height as needed */
-            border: none;
+        th {
+            background-color: #333;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .completed {
+            background-color: red;
+            color: white;
+        }
+        .running {
+            background-color: lightgreen;
+            color: black;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>list of read books</h1>
-    </header>
+   
     <nav>
         <a href="index.html">Home</a>
     </nav>
-    <div class="container">
-        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTK_7FFV4U0vtZbTYJtcjGg5-IBvgUV046zIZJvAn3Iiv1zxumV6GFNPH8dHHD3pimLnpJuncEH6snh/pubhtml?widget=true&amp;headers=false"></iframe>
-    </div>
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Page</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>আক্বিদা </td>
+                    <td>completed</td>
+                    <td class="completed">completed</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>সালাত</td>
+                    <td>completed</td>
+                    <td class="completed">completed</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>খুশূ খুযু </td>
+                    <td>completed</td>
+                    <td class="completed">completed</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>চার খলিফার জীবনী</td>
+                    <td>completed</td>
+                    <td class="completed">completed</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>মহানবীর জীবন চরিত্র</td>
+                    <td>completed</td>
+                    <td class="completed">completed</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>ফাহামুস সালাফ </td>
+                    <td>running</td>
+                    <td class="running">running</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>শিক্ষা বনাম জাহিলিয়াত</td>
+                    <td>71</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>নবীদের কাহিনী 1</td>
+                    <td>80</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>নবীদের কাহিনী 2</td>
+                    <td>(185-210)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>নবীদের কাহিনী 3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>মানহাজ </td>
+                    <td>58</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>মানহাজুস সালাফ </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>ইহুদিদের চক্রান্ত </td>
+                    <td>56</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>খালিদ বিন ওয়ালিদ রাঃ </td>
+                    <td>running</td>
+                    <td class="running">running</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>টাইম ম্যানেজমেন্ট</td>
+                    <td>71</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>ভারত বর্ষে জিহাদ আন্দোলন </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>সাহাবীদের অন্তঃকলহ </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>আহলেহাদীছের বিরুদ্ধে কতিপয় মিথ্যা অপবাদ</td>
+                    <td>24</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>সহীহ হাদীস বিশ্বকোষ ১ম খণ্ড </td>
+                    <td></td>
+                    <td style="background-color: rgb(255, 220, 220);">ঈমান পার্ট কমপ্লিট</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>মুসলিম জাতির দুর্দশার কারণ ও উত্তরণের উপায়</td>
+                    <td>completed</td>
+                    <td class="completed">completed</td>
+                </tr>
+                <tr>
+                    <td>21</td>
+                    <td>তাফসীরে যাকারিয়া(খন্ড ৫)</td>
+                    <td>(খন্ড ৫) running</td>
+                    <td class="running">running</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 </body>
 </html>
