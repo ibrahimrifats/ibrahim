@@ -27,11 +27,28 @@
             border-radius: 8px;
             padding: 10px;
         }
+
+        /* Keyframes for continuous animation */
+        @keyframes loading-animation {
+            0% { opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .nav-loading-animation {
+            animation: loading-animation 1s infinite;
+        }
+
+        /* Style for the loading text */
+        .loading-text {
+            font-size: 0.875rem;
+            color: #f1f1f1;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
     <!-- Navigation Bar -->
-    <nav class="bg-gray-800 text-white shadow-md">
+    <nav class="bg-gray-800 text-white shadow-md relative">
         <div class="container mx-auto px-4 py-2 flex justify-between items-center">
             <div class="text-lg font-bold">MyLibrary</div>
             <div class="block lg:hidden">
@@ -45,6 +62,10 @@
                 <a href="index.html" class="hover:bg-gray-700 px-3 py-2 rounded">Home</a>
                 <a href="1974.html" class="hover:bg-gray-700 px-3 py-2 rounded">1974</a>
                 <a href="photo.html" class="hover:bg-gray-700 px-3 py-2 rounded">BDR</a>
+            </div>
+            <!-- Loading Animation -->
+            <div class="absolute right-4 top-2 nav-loading-animation">
+                <span class="loading-text">Loading...</span>
             </div>
         </div>
         <!-- Mobile menu -->
