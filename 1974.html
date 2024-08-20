@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Photo Gallery</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+            rel="stylesheet"
+        />
+        <style>
+            /* Custom styles can go here */
+        </style>
+    </head>
+    <body class="bg-gray-100">
+        <!-- Navigation Bar -->
+        <nav class="bg-gray-800 text-white shadow-md">
+            <div
+                class="container mx-auto px-4 py-2 flex justify-between items-center"
+            >
+                <div class="text-lg font-bold">MyGallery</div>
+                <div class="block lg:hidden">
+                    <button
+                        id="nav-toggle"
+                        class="text-white focus:outline-none"
+                    >
+                        <svg
+                            class="w-6 h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"
+                            ></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="nav-menu" class="hidden lg:flex space-x-4">
+                    <a
+                        href="index.html"
+                        class="hover:bg-gray-700 px-3 py-2 rounded"
+                        >Home</a
+                    >
+                    <a
+                        href="1974.html"
+                        class="hover:bg-gray-700 px-3 py-2 rounded"
+                        >1974</a
+                    >
+                    <a
+                        href="photo.html"
+                        class="hover:bg-gray-700 px-3 py-2 rounded"
+                        >BDR</a
+                    >
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-nav-menu" class="lg:hidden">
+                <a href="#" class="block px-4 py-2 text-white hover:bg-gray-700"
+                    >Home</a
+                >
+                <a href="#" class="block px-4 py-2 text-white hover:bg-gray-700"
+                    >1974</a
+                >
+                <a href="#" class="block px-4 py-2 text-white hover:bg-gray-700"
+                    >BDR</a
+                >
+            </div>
+        </nav>
+
+        <!-- Gallery Section -->
+        <div
+            id="gallery"
+            class="container mx-auto px-4 py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+        >
+            <!-- Gallery images will be injected here by JavaScript -->
+        </div>
+
+        <script>
+            // JavaScript to dynamically generate gallery images
+            const gallery = document.getElementById("gallery");
+            const imageCount = 20; // Number of images
+
+            for (let i = 1; i <= imageCount; i++) {
+                const imgElement = document.createElement("img");
+                imgElement.src = `db1974/${i}.jpg`; // Path to your images
+                imgElement.alt = `Image ${i}`;
+                imgElement.classList.add(
+                    "w-full",
+                    "h-auto",
+                    "object-cover",
+                    "rounded-lg",
+                    "shadow-md",
+                );
+
+                const container = document.createElement("div");
+                container.classList.add(
+                    "overflow-hidden",
+                    "bg-white",
+                    "rounded-lg",
+                    "shadow-lg",
+                );
+                container.appendChild(imgElement);
+
+                gallery.appendChild(container);
+            }
+
+            // Toggle mobile menu
+            document
+                .getElementById("nav-toggle")
+                .addEventListener("click", () => {
+                    const menu = document.getElementById("mobile-nav-menu");
+                    menu.classList.toggle("hidden");
+                });
+        </script>
+    </body>
+</html>
