@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online PDF Library</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <style>
+        /* Custom styles */
+        .pdf-thumbnail {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .pdf-viewer {
+            width: 100%;
+            height: 80vh;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: auto;
+        }
+        .pdf-page {
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-800 text-white shadow-md">
+        <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <div class="text-lg font-bold">MyLibrary</div>
+            <div class="block lg:hidden">
+                <button id="nav-toggle" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="nav-menu" class="hidden lg:flex space-x-4">
+                <a href="index.html" class="hover:bg-gray-700 px-3 py-2 rounded">Home</a>
+                <a href="1974.html" class="hover:bg-gray-700 px-3 py-2 rounded">1974</a>
+                <a href="photo.html" class="hover:bg-gray-700 px-3 py-2 rounded">BDR</a>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-nav-menu" class="lg:hidden">
+            <a href="index.html" class="block px-4 py-2 text-white hover:bg-gray-700">Home</a>
+            <a href="1974.html" class="block px-4 py-2 text-white hover:bg-gray-700">1974</a>
+            <a href="photo.html" class="block px-4 py-2 text-white hover:bg-gray-700">BDR</a>
+        </div>
+    </nav>
+
+    <!-- Gallery Section -->
+    <div id="gallery" class="container mx-auto px-4 py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- Gallery PDFs will be injected here by JavaScript -->
+    </div>
+
+    <!-- PDF Viewer Modal -->
+    <div id="pdf-viewer-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
+        <div class="bg-white p-4 rounded-lg shadow-lg relative max-w-4xl w-full">
+            <button id="close-viewer" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="pdf-viewer" id="pdf-viewer"></div>
+            <a id="download-link" href="#" class="block mt-4 text-blue-500 hover:underline">Download PDF</a>
+        </div>
+    </div>
+
+    <!-- Download All PDFs Button -->
+    <div class="container mx-auto px-4 py-4 text-center">
+        <a id="download-all" href="#" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Download All PDFs</a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script>
+        // JavaScript to dynamically generate gallery PDFs
+        const gallery = document.getElementById("gallery");
+        const pdfViewerModal = document.getElementById("pdf-viewer-modal");
+        const pdfViewer = document.getElementById("pdf-viewer");
+        const downloadLink = document.getElementById("download-link");
+        const downloadAll = document.getElementById("download-all");
+
+        const pdfCount = 30; // Number of PDFs
+        const pdfDirectory = "pdf1974"; // Directory name
+
+        // Function to render a PDF page to an image
+        function renderPdfThumbnail(pdfUrl, index) {
+            return new Promise((resolve, reject) => {
+                const loadingTask = pdfjsLib.getDocument(pdfUrl);
+                loadingTask.promise.then(pdf => {
+                    pdf.getPage(1).then(page => {
+                        const scale = 0.5; // Adjust scale as needed
+                        const viewport = page.getViewport({ scale });
+
+                        // Prepare canvas using PDF page dimensions
+                        const canvas = document.createElement('canvas');
+                        const context = canvas.getContext('2d');
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+
+                        // Render PDF page into canvas context
+                        const renderContext = {
+                            canvasContext: context,
+                            viewport: viewport
+                        };
+                        page.render(renderContext).promise.then(() => {
+                            const imgUrl = canvas.toDataURL(); // Convert canvas to image URL
+                            resolve({ imgUrl, index });
+                        }).catch(reject);
+                    }).catch(reject);
+                }).catch(reject);
+            });
+        }
+
+        for (let i = 1; i <= pdfCount; i++) {
+            const pdfUrl = `${pdfDirectory}/${i}.pdf`;
+            
+            renderPdfThumbnail(pdfUrl, i).then(({ imgUrl, index }) => {
+                const pdfElement = document.createElement("div");
+                pdfElement.classList.add("p-2", "bg-white", "rounded-lg", "shadow-lg", "cursor-pointer");
+
+                pdfElement.innerHTML = `
+                    <img src="${imgUrl}" alt="PDF ${index}" class="pdf-thumbnail" />
+                    <div class="mt-2">
+                        <a href="#" data-pdf="${pdfUrl}" class="text-blue-500 hover:underline">View PDF ${index}</a>
+                        <a href="${pdfUrl}" download class="block mt-1 text-blue-500 hover:underline">Download PDF ${index}</a>
+                    </div>
+                `;
+
+                gallery.appendChild(pdfElement);
+            }).catch(error => console.error(`Failed to render thumbnail for ${pdfUrl}:`, error));
+        }
+
+        // Open PDF viewer modal
+        gallery.addEventListener('click', (event) => {
+            if (event.target.tagName === 'A' && event.target.dataset.pdf) {
+                const pdfUrl = event.target.dataset.pdf;
+                openPdfViewer(pdfUrl);
+                event.preventDefault();
+            }
+        });
+
+        function openPdfViewer(pdfUrl) {
+            pdfViewerModal.classList.remove("hidden");
+            pdfViewer.innerHTML = '';
+            const loadingTask = pdfjsLib.getDocument(pdfUrl);
+            loadingTask.promise.then(pdf => {
+                const numPages = pdf.numPages;
+                for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+                    pdf.getPage(pageNum).then(page => {
+                        const scale = 1.5;
+                        const viewport = page.getViewport({ scale });
+
+                        // Prepare canvas using PDF page dimensions
+                        const canvas = document.createElement('canvas');
+                        const context = canvas.getContext('2d');
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        pdfViewer.appendChild(canvas);
+
+                        // Render PDF page into canvas context
+                        const renderContext = {
+                            canvasContext: context,
+                            viewport: viewport
+                        };
+                        const renderTask = page.render(renderContext);
+                        renderTask.promise.then(() => {
+                            console.log('Page rendered');
+                        });
+                    });
+                }
+            }, reason => {
+                console.error(reason);
+            });
+            downloadLink.href = pdfUrl;
+        }
+
+        // Close PDF viewer modal
+        document.getElementById("close-viewer").addEventListener('click', () => {
+            pdfViewerModal.classList.add("hidden");
+        });
+
+        // Download all PDFs
+        downloadAll.addEventListener('click', () => {
+            const zip = new JSZip();
+            const pdfPromises = [];
+            for (let i = 1; i <= pdfCount; i++) {
+                const pdfUrl = `${pdfDirectory}/${i}.pdf`;
+                pdfPromises.push(
+                    fetch(pdfUrl)
+                        .then(response => response.blob())
+                        .then(blob => zip.file(`${i}.pdf`, blob))
+                );
+            }
+
+            Promise.all(pdfPromises).then(() => {
+                zip.generateAsync({ type: "blob" }).then(content => {
+                    const link = document.createElement("a");
+                    link.href = URL.createObjectURL(content);
+                    link.download = "all_pdfs.zip";
+                    link.click();
+                });
+            });
+        });
+
+        // Toggle mobile menu
+        document.getElementById("nav-toggle").addEventListener('click', () => {
+            const menu = document.getElementById("mobile-nav-menu");
+            menu.classList.toggle("hidden");
+        });
+    </script>
+</body>
+</html>
