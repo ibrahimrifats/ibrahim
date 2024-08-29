@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Library</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-black text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Online Library</h1>
+            <nav>
+                <a href="#" class="hover:underline">Home</a>
+                <a href="#books" class="ml-4 hover:underline">Books</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-6">
+        <section id="books" class="mt-8">
+            <h2 class="text-xl font-semibold mb-4">Available Books</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Example Book Item -->
+                <div class="bg-white p-4 rounded shadow-lg">
+                    <h3 class="text-lg font-semibold mb-2">বাংলাদেশে র</h3>
+                    <p class="mb-4">Author: Author Name</p>
+                    <div class="flex space-x-2">
+                        <a href="pdf/bangladeshe_ra.pdf" download class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Download PDF</a>
+                        <a href="pdf/bangladeshe_ra.pdf" target="_blank" class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700">Read</a>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded shadow-lg">
+                    <h3 class="text-lg font-semibold mb-2">An administration letter of hazrat Ali R:</h3>
+                    <p class="mb-4">Author: Author Name</p>
+                    <div class="flex space-x-2">
+                        <a href="pdf/an_administrative_letter_of_hazrat_ali_r.pdf" download class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Download PDF</a>
+                        <a href="pdf/an_administrative_letter_of_hazrat_ali_r.pdf" target="_blank" class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700">Read</a>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded shadow-lg">
+                    <h3 class="text-lg font-semibold mb-2">San Tzu the art of war bangla</h3>
+                    <p class="mb-4">Author: Author Name</p>
+                    <div class="flex space-x-2">
+                        <a href="pdf/the-art-of-war-bangla.pdf" download class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Download PDF</a>
+                        <a href="pdf/the-art-of-war-bangla.pdf" target="_blank" class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700">Read</a>
+                    </div>
+                </div>
+
+                <!-- Add more books as needed, using the same structure -->
+                <!-- Example additional book items -->
+                <div class="bg-white p-4 rounded shadow-lg">
+                    <h3 class="text-lg font-semibold mb-2">Book Title 1</h3>
+                    <p class="mb-4">Author: Author Name</p>
+                    <div class="flex space-x-2">
+                        <a href="path/to/book1.pdf" download class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Download PDF</a>
+                        <a href="path/to/book1.pdf" target="_blank" class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700">Read</a>
+                    </div>
+                </div>
+
+                <!-- Repeat as needed -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white text-center p-4 mt-8">
+        <p>&copy; 2024 Online Library. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
