@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowchart Tree Diagram</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Mermaid.js -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        /* Custom Mermaid.js dark theme */
+        body.dark-mode .mermaid {
+            --mermaid-font-family: Arial, sans-serif;
+            --mermaid-primary-color: #5865F2;
+            --mermaid-font-color: white;
+            --mermaid-node-border: 1px solid white;
+            --mermaid-edge-stroke: white;
+            --mermaid-fill-color: #2C2F33;
+            background-color: #1E1F26;
+        }
+
+        /* Custom Mermaid.js light theme */
+        body.light-mode .mermaid {
+            --mermaid-font-family: Arial, sans-serif;
+            --mermaid-primary-color: #5865F2;
+            --mermaid-font-color: black;
+            --mermaid-node-border: 1px solid black;
+            --mermaid-edge-stroke: black;
+            --mermaid-fill-color: #ffffff;
+            background-color: #ffffff;
+        }
+
+        /* Responsiveness */
+        .mermaid {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body class="dark-mode transition-all duration-500">
+
+<!-- Dark/Day Mode Toggle -->
+<div class="flex justify-center items-center py-4">
+    <button id="toggleMode" class="bg-blue-500 text-white px-4 py-2 rounded-lg focus:outline-none shadow-md">
+        Toggle Dark/Day Mode
+    </button>
+</div>
+
+<!-- Mermaid.js Diagram -->
+<div class="mermaid p-4">
+graph TD;
+    A[Arrays & Hashing] --> B[Two Pointers]
+    A --> C[Stack]
+    B --> D[Binary Search]
+    B --> E[Sliding Window]
+    C --> F[Linked List]
+    D --> G[Trees]
+    E --> G
+    F --> G
+    G --> H[Tries]
+    G --> I[Backtracking]
+    H --> J[Heap / Priority Queue]
+    I --> K[Graphs]
+    I --> L[1-D DP]
+    J --> M[Intervals]
+    J --> N[Greedy]
+    K --> O[Advanced Graphs]
+    L --> P[2-D DP]
+    L --> Q[Bit Manipulation]
+</div>
+
+<script>
+    // Dark/Day Mode Toggle Script
+    const toggleButton = document.getElementById('toggleMode');
+    const body = document.body;
+
+    toggleButton.addEventListener('click', () => {
+        if (body.classList.contains('dark-mode')) {
+            body.classList.remove('dark-mode');
+            body.classList.add('light-mode');
+        } else {
+            body.classList.remove('light-mode');
+            body.classList.add('dark-mode');
+        }
+    });
+</script>
+
+</body>
+</html>
