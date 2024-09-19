@@ -12,46 +12,42 @@
         mermaid.initialize({ theme: 'default' }); // Day mode
     </script>
     <style>
-        /* Additional Styles */
+        /* Custom styles for better visuals */
         body {
             background-color: #f5f5f5; /* Light background for day mode */
             color: #333; /* Dark text for readability */
         }
-        header {
-            background-color: #4a90e2; /* Header background color */
-            color: white;
-        }
-        nav a {
-            color: white;
-        }
-        footer {
-            background-color: #4a90e2; /* Footer background color */
-            color: white;
+        header, footer {
+            background-color: #1a202c; /* Dark background for header and footer */
+            color: #e2e8f0; /* Light text color */
         }
     </style>
 </head>
 <body class="font-sans leading-normal tracking-normal">
     <div class="container mx-auto p-6">
-        <header class="flex items-center justify-between p-4 bg-blue-600 text-white">
+        <!-- Header -->
+        <header class="flex items-center justify-between p-6 bg-gray-800 text-white shadow-md rounded-lg mb-8">
             <div class="logo">
-                <img class="w-24" src="images/logo.png" alt="Nomos Logo">
+                <img class="w-32" src="images/logo.png" alt="Nomos Logo">
             </div>
             <nav>
-                <ul class="flex space-x-4">
-                    <li><a href="index.html" class="hover:text-gray-200">Home</a></li>
-                    <li><a href="blog.html" class="hover:text-gray-200">Blog</a></li>
-                    <li><a href="about.html" class="hover:text-gray-200">About</a></li>
-                    <li><a href="projects.html" class="hover:text-gray-200">Projects</a></li>
-                    <li><a href="contact.html" class="hover:text-gray-200">Contact</a></li>
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="hover:text-gray-300 transition duration-300">Home</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-300 transition duration-300">Blog</a></li>
+                    <li><a href="about.html" class="hover:text-gray-300 transition duration-300">About</a></li>
+                    <li><a href="projects.html" class="hover:text-gray-300 transition duration-300">Projects</a></li>
+                    <li><a href="contact.html" class="hover:text-gray-300 transition duration-300">Contact</a></li>
                 </ul>
             </nav>
         </header>
-        <main class="my-8">
-            <h1 class="text-3xl font-bold mb-4">About Me</h1>
-            <p class="text-lg">Mohammad Ibrahim Rifat. Muslim | Islam | Salafi</p>
-            <!-- Example of Mermaid.js visualization -->
+        
+        <!-- Main Content -->
+        <main class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h1 class="text-4xl font-extrabold mb-4 text-gray-800">About Me</h1>
+            <p class="text-lg text-gray-700 mb-6">Mohammad Ibrahim Rifat. Muslim | Islam | Salafi</p>
+            <!-- Mermaid.js Visualization -->
             <div class="mt-8">
-                <h2 class="text-2xl font-semibold mb-4">My Journey</h2>
+                <h2 class="text-3xl font-semibold mb-4 text-gray-800">My Journey</h2>
                 <div class="mermaid">
                     graph TD
                         A[Start] --> B[Learn]
@@ -62,7 +58,9 @@
                 </div>
             </div>
         </main>
-        <footer class="p-4 bg-blue-600 text-white text-center">
+        
+        <!-- Footer -->
+        <footer class="p-4 bg-gray-800 text-white text-center rounded-lg shadow-md">
             <p><a href="read.html" class="hover:underline">List of Read Books</a></p>
         </footer>
     </div>

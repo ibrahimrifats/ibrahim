@@ -3,33 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>My Website</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Mermaid.js CDN -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        /* Simple styles to toggle visibility */
+        .hidden { display: none; }
+        table {
+            width: 80%;
+            margin: 2rem auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            text-align: center;
+        }
+        th {
+            background-color: #333;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .completed {
+            background-color: red;
+            color: white;
+        }
+        .running {
+            background-color: lightgreen;
+            color: black;
+        }
+    </style>
+        
+        
+
 </head>
-<body>
-    <div class="container">
-        <header>
+<body class="bg-white text-gray-800">
+
+<!-- Main Container -->
+<div class="flex flex-col md:flex-row container mx-auto p-4">
+    <!-- Right Side (Main Content) -->
+    <div class="md:w-1/4 p-4 bg-gray-50">
+        <header class="flex items-center justify-between">
             <div class="logo">
-                <img class="logoo" src="images/logo.png" alt="Nomos Logo">
+                <img class="w-24" src="images/logo.png" alt="Nomos Logo">
             </div>
             <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                <ul class="flex space-x-4">
+                    <li><a href="index.html" class="hover:text-blue-500">Home</a></li>
+                    <li><a href="blog.html" class="hover:text-blue-500">Blog</a></li>
+                    <li><a href="about.html" class="hover:text-blue-500">About</a></li>
+                    <li><a href="projects.html" class="hover:text-blue-500">Projects</a></li>
+                    <li><a href="contact.html" class="hover:text-blue-500">Contact</a></li>
+                    <li><a href="quran.html" class="hover:text-blue-500">Quran</a></li>
                 </ul>
             </nav>
         </header>
-        <main>
-            <h1>Contact</h1>
-            <p>Feel free to reach out to me!</p>
+
+        <main class="mt-6">
+            <h1 class="text-2xl font-bold mb-4">Welcome to my blog</h1>
+            <p class="mb-8">Here, I post Islamic articles and Programming tutorials.</p>
+
+            <section class="mb-8">
+                <h2 class="text-xl font-semibold">Programming Blog</h2>
+                <nav>
+                    <ul class="list-disc list-inside">
+                        <li><a href="oop.html" class="text-blue-500 hover:text-blue-700">OPP Python</a></li>
+                        <li><a href="palestine-tube.html" class="text-blue-500 hover:text-blue-700">Palestine Tube</a></li>
+                        <li><a href="startup.html" class="text-blue-500 hover:text-blue-700">Startup Blog</a></li>
+                        <li><a href="photo.html" class="text-red-500">Pictures of the BDR massacre</a></li>
+                    </ul>
+                </nav>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-semibold">Islamic Blog</h2>
+                <nav>
+                    <ul class="list-disc list-inside">
+                        <li><a href="book.html" class="text-blue-500 hover:text-blue-700">Rare Books</a></li>
+                        <li><a href="home.html" class="text-blue-500 hover:text-blue-700">Recitation</a></li>
+                        <li><a href="100Q.html" class="text-blue-500 hover:text-blue-700">100 GK Questions</a></li>
+                        <li><a href="Random.html" class="text-blue-500 hover:text-blue-700">عشوائي</a></li>
+                    </ul>
+                </nav>
+            </section>
         </main>
-        <footer>
-            <p>CONTROL YOUR DATA, PROTECT YOUR PRIVACY, TAKE BACK THE INTERNET.</p>
-            <p>Connect with me on LinkedIn: <a href="https://www.linkedin.com/in/ibrahimrifatcse/">LinkedIn Profile</a></p>
-        </footer>
     </div>
+
+    <!-- Left Side (Tree Structure and Blog Toggle) -->
+    <div class="md:w-3/4 p-4">
+        <div class="mb-4">
+            <button id="tree-btn" class="px-4 py-2 bg-blue-500 text-white mt-6">Side Nav Tree</button>
+            <button id="blog-btn" class="px-4 py-2 bg-gray-300 text-black">Books</button>
+        </div>
+
+        <!-- Tree Navigation -->
+        <div id="tree-nav" class="mb-8">
+            <h2 class="text-xl font-bold mb-4">Site Navigation Tree</h2>
+            <!-- Mermaid Chart -->
+            <div class="mermaid">
+                graph TD
+                    A[Home] --> B[Blog]
+                    A --> C[About]
+                    A --> D[Projects]
+                    A --> E[Contact]
+                    A --> F[Harb]
+                    B --> G[OPP Python]
+                    B --> H[Palestine Tube]
+                    B --> I[Books]
+                    B --> J[BDR Massacre]
+                    K[Islamic Blog] --> L[Rare Books]
+                    K --> M[Recitation]
+                    K --> N[100 GK Questions]
+                    K --> O[Random]
+                
+                click A "index.html"
+                click B "blog.html"
+                click C "about.html"
+                click D "projects.html"
+                click E "contact.html"
+                click F "war.html"
+                click G "oop.html"
+                click H "palestine-tube.html"
+                click I "read.html"
+                click J "photo.html"
+                click L "book.html"
+                click M "home.html"
+                click N "100Q.html"
+                click O "Random.html"
+            </div>
+        </div>
+
+        <!-- Blog Content (Initially hidden) -->
+        <div id="blog-content" class="hidden">
+            <section>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Page</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>আক্বিদা </td>
+                    <td>completed</td>
+                    <td class="completed">completed</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>সালাত</td>
+                    <td>completed</td>
+                    <td class="completed">completed</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>খুশূ খুযু </td>
+                    <td>completed</td>
+                    <td class="completed">completed</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>চার খলিফার জীবনী</td>
+                    <td>completed</td>
+                    <td class="completed">completed</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>মহানবীর জীবন চরিত্র</td>
+                    <td>completed</td>
+                    <td class="completed">completed</td>
+                </tr>
+               
+                <tr>
+                    <td>6</td>
+                    <td>ফাহামুস সালাফ </td>
+                    <td>running</td>
+                    <td class="running">running</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>শিক্ষা বনাম জাহিলিয়াত</td>
+                    <td>71</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>নবীদের কাহিনী 1</td>
+                    <td>80</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>নবীদের কাহিনী 2</td>
+                    <td>(185-210)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>নবীদের কাহিনী 3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>মানহাজ </td>
+                    <td>58</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>মানহাজুস সালাফ </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>ইহুদিদের চক্রান্ত </td>
+                    <td>56</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>খালিদ বিন ওয়ালিদ রাঃ </td>
+                    <td>running</td>
+                    <td class="running">running</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>টাইম ম্যানেজমেন্ট</td>
+                    <td>71</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>ভারত বর্ষে জিহাদ আন্দোলন </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>সাহাবীদের অন্তঃকলহ </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>আহলেহাদীছের বিরুদ্ধে কতিপয় মিথ্যা অপবাদ</td>
+                    <td>24</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>সহীহ হাদীস বিশ্বকোষ ১ম খণ্ড </td>
+                    <td></td>
+                    <td style="background-color: rgb(255, 220, 220);">ঈমান পার্ট কমপ্লিট</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>মুসলিম জাতির দুর্দশার কারণ ও উত্তরণের উপায়</td>
+                    <td>completed</td>
+                    <td class="completed">completed</td>
+                </tr>
+                <tr>
+                    <td>21</td>
+                    <td>তাফসীরে যাকারিয়া(খন্ড ৫)</td>
+                    <td>(খন্ড ৫) running</td>
+                    <td class="running">running</td>
+                </tr>
+                 <tr>
+                    <td>22</td>
+                    <td>আর্ট অফ দ্যা ওয়ার </td>
+                    <td>completed</td>
+                    <td class="completed">completed</td>
+                </tr>
+                <tr>
+                    <td>23</td>
+                    <td> ইয়ারমুকের যুদ্ধ </td>
+                    <td>completed</td>
+                    <td class="completed">completed</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+        </div>
+    </div>
+</div>
+
+<!-- Toggle Visibility Script -->
+<script>
+    const treeBtn = document.getElementById('tree-btn');
+    const blogBtn = document.getElementById('blog-btn');
+    const treeNav = document.getElementById('tree-nav');
+    const blogContent = document.getElementById('blog-content');
+
+    treeBtn.addEventListener('click', () => {
+        treeNav.classList.remove('hidden');
+        blogContent.classList.add('hidden');
+        treeBtn.classList.add('bg-blue-500', 'text-white');
+        blogBtn.classList.remove('bg-blue-500', 'text-white');
+        blogBtn.classList.add('bg-gray-300', 'text-black');
+    });
+
+    blogBtn.addEventListener('click', () => {
+        treeNav.classList.add('hidden');
+        blogContent.classList.remove('hidden');
+        blogBtn.classList.add('bg-blue-500', 'text-white');
+        treeBtn.classList.remove('bg-blue-500', 'text-white');
+        treeBtn.classList.add('bg-gray-300', 'text-black');
+    });
+</script>
+
 </body>
 </html>
