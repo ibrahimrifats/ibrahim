@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Tree</title>
+    <script type="module" src="https://unpkg.com/mermaid@9.1.7/dist/mermaid.esm.min.mjs"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .tree-container {
+            max-width: 100%;
+            overflow-x: auto;
+            padding: 20px;
+        }
+        .description, .index {
+            margin: 20px;
+        }
+        .lang-toggle {
+            cursor: pointer;
+            text-decoration: underline;
+            color: blue;
+        }
+
+        .link {
+            fill: none;
+            stroke: #ccc;
+        }
+        
+        .node circle {
+            fill: #fff;
+            stroke: #000;
+            stroke-width: 2px;
+        }
+        
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <nav class="bg-red-600 p-4 text-white">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-lg font-semibold">আমাদের ঐতিহ্যের বৃক্ষ</div>
+            <ul class="flex space-x-6">
+                <li><a href="#" class="hover:underline">Home</a></li>
+                <li><a href="about.html" class="hover:underline">About</a></li>
+                <li><a href="#" class="hover:underline">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container mx-auto mt-8 text-center bg-gray-100 p-6 rounded-lg shadow-md">
+        <h1 id="tree-title" class="text-2xl font-bold text-gray-800 mb-4">আমাদের ঐতিহ্যের বৃক্ষ: পূর্বপুরুষের গল্প ও বর্তমান বংশধরের পরিচয়</h1>
+        <span class="lang-toggle text-blue-600 cursor-pointer" id="toggle-lang">(Switch to English)</span>
+    </div>
+    
+    <div id="tree-description" class="container mx-auto mt-6 text-center text-lg text-gray-700 bg-white p-6 rounded-lg shadow-md">
+        এখানে আমার পূর্বপুরুষ এবং বর্তমান ও চলমান বংশধরদের একটি ট্রি উপস্থাপন করা হয়েছে। এই ট্রির মাধ্যমে আমাদের বংশধররা তাদের পূর্বপুরুষদের পরিচয়সহ সমস্ত আত্মীয়দের সম্পর্কে জানতে পারবে এবং নিজেদের ইতিহাস আবিষ্কার করতে পারবে।
+    </div>
+    
+    <div class="container mx-auto mt-8 text-center bg-gray-50 p-6 rounded-lg shadow-md">
+        <ul class="flex justify-center space-x-4 text-lg text-gray-800">
+            <li class="text-blue-400">পরিবারের বংশবৃক্ষ</li>
+            <li class="text-blue-400">বংশের ইতিহাস</li>
+            <li class="text-blue-400">পরিবারের গল্প</li>
+        </ul>
+    </div>
+    
+    
+    
+
+    <div class="tree-container">
+        <pre class="mermaid">
+        graph LR
+            A[Ujjal Kha] --> B[Child 1]
+            A --> C[Child 2]
+            A --> D[... n child]
+
+            C --> E[Mozaffor]
+            E --> F[Motin or Moti Mohori]
+            E --> G[Mojibur Rahman Mohon]
+            E --> H[Daughter 1 Ambia]
+            E --> I[Daughter 2 Norjahan]
+            E --> J[Daughter 3 Incho]
+            E --> K[Daughter 4 Majeda]
+            E --> L[Daughter 5]
+            E --> M[Daughter 6]
+
+            F --> N[Motin or Moti Mohori]
+            G --> O[Mojibur Rahman Mohon]
+
+            N --> P[Khokon]
+    N --> Q[Shipon]
+    N --> R[Shakil]
+    N --> S[Jowel]
+    N --> T[Sahena]
+    N --> U[Anzom]
+    N --> V[Lebo]
+    N --> W[Momotaz]
+    N --> X[Jesmin]
+    N --> Y[Shiuli]
+
+    P --> P1[Child of Khokon 1]
+    P --> P2[Child of Khokon 2]
+    P --> P3[Child of Khokon 3]
+    P --> P4[Child of Khokon 4]
+    P --> P5[Child of Khokon 5]
+
+    Q --> Q1[Child of Shipon 1]
+    Q --> Q2[Child of Shipon 2]
+
+    R --> R1[Child of Shakil]
+
+    S --> S1[Child of Jowel]
+
+    T --> T1[Child of Sahena 1]
+    T --> T2[Child of Sahena 2]
+    T --> T3[Child of Sahena 3]
+    T --> T4[Child of Sahena 4]
+
+    U --> U1[Child of Anzom 1]
+    U --> U2[Child of Anzom 2]
+    U --> U3[Child of Anzom 3]
+
+    V --> V1[Child of Lebo 1]
+    V --> V2[Child of Lebo 2]
+    V --> V3[Child of Lebo 3]
+
+    W --> W1[Child of Momotaz 1]
+    W --> W2[Child of Momotaz 2]
+    W --> W3[Child of Momotaz 3]
+
+    X --> X1[Child of Jesmin 1]
+    X --> X2[Child of Jesmin 2]
+
+    Y --> Y1[Child of Shiuli 1]
+    Y --> Y2[Child of Shiuli 2]
+
+
+            O --> Z[Jahangir]
+            Z --> Z1[Lipi]
+            Z --> Z2[Shahazan]
+            Z --> Z3[Happy]
+            Z --> Z4[Sojon]
+            Z --> Z5[Shojib]
+            Z --> Z6[Arif]
+            Z --> Z7[Sharif]
+            Z --> Z8[Sumon]
+            Z --> Z9[Sabina]
+        
+            O --> AA[Josim]
+            AA --> AA1[zahirul Haque Hasan]
+            AA --> AA2[Lima]
+            AA --> AA3[Abdul Hakim Sagor]
+            AA --> AA4[Shaidul islam]
+        
+            O --> AB[Moniruzzaman Momin]
+            AB --> AB1[Hazera Akte Juma]
+            AB1 --> AB1A[Nusaiba]
+            AB --> AB2[Ismail Riyad]
+            AB2 --> AB2A[Sara binte Ismail]
+            AB --> AB3[Rabya Akter Toma]
+            AB3 --> AB3A[Sidratul Montaha Adiba]
+            AB3 --> AB3B[Ariyan Akbar Buiyan]
+            AB3 --> AB3C[...]
+            AB --> AB4[Ibrahim Rifat]
+        
+            O --> AC[Amin]
+            AC --> AC1[Amena]
+            AC --> AC2[Azizul Haque Piyad]
+            AC --> AC3[Pospo]
+            AC --> AC4[Miyad]
+            AC --> AC5[Azim]
+        
+            O --> AD[Monir Hossen]
+            AD --> AD1[Asma]
+        
+            O --> AE[Abul Kalam Azad]
+            AE --> AE1[Araf]
+            AE --> AE2[Atika]
+            AE --> AE3[arowa]
+        
+            O --> AF[Jano]
+            AF --> AF1[Child 1 of Jano]
+            AF --> AF2[Child 2 of Jano]
+            AF --> AF3[Child 3 of Jano]
+            AF --> AF4[Child 4 of Jano]
+            AF --> AF5[Child 5 of Jano]
+        
+            O --> AG[Rehena]
+            AG --> AG1[Child 1 of Rehena]
+            AG --> AG2[Child 2 of Rehena]
+            AG --> AG3[Child 3 of Rehena]
+            AG --> AG4[Child 4 of Rehena]
+            AG --> AG5[Child 5 of Rehena]
+            AG --> AG6[Child 6 of Rehena]
+            AG --> AG7[Child 7 of Rehena]
+        
+            O --> AH[Aysha]
+            AH --> AH1[Child 1 of Aysha]
+            AH --> AH2[Child 2 of Aysha]
+            AH --> AH3[Child 3 of Aysha]
+            AH --> AH4[Child 4 of Aysha]
+        
+            O --> AI[Shamola]
+            AI --> AI1[Child 1 of Shamola]
+            AI --> AI2[Child 2 of Shamola]
+            AI --> AI3[Child 3 of Shamola]
+            AI --> AI4[Child 4 of Shamola]
+        
+            O --> AJ[Rohima]
+            AJ --> AJ1[Child 1 of Rohima]
+            AJ --> AJ2[Child 2 of Rohima]
+            AJ --> AJ3[Child 3 of Rohima]
+            AJ --> AJ4[Child 4 of Rohima]
+
+
+
+        </pre>
+    </div>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+
+        const toggleLangBtn = document.getElementById('toggle-lang');
+        const titleEl = document.getElementById('tree-title');
+        const descriptionEl = document.getElementById('tree-description');
+
+        toggleLangBtn.addEventListener('click', function () {
+            if (toggleLangBtn.innerText === "(Switch to English)") {
+                titleEl.innerText = "The Tree of Our Heritage: Stories of Ancestors and Current Descendants";
+                descriptionEl.innerText = "Here is a tree of my ancestors and current descendants. Through this tree, our descendants can learn about their ancestors and relatives, and discover their own history.";
+                toggleLangBtn.innerText = "(বাংলায় সুইচ করুন)";
+            } else {
+                titleEl.innerText = "আমাদের ঐতিহ্যের বৃক্ষ: পূর্বপুরুষের গল্প ও বর্তমান বংশধরের পরিচয়";
+                descriptionEl.innerText = "এখানে আমার পূর্বপুরুষ এবং বর্তমান ও চলমান বংশধরদের একটি ট্রি উপস্থাপন করা হয়েছে। এই ট্রির মাধ্যমে আমাদের বংশধররা তাদের পূর্বপুরুষদের পরিচয়সহ সমস্ত আত্মীয়দের সম্পর্কে জানতে পারবে এবং নিজেদের ইতিহাস আবিষ্কার করতে পারবে।";
+                toggleLangBtn.innerText = "(Switch to English)";
+            }
+        });
+    </script>
+</body>
+</html>
