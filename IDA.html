@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Gallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <style>
+        /* Custom styles for PDF viewer */
+        .pdf-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow-y: auto;
+            background-color: #f7f7f7;
+        }
+
+        .pdf-toolbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background-color: #2d3748;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .pdf-canvas {
+            margin: 20px auto;
+            max-width: 1000px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .pdf-item {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer; /* Change cursor to pointer */
+        }
+
+        .pdf-item img {
+            width: 80px;
+            height: 100px;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .pdf-item h3 {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            background-color: #f56565;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background-color: #c53030;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-800 text-white shadow-md">
+        <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <div class="text-lg font-bold">MyPDFGallery</div>
+            <div class="block lg:hidden">
+                <button id="nav-toggle" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="nav-menu" class="hidden lg:flex space-x-4">
+                <a href="index.html" class="hover:bg-gray-700 px-3 py-2 rounded">Home</a>
+                <a href="1974.html" class="hover:bg-gray-700 px-3 py-2 rounded">1974</a>
+                <a href="photo.html" class="hover:bg-gray-700 px-3 py-2 rounded">BDR</a>
+                <a href="lostpdf.html" class="hover:bg-gray-700 px-3 py-2 rounded">BD Secret PDF</a>
+            </div>
+        </div>
+        <div id="mobile-nav-menu" class="lg:hidden">
+            <a href="index.html" class="block px-4 py-2 text-white hover:bg-gray-700">Home</a>
+            <a href="1974.html" class="block px-4 py-2 text-white hover:bg-gray-700">1974</a>
+            <a href="photo.html" class="block px-4 py-2 text-white hover:bg-gray-700">BDR</a>
+            <a href="lostpdf.html" class="block px-4 py-2 text-white hover:bg-gray-700">BD Secret PDF</a>
+        </div>
+    </nav>
+
+    <!-- PDF Gallery -->
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold mb-4">Click a PDF to View</h1>
+        <div id="pdf-gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div class="pdf-item" data-pdf="IDA/KhalidBinAl-waleedSwordOfAllah.pdf">
+                <img src="cover/khalid.jpg" alt="PDF 1 Thumbnail">
+                <div>
+                    <h3>Khalid Bin Al-waleed Sword Of Allah</h3>
+                </div>
+            </div>
+            <div class="pdf-item" data-pdf="IDA/commanders-of-the-muslim-army.pdf">
+                <img src="cover/muslimcmd.jpg" alt="PDF 2 Thumbnail">
+                <div>
+                    <h3>Commanders of the Muslim Army</h3>
+                </div>
+            </div>
+
+            <div class="pdf-item" data-pdf="IDA/the-art-of-war-bangla.pdf">
+                <img src="cover/artwb.jpg" alt="PDF 3 Thumbnail">
+                <div>
+                    <h3>the art of war bangla</h3>
+                </div>
+            </div>
+
+            <div class="pdf-item" data-pdf="IDA/sun Tzu on the art of war.pdf">
+                <img src="cover/sante.jpg" alt="PDF 4 Thumbnail">
+                <div>
+                    <h3>sun Tzu on the art of war</h3>
+                </div>
+            </div>
+
+            <div class="pdf-item" data-pdf="IDA/yarmouk delhkhan.pdf">
+                <img src="cover/yarmok.jpg" alt="PDF 5 Thumbnail">
+                <div>
+                    <h3>yarmouk war bangla</h3>
+                </div>
+            </div>
+
+            <div class="pdf-item" data-pdf="IDA/inside_raw.pdf">
+                <img src="cover/insideraw.jpg" alt="PDF 6 Thumbnail">
+                <div>
+                    <h3>inside raw</h3>
+                </div>
+            </div>
+
+            <div class="pdf-item" data-pdf="IDA/bangladeshe_ra.pdf">
+                <img src="cover/raw.jpg" alt="PDF 7 Thumbnail">
+                <div>
+                    <h3>Bangladeshe Raw</h3>
+                </div>
+            </div>
+
+            <div class="pdf-item" data-pdf="IDA/somor_dorshon.pdf">
+                <img src="cover/somor.jpg" alt="PDF 8 Thumbnail">
+                <div>
+                    <h3>Somor Dorshon</h3>
+                </div>
+            </div>
+
+            <div class="pdf-item" data-pdf="IDA/military paper.pdf">
+                <img src="cover/militarypaper.jpg" alt="PDF 9 Thumbnail">
+                <div>
+                    <h3>Military paper</h3>
+                </div>
+            </div>
+
+            <div class="pdf-item" data-pdf="IDA/The-Army of the indian moghuls.pdf">
+                <img src="cover/mogolarmy.jpg" alt="PDF 10 Thumbnail">
+                <div>
+                    <h3>The-Army of the indian moghuls</h3>
+                </div>
+            </div>
+
+            <div class="pdf-item" data-pdf="IDA/Overcoming-Crisis-In-Leadership-Indian-Army_text.pdf">
+                <img src="cover/indinaarmy.jpg" alt="PDF 11 Thumbnail">
+                <div>
+                    <h3>Overcoming-Crisis-In-Leadership-Indian-Army_text</h3>
+                </div>
+            </div>
+            <!-- Add more PDFs as needed -->
+        </div>
+    </div>
+
+    <!-- PDF Viewer Modal -->
+    <div id="pdf-viewer" class="fixed inset-0 bg-black bg-opacity-75 hidden z-50 flex justify-center items-center">
+        <div class="pdf-container">
+            <div class="pdf-toolbar">
+                <button id="close-pdf" class="close-btn">Close</button>
+                <span id="pdf-name" class="text-white">PDF Name</span>
+            </div>
+            <div id="pdf-scrollable">
+                <!-- PDF pages will be rendered here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script>
+        let pdfDoc = null,
+            canvasContainer = document.getElementById('pdf-scrollable'),
+            scale = 1.5;
+
+        function renderPDF(pdfPath) {
+            canvasContainer.innerHTML = ''; // Clear previous content
+
+            // Fetch the PDF document
+            pdfjsLib.getDocument(pdfPath).promise.then(function(pdf) {
+                pdfDoc = pdf;
+
+                // Loop through each page and render it
+                for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                    pdf.getPage(pageNum).then(function(page) {
+                        let viewport = page.getViewport({ scale: scale });
+                        let canvas = document.createElement('canvas');
+                        canvas.classList.add('pdf-canvas');
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        canvasContainer.appendChild(canvas);
+
+                        let ctx = canvas.getContext('2d');
+                        let renderContext = {
+                            canvasContext: ctx,
+                            viewport: viewport
+                        };
+                        page.render(renderContext);
+                    });
+                }
+            });
+        }
+
+        // Add click event listeners to each pdf-item
+        document.querySelectorAll('.pdf-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const pdfPath = this.getAttribute('data-pdf');
+                const pdfTitle = this.querySelector('h3').innerText;
+                document.getElementById('pdf-name').innerText = pdfTitle;
+
+                // Show the PDF viewer
+                document.getElementById('pdf-viewer').classList.remove('hidden');
+                renderPDF(pdfPath);
+            });
+        });
+
+        document.getElementById('close-pdf').addEventListener('click', () => {
+            document.getElementById('pdf-viewer').classList.add('hidden');
+        });
+    </script>
+
+</body>
+</html>
