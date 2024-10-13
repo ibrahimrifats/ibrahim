@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webpage Monitor</title>
+    <style>
+        #webView {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        #status {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Website Monitor</h1>
+
+    <!-- Div to show the web view -->
+    <div id="webView">
+        <iframe id="webFrame" src="https://riyad-z2ac.onrender.com/" width="100%" height="100%"></iframe>
+    </div>
+
+    <!-- Div to show the status of requests -->
+    <div id="status">Status will be shown here...</div>
+
+    <script>
+        var intervalTime = 300000; // Default to 5 minutes (300,000 milliseconds)
+
+        // Function to send request and dynamically adjust interval based on success/failure
+        function sendRequest() {
+            fetch('https://riyad-z2ac.onrender.com/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    updateStatus('Request successful: ' + response.status, 'success');
+                    refreshWebView();
+                    intervalTime = 300000; // Set interval to 5 minutes on success
+                } else {
+                    throw new Error('Request failed: ' + response.status);
+                }
+            })
+            .catch(error => {
+                updateStatus(error.message, 'error');
+                intervalTime = 30000; // Set interval to 30 seconds on failure
+            })
+            .finally(() => {
+                adjustInterval(); // Adjust the interval based on the success/failure of the request
+            });
+        }
+
+        // Function to refresh the iframe (web view)
+        function refreshWebView() {
+            var iframe = document.getElementById('webFrame');
+            iframe.src = iframe.src; // This reloads the iframe
+        }
+
+        // Function to update the status in the HTML page
+        function updateStatus(message, statusType) {
+            var statusDiv = document.getElementById('status');
+            statusDiv.textContent = message;
+
+            // Apply the correct class (success or error)
+            if (statusType === 'success') {
+                statusDiv.classList.remove('error');
+                statusDiv.classList.add('success');
+            } else {
+                statusDiv.classList.remove('success');
+                statusDiv.classList.add('error');
+            }
+        }
+
+        var intervalId;
+
+        // Function to adjust the interval dynamically
+        function adjustInterval() {
+            clearInterval(intervalId); // Clear the previous interval
+            intervalId = setInterval(sendRequest, intervalTime); // Set a new interval with the updated time
+        }
+
+        // Initial request to show status and load the iframe
+        sendRequest(); // Run the first request immediately
+
+    </script>
+
+</body>
+</html>
