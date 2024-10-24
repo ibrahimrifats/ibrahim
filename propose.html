@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposal Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Background logos/icons */
+    body::before {
+      content: '💍 💖 💕 💞 💓 💘 💝';
+      position: absolute;
+      font-size: 8rem;
+      color: rgba(255, 182, 193, 0.2);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    /* Custom confetti animation */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      animation: confetti-fall 3s linear infinite;
+      z-index: 10;
+    }
+    
+    @keyframes confetti-fall {
+      0% { transform: translateY(-100vh) rotate(0); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    /* Falling rose petals */
+    @keyframes rose-fall {
+      0% { transform: translateY(-100vh) rotate(0); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    /* Hide popup initially */
+    #popup {
+      display: none;
+    }
+    
+    /* Animate rose petals */
+    .rose-petal {
+      position: absolute;
+      background-image: url('https://www.pngmart.com/files/1/Rose-Petals-PNG-Image.png');
+      background-size: cover;
+      width: 30px;
+      height: 30px;
+      animation: rose-fall 5s linear forwards;
+    }
+
+    /* Islamic couple animation */
+    @keyframes ring-animation {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="bg-pink-100 flex flex-col justify-center items-center min-h-screen">
+
+  <!-- Navigation Bar -->
+  <nav class="w-full bg-pink-500 p-4 fixed top-0 shadow-lg">
+    <ul class="flex justify-between items-center text-white font-bold text-lg">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">💍 Married Rings</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Proposal Section -->
+  <div class="bg-white p-10 shadow-lg rounded-lg text-center mt-20 max-w-md">
+    <h1 class="text-4xl font-bold text-gray-800 mb-6">Will you marry me? 💍</h1>
+    <p class="text-xl mb-8">Choose wisely 😉</p>
+
+    <!-- Buttons -->
+    <div class="space-y-4">
+      <!-- Yes Button -->
+      <button id="yesBtn" class="bg-pink-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-pink-600 transition-all">
+        Yes with Proposal Ring 💍
+      </button>
+
+      <!-- No Button (runaway) -->
+      <button id="noBtn" class="bg-gray-500 text-white font-bold py-2 px-6 rounded-lg runaway-btn">
+        No 😅
+      </button>
+    </div>
+  </div>
+
+  <!-- Pop-up with Confetti & Animation -->
+  <div id="popup" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+    <div class="bg-white p-6 rounded-lg text-center relative">
+      <h2 class="text-3xl font-bold text-green-500 mb-4">Thank you for accepting! 🎉</h2>
+      <div id="confetti-container" class="absolute inset-0 w-full h-full overflow-hidden"></div>
+      
+      <!-- Islamic Boy & Girl Animation -->
+      <div id="ring-animation" class="flex justify-center items-center">
+        <img src="couple.png" alt="Islamic Couple" class="w-64 h-64 animate-ring">
+      </div>
+      
+      <div id="rose-container" class="absolute inset-0 w-full h-full overflow-hidden"></div>
+    </div>
+  </div>
+
+  <!-- Tailwind & JavaScript Logic -->
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const popup = document.getElementById('popup');
+    const confettiContainer = document.getElementById('confetti-container');
+    const roseContainer = document.getElementById('rose-container');
+
+    // Animate Yes button for acceptance
+    yesBtn.addEventListener('click', () => {
+      popup.style.display = 'flex';
+
+      // Falling confetti animation (full screen)
+      for (let i = 0; i < 300; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.backgroundColor = getRandomColor();
+        confetti.style.left = `${Math.random() * 100}%`;
+        confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        confettiContainer.appendChild(confetti);
+      }
+
+      // Falling roses for 5 seconds
+      for (let i = 0; i < 30; i++) {
+        const rosePetal = document.createElement('div');
+        rosePetal.classList.add('rose-petal');
+        rosePetal.style.left = `${Math.random() * 100}%`;
+        rosePetal.style.top = `${Math.random() * -200}px`;
+        roseContainer.appendChild(rosePetal);
+      }
+
+      // Islamic couple animation (boy putting the ring on the girl)
+      const ringAnimation = document.getElementById('ring-animation');
+      ringAnimation.style.animation = 'ring-animation 3s ease forwards';
+
+      // Remove roses after 5 seconds
+      setTimeout(() => {
+        roseContainer.innerHTML = '';
+      }, 5000);
+    });
+
+    // Random color generator for confetti
+    function getRandomColor() {
+      const colors = ['#FF69B4', '#FFD700', '#FF4500', '#7FFF00', '#00FFFF'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    // No button avoids being clicked (runs away from mouse)
+    noBtn.addEventListener('mouseover', () => {
+      let randomX = Math.random() * (window.innerWidth - noBtn.clientWidth);
+      let randomY = Math.random() * (window.innerHeight - noBtn.clientHeight);
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = `${randomX}px`;
+      noBtn.style.top = `${randomY}px`;
+    });
+
+    // In mobile, No button slides left and right
+    noBtn.addEventListener('touchstart', () => {
+      let randomX = Math.random() * (window.innerWidth - noBtn.clientWidth);
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = `${randomX}px`;
+    });
+  </script>
+
+</body>
+</html>
