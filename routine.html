@@ -1,61 +1,38 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Daily Study Schedule</title>
-        <script src="https://cdn.tailwindcss.com"></script>
+    <title>Daily Study Schedule</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.4.4/luxon.min.js"></script>
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({startOnLoad:true});
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body class="bg-gray-50 min-h-screen p-4 md:p-8">
-    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-        <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-6">
-            <h1 class="text-2xl md:text-3xl font-bold text-white">Daily Study Schedule</h1>
-            <p class="text-blue-100 mt-2">Optimized for Academic Success</p>
+    <div class="max-w-4xl mx-auto">
+        <div class="mb-4 flex justify-end">
+            <button onclick="downloadPDF()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-lg flex items-center space-x-2 transition-colors duration-200">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                </svg>
+                <span>Download PDF</span>
+            </button>
         </div>
 
-        <div class="p-4 md:p-6">
-            <div id="timeline" class="space-y-3">
-                <!-- Timeline items will be inserted here by JS -->
+        <div id="schedule-content" class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-6">
+                <h1 class="text-2xl md:text-3xl font-bold text-white">Daily Study Schedule</h1>
+                <p class="text-blue-100 mt-2">Optimized for Academic Success</p>
+            </div>
+
+            <div class="p-4 md:p-6">
+                <div id="timeline" class="space-y-3">
+                    <!-- Timeline items will be inserted here by JS -->
+                </div>
             </div>
         </div>
-    </div>
-
-    
-    <div class="mermaid">
-timeline
-    title Daily Study Schedule
-    section Early Morning
-        05 : 15 - 06 : 00 : Fajr Prayer & Quran
-        06 : 00 - 07 : 00 : Core Concept Study
-        07 : 00 - 07 : 30 : Breakfast
-    section Morning
-        07 : 30 - 09 : 30 : Main Study Session 1
-        09 : 30 - 09 : 45 : Break
-        09 : 45 - 11 : 45 : Main Study Session 2
-        11 : 45 - 12 : 05 : Break
-    section Afternoon
-        12 : 05 - 12 : 30 : Dhuhr Prayer
-        12 : 30 - 13 : 30 : Lunch & Rest
-        13 : 30 - 15 : 30 : Main Study Session 3
-        15 : 30 - 15 : 45 : Break
-        15 : 45 - 16 : 15 : Asr Prayer
-    section Evening
-        16 : 15 - 17 : 15 : Review Session
-        17 : 15 - 17 : 25 : Break
-        17 : 25 - 18 : 00 : Maghrib Prayer
-        18 : 00 - 18 : 45 : Light Study
-        18 : 45 - 19 : 15 : Isha Prayer
-    section Night
-        19 : 15 - 20 : 30 : Final Review
-        20 : 30 - 21 : 30 : Dinner & Family Time
-        21 : 30 - 23 : 00 : Preparation for Next Day
-        23 : 00 - 05 : 15 : Sleep
-
     </div>
 
     <script>
@@ -124,6 +101,35 @@ timeline
             `;
             timeline.appendChild(timelineItem);
         });
+
+        function downloadPDF() {
+            const element = document.getElementById('schedule-content');
+            const opt = {
+                margin: 1,
+                filename: 'daily-study-schedule.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Add loading state to button
+            const button = document.querySelector('button');
+            const originalContent = button.innerHTML;
+            button.innerHTML = `
+                <svg class="animate-spin h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Generating PDF...
+            `;
+            button.disabled = true;
+
+            html2pdf().set(opt).from(element).save()
+                .then(() => {
+                    button.innerHTML = originalContent;
+                    button.disabled = false;
+                });
+        }
     </script>
 </body>
 </html>
