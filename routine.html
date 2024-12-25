@@ -3,13 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Study Schedule</title>
+        <title>Daily Study Schedule</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.4.4/luxon.min.js"></script>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({startOnLoad:true});
     </script>
 </head>
-<body>
+<body class="bg-gray-50 min-h-screen p-4 md:p-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-6">
+            <h1 class="text-2xl md:text-3xl font-bold text-white">Daily Study Schedule</h1>
+            <p class="text-blue-100 mt-2">Optimized for Academic Success</p>
+        </div>
+
+        <div class="p-4 md:p-6">
+            <div id="timeline" class="space-y-3">
+                <!-- Timeline items will be inserted here by JS -->
+            </div>
+        </div>
+    </div>
+
+    
     <div class="mermaid">
 timeline
     title Daily Study Schedule
@@ -41,5 +57,73 @@ timeline
         23 : 00 - 05 : 15 : Sleep
 
     </div>
+
+    <script>
+        const schedule = [
+            { start: "05:15", end: "06:00", activity: "Fajr Prayer & Morning Quran", type: "prayer" },
+            { start: "06:00", end: "07:00", activity: "Core Concept Study", type: "study" },
+            { start: "07:00", end: "07:30", activity: "Breakfast", type: "break" },
+            { start: "07:30", end: "09:30", activity: "Main Study Session 1", type: "study" },
+            { start: "09:30", end: "09:45", activity: "Break", type: "break" },
+            { start: "09:45", end: "11:45", activity: "Main Study Session 2", type: "study" },
+            { start: "11:45", end: "12:05", activity: "Break", type: "break" },
+            { start: "12:05", end: "12:30", activity: "Dhuhr Prayer", type: "prayer" },
+            { start: "12:30", end: "13:30", activity: "Lunch & Rest", type: "break" },
+            { start: "13:30", end: "15:30", activity: "Main Study Session 3", type: "study" },
+            { start: "15:30", end: "15:45", activity: "Break", type: "break" },
+            { start: "15:45", end: "16:15", activity: "Asr Prayer", type: "prayer" },
+            { start: "16:15", end: "17:15", activity: "Review Session", type: "review" },
+            { start: "17:15", end: "17:25", activity: "Break", type: "break" },
+            { start: "17:25", end: "18:00", activity: "Maghrib Prayer", type: "prayer" },
+            { start: "18:00", end: "18:45", activity: "Light Study", type: "study" },
+            { start: "18:45", end: "19:15", activity: "Isha Prayer", type: "prayer" },
+            { start: "19:15", end: "20:30", activity: "Final Review", type: "review" },
+            { start: "20:30", end: "21:30", activity: "Dinner & Family Time", type: "break" },
+            { start: "21:30", end: "23:00", activity: "Preparation for Next Day", type: "prep" },
+            { start: "23:00", end: "05:15", activity: "Sleep", type: "sleep" }
+        ];
+
+        const typeColors = {
+            prayer: "bg-green-100 border-green-500 text-green-800",
+            study: "bg-blue-100 border-blue-500 text-blue-800",
+            break: "bg-yellow-100 border-yellow-500 text-yellow-800",
+            review: "bg-purple-100 border-purple-500 text-purple-800",
+            prep: "bg-indigo-100 border-indigo-500 text-indigo-800",
+            sleep: "bg-gray-100 border-gray-500 text-gray-800"
+        };
+
+        function getDuration(start, end) {
+            const DateTime = luxon.DateTime;
+            let startTime = DateTime.fromFormat(start, "HH:mm");
+            let endTime = DateTime.fromFormat(end, "HH:mm");
+            
+            if (endTime < startTime) {
+                endTime = endTime.plus({ days: 1 });
+            }
+            
+            const duration = endTime.diff(startTime, 'minutes').minutes;
+            const hours = Math.floor(duration / 60);
+            const minutes = duration % 60;
+            
+            return `${hours}h ${minutes}m`;
+        }
+
+        const timeline = document.getElementById('timeline');
+        schedule.forEach(item => {
+            const duration = getDuration(item.start, item.end);
+            const timelineItem = document.createElement('div');
+            timelineItem.className = `flex items-center space-x-4 p-3 rounded-lg border-l-4 transition-all duration-200 hover:shadow-md ${typeColors[item.type]}`;
+            timelineItem.innerHTML = `
+                <div class="w-32 flex-shrink-0 font-mono">
+                    ${item.start} - ${item.end}
+                </div>
+                <div class="flex-grow">
+                    <h3 class="font-semibold">${item.activity}</h3>
+                    <p class="text-sm opacity-75">${duration}</p>
+                </div>
+            `;
+            timeline.appendChild(timelineItem);
+        });
+    </script>
 </body>
 </html>
