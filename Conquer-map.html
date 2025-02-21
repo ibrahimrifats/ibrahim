@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dijkstra's Algorithm Visualization</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .visited-edge {
+            stroke: #39FF14; /* Neon Green */
+            stroke-width: 3;
+            stroke-linecap: round;
+            opacity: 0.9;
+            transition: stroke 0.2s ease-in-out;
+        }
+        .center-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            pointer-events: none;
+        }
+        .title {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000000; /* Neon Green */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="map"></div>
+    <div class="title">Conquer the world through Islam, spreading peace.</div>
+    <img src="a.png" alt="Hi" class="center-image" style="filter: grayscale(100%) invert(100%);">
+
+    <script>
+        var map = L.map('map').setView([24.0, 90.0], 6); // Focus on Bangladesh & Seven Sisters
+
+        // Custom Map Styling
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors',
+            subdomains: 'abcd',
+        }).addTo(map);
+
+        // Function to check if a point is on land (simple approximation)
+        function isOnLand(lat, lng) {
+            // Example: Simple bounding box for land areas
+            return lat > -60 && lat < 85 && lng > -180 && lng < 180;
+        }
+
+        class PriorityQueue {
+            constructor() { this.queue = []; }
+            enqueue(element, priority) {
+                this.queue.push({ element, priority });
+                this.queue.sort((a, b) => a.priority - b.priority);
+            }
+            dequeue() { return this.queue.shift().element; }
+            isEmpty() { return this.queue.length === 0; }
+        }
+
+        function dijkstraVisualization(startLat, startLng) {
+            let pq = new PriorityQueue();
+            let visited = new Set();
+            let allEdges = [];
+            pq.enqueue([startLat, startLng], 0);
+
+            function expandDijkstra() {
+                if (pq.isEmpty()) return;
+                let [lat, lng] = pq.dequeue();
+                let key = `${lat},${lng}`;
+
+                // Ignore if already visited
+                if (visited.has(key)) {
+                    setTimeout(expandDijkstra, 5);
+                    return;
+                }
+                visited.add(key);
+
+                // Color visited path progressively (only on land)
+                if (visited.size > 1 && isOnLand(lat, lng)) {
+                    let lastKey = Array.from(visited).at(-2).split(',').map(Number);
+                    let edge = L.polyline([lastKey, [lat, lng]], {
+                        color: 'gray', weight: 1, opacity: 0.5
+                    }).addTo(map);
+                    allEdges.push(edge);
+
+                    // Color the edge progressively
+                    setTimeout(() => {
+                        edge.setStyle({ color: '#39FF14', weight: 3, opacity: 1 }); // Neon Green
+                    }, 100);
+                }
+
+                // Expand in 4 directions (only on land)
+                let step = 0.4;
+                if (isOnLand(lat + step, lng)) pq.enqueue([lat + step, lng], Math.random() * 10);
+                if (isOnLand(lat - step, lng)) pq.enqueue([lat - step, lng], Math.random() * 10);
+                if (isOnLand(lat, lng + step)) pq.enqueue([lat, lng + step], Math.random() * 10);
+                if (isOnLand(lat, lng - step)) pq.enqueue([lat, lng - step], Math.random() * 10);
+
+                setTimeout(expandDijkstra, 10);
+            }
+
+            expandDijkstra();
+        }
+
+        // Start from Dhaka
+        setTimeout(() => {
+            dijkstraVisualization(23.8103, 90.4125);
+        }, 1000);
+    </script>
+
+</body>
+</html>
