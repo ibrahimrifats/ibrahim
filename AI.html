@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic AI Workflow Presentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            transition: transform 0.8s ease;
+        }
+        .slide-content {
+            width: 90%;
+            height: 90%;
+            margin: 2% auto;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .slide-hidden {
+            transform: translateX(100%);
+        }
+        .slide-visible {
+            transform: translateX(0);
+        }
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .control-btn {
+            background-color: rgba(17, 24, 39, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .control-btn:hover {
+            background-color: rgba(17, 24, 39, 1);
+            transform: scale(1.1);
+        }
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            background-color: #4F46E5;
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+        .presenter-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #4F46E5;
+        }
+        .diagram-item {
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .diagram-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .brain-icon {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .slide-indicator {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            color: white;
+            background-color: rgba(17, 24, 39, 0.7);
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
+        .presenter-name {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background-color: rgba(79, 70, 229, 0.8);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="slide-indicator" id="slideIndicator">Slide 1/15</div>
+    <div class="presenter-name" id="presenterName">Ibrahim Refat</div>
+
+    <!-- Slide 1: Title (Ibrahim Refat) -->
+    <div class="slide slide-visible" id="slide1">
+        <div class="slide-content bg-gradient-to-br from-indigo-900 to-gray-900 text-white flex flex-col justify-center items-center text-center">
+            <div class="brain-icon text-8xl mb-8 text-indigo-300">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h1 class="text-5xl font-bold mb-4">An Agentic AI Workflow for Detecting Cognitive Concerns in Real-world Data</h1>
+            <p class="text-xl mb-8">Research Presentation</p>
+            <div class="flex items-center mt-16">
+                <div class="text-center mx-4">
+                    <img src="/api/placeholder/100/100" alt="Ibrahim Refat" class="presenter-avatar mx-auto">
+                    <p class="mt-2">Ibrahim Refat</p>
+                    <p class="text-indigo-300">ID: 221902333</p>
+                </div>
+                <div class="text-center mx-4">
+                    <img src="/api/placeholder/100/100" alt="Tanvir Ahmed Eamon" class="presenter-avatar mx-auto">
+                    <p class="mt-2">Tanvir Ahmed Eamon</p>
+                    <p class="text-indigo-300">ID: 221902063</p>
+                </div>
+                <div class="text-center mx-4">
+                    <img src="/api/placeholder/100/100" alt="Ibrahim Al Rifat" class="presenter-avatar mx-auto">
+                    <p class="mt-2">Ibrahim Al Rifat</p>
+                    <p class="text-indigo-300">ID: 221902444</p>
+                </div>
+            </div>
+            <div class="mt-10">
+                <p class="text-lg">Green University of Bangladesh</p>
+                <p class="text-md">Course: Artificial Intelligence | Instructor: Farhana Jui | Section: 221_D14</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: Introduction (Ibrahim Refat) -->
+    <div class="slide slide-hidden" id="slide2">
+        <div class="slide-content bg-gradient-to-r from-gray-900 to-indigo-900 text-white p-10">
+            <h2 class="text-3xl font-bold mb-6 border-b border-indigo-500 pb-2">Introduction</h2>
+            <div class="flex">
+                <div class="w-2/3 pr-6">
+                    <ul class="space-y-4 text-lg">
+                        <li class="diagram-item flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
+                            <span>Early identification of cognitive decline is <span class="text-indigo-300 font-bold">crucial</span> for effective treatments</span>
+                        </li>
+                        <li class="diagram-item flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
+                            <span>Traditional screening methods like MMSE and MoCA face <span class="text-indigo-300 font-bold">challenges</span> in accessibility and scalability</span>
+                        </li>
+                        <li class="diagram-item flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
+                            <span>Large Language Models (LLMs) can provide <span class="text-indigo-300 font-bold">scalable, cost-effective</span> screening tools</span>
+                        </li>
+                        <li class="diagram-item flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
+                            <span>LLMs can analyze <span class="text-indigo-300 font-bold">language patterns</span> to detect subtle cognitive impairments</span>
+                        </li>
+                        <li class="diagram-item flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
+                            <span>This study examines a novel <span class="text-indigo-300 font-bold">agentic AI workflow</span> for screening patient charts for cognitive concerns</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-1/3 flex justify-center items-center">
+                    <div class="text-center">
+                        <i class="fas fa-brain text-8xl text-indigo-400 mb-4 brain-icon"></i>
+                        <div class="text-xl font-bold text-indigo-300">Improving Early Detection</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Methodology - Clinical Setting (Ibrahim Refat) -->
+    <div class="slide slide-hidden" id="slide3">
+        <div class="slide-content bg-gradient-to-r from-gray-900 to-indigo-900 text-white p-10">
+            <h2 class="text-3xl font-bold mb-6 border-b border-indigo-500 pb-2">Methodology: Clinical Setting & Data</h2>
+            <div class="flex">
+                <div class="w-2/3">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-2 text-indigo-300">Clinical Setting</h3>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li class="diagram-item">Clinical notes from Mass General Brigham's Research Patient Data Registry (RPDR)</li>
+                            <li class="diagram-item">Date range: January 1, 2016 - December 31, 2018</li>
+                            <li class="diagram-item">Note types: history, physical exams, clinic visits, discharge summaries, progress notes</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-indigo-300">Study Cohort</h3>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li class="diagram-item">3,338 clinical notes from 200 patients</li>
+                            <li class="diagram-item">Binary classification: patients with vs. without cognitive concerns</li>
+                            <li class="diagram-item">Split into prompt refinement and validation datasets</li>
+                            <li class="diagram-item">Analysis performed: February - August 2024</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="w-1/3">
+                    <div class="bg-indigo-800 rounded-lg p-5 shadow-md">
+                        <h3 class="text-xl font-bold mb-4 text-center text-white">Dataset Statistics</h3>
+                        <table class="w-full text-sm">
+                            <tr class="border-b border-indigo-600">
+                                <td class="py-2 font-bold">Total Patients:</td>
+                                <td class="py-2 text-right">200</td>
+                            </tr>
+                            <tr class="border-b border-indigo-600">
+                                <td class="py-2 font-bold">Total Notes:</td>
+                                <td class="py-2 text-right">3,338</td>
+                            </tr>
+                            <tr class="border-b border-indigo-600">
+                                <td class="py-2 font-bold">Prompt Refinement:</td>
+                                <td class="py-2 text-right">2,228 notes</td>
+                            </tr>
+                            <tr class="border-b border-indigo-600">
+                                <td class="py-2 font-bold">Validation:</td>
+                                <td class="py-2 text-right">1,110 notes</td>
+                            </tr>
+                            <tr class="border-b border-indigo-600">
+                                <td class="py-2 font-bold">Mean Age:</td>
+                                <td class="py-2 text-right">~77 years</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Methodology - LLM (Ibrahim Refat) -->
+    <div class="slide slide-hidden" id="slide4">
+        <div class="slide-content bg-gradient-to-r from-gray-900 to-indigo-900 text-white p-10">
+            <h2 class="text-3xl font-bold mb-6 border-b border-indigo-500 pb-2">Methodology: Large Language Model</h2>
+            <div class="flex flex-wrap">
+                <div class="w-1/2 pr-6">
+                    <h3 class="text-xl font-bold mb-4 text-indigo-300">LLaMA 3 8B</h3>
+                    <ul class="space-y-3">
+                        <li class="diagram-item flex items-start">
+                            <i class="fas fa-cog text-blue-400 mr-2 mt-1"></i>
+                            <span>Open-source LLM developed by Meta AI</span>
+                        </li>
+                        <li class="diagram-item flex items-start">
+                            <i class="fas fa-cog text-blue-400 mr-2 mt-1"></i>
+                            <span>Capable of running locally to ensure data privacy</span>
+                        </li>
+                        <li class="diagram-item flex items-start">
+                            <i class="fas fa-cog text-blue-400 mr-2 mt-1"></i>
+                            <span>Accessible through Meta and Hugging Face library</span>
+                        </li>
+                    </ul>
+
+                    <h3 class="text-xl font-bold mt-6 mb-4 text-indigo-300">Model Configuration</h3>
+                    <ul class="space-y-3">
+                        <li class="diagram-item flex items-start">
+                            <i class="fas fa-sliders-h text-purple-400 mr-2 mt-1"></i>
+                            <span>Temperature: 0.1 (allowing some flexibility while reducing noise)</span>
+                        </li>
+                        <li class="diagram-item flex items-start">
+                            <i class="fas fa-sliders-h text-purple-400 mr-2 mt-1"></i>
+                            <span>Maximum output token length: 256</span>
+                        </li>
+                        <li class="diagram-item flex items-start">
+                            <i class="fas fa-sliders-h text-purple-400 mr-2 mt-1"></i>
+                            <span>Other parameters: default settings</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-1/2">
+                    <h3 class="text-xl font-bold mb-4 text-indigo-300">Infrastructure</h3>
+                    <div class="bg-indigo-800 rounded-lg p-5 mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-server text-3xl text-indigo-300 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold">Local Linux-based Server</h4>
+                                <p>48 Cores (96 Threads)</p>
+                                <p>256GB high-speed RAM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-bold mb-4 text-indigo-300">Approach</h3>
+                    <div class="space-y-3">
+                        <div class="diagram-item bg-indigo-800/50 rounded-lg p-3">
+                            <p><span class="font-bold">Zero-shot approach</span> initially used to determine cognitive concerns</p>
+                        </div>
+                        <div class="diagram-item bg-indigo-800/50 rounded-lg p-3">
+                            <p><span class="font-bold">Generated knowledge prompting</span> applied to improve model responses</p>
+                        </div>
+                        <div class="diagram-item bg-indigo-800/50 rounded-lg p-3">
+                            <p><span class="font-bold">System prompt:</span> Defined LLM's role</p>
+                            <p><span class="font-bold">User prompt:</span> Provided task-specific information</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Methodology - Study Design (Ibrahim Refat) -->
+    <div class="slide slide-hidden" id="slide5">
+        <div class="slide-content bg-gradient-to-r from-gray-900 to-indigo-900 text-white p-10">
+            <h2 class="text-3xl font-bold mb-6 border-b border-indigo-500 pb-2">Methodology: Study Design</h2>
+            <div class="flex flex-col items-center">
+                <div class="w-full mb-6">
+                    <p class="text-lg mb-4 diagram-item">The study utilized two parallel workflows to detect cognitive concerns:</p>
+                    <div class="flex justify-around">
+                        <div class="diagram-item bg-indigo-800 rounded-lg p-4 shadow-lg w-5/12">
+                            <h3 class="text-xl font-bold mb-2 text-indigo-300">Agentic Workflow</h3>
+                            <p class="mb-2">An automated process using specialized agents making inferences through communications and tools</p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Multiple agents working in concert</li>
+                                <li>Self-improving through iterations</li>
+                                <li>Fully automated classification process</li>
+                            </ul>
+                        </div>
+                        <div class="diagram-item bg-indigo-800 rounded-lg p-4 shadow-lg w-5/12">
+                            <h3 class="text-xl font-bold mb-2 text-indigo-300">Expert-Driven Workflow</h3>
+                            <p class="mb-2">Created as a benchmark, combining LLM capabilities with clinical expertise</p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Relied on neurologist expertise</li>
+                                <li>Manual review of false positives/negatives</li>
+                                <li>Iterative prompt refinement</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="w-full diagram-item">
+                    <h3 class="text-xl font-bold mb-4 text-indigo-300">Classification Process</h3>
+                    <div class="bg-indigo-800/50 rounded-lg p-5">
+                        <ol class="list-decimal pl-5 space-y-3">
+                            <li>LLM operated on individual notes with initial prompt (P0): <span class="bg-gray-800 px-2 py-1 rounded text-sm">"Is this note indicative of any cognitive concern, yes or no?"</span></li>
+                            <li>Patient-level classification determined by aggregating responses for all their notes:
+                                <ul class="list-disc pl-5 mt-2">
+                                    <li>If ANY responses indicated cognitive concerns → <span class="font-bold text-green-400">WITH cognitive concerns</span></li>
+                                    <li>If ALL responses indicated absence → <span class="font-bold text-red-400">WITHOUT cognitive concerns</span></li>
+                                    <li>If outputs were misformatted/inconclusive → <span class="font-bold text-yellow-400">UNCERTAIN</span> (excluded from analysis)</li>
+                                </ul>
+                            </li>
+                            <li>Performance metrics calculated against chart-reviewed (ground truth) labels</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Agentic Workflow (Tanvir Ahmed Eamon) -->
+    <div class="slide slide-hidden" id="slide6">
+        <div class="slide-content bg-gradient-to-r from-indigo-900 to-purple-900 text-white p-10">
+            <h2 class="text-3xl font-bold mb-6 border-b border-indigo-500 pb-2">Agentic Workflow: Overview</h2>
+            <div class="flex flex-col">
+                <p class="text-lg mb-4 diagram-item">The agentic workflow comprised six specialized agents working together to automatically refine prompts and enhance LLM capabilities:</p>
+                
+                <div class="grid grid-cols-3 gap-4 mb-6">
+                    <div class="diagram-item bg-indigo-800/80 rounded-lg p-4 shadow-md">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-user-md text-2xl text-indigo-300 mr-2"></i>
+                            <h3 class="text-lg font-bold">Specialist</h3>
+                        </div>
+                        <p class="text-sm">Expert in evaluating patients with cognitive concerns. Takes prompt and clinical notes as input, generating yes/no answers with reasoning.</p>
+                    </div>
+                    
+                    <div class="diagram-item bg-indigo-800/80 rounded-lg p-4 shadow-md">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-clipboard-check text-2xl text-indigo-300 mr-2"></i>
+                            <h3 class="text-lg font-bold">Evaluator</h3>
+                        </div>
+                        <p class="text-sm">Determines labels by aggregating responses across patient notes. Compares to reference labels and generates evaluation metrics.</p>
+                    </div>
+                    
+                    <div class="diagram-item bg-indigo-800/80 rounded-lg p-4 shadow-md">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-chart-line text-2xl text-indigo-300 mr-2"></i>
+                            <h3 class="text-lg font-bold">Specificity Improver</h3>
+                        </div>
+                        <p class="text-sm">Analyzes false positive examples to identify reasons for misclassification, refining prompts to increase specificity.</p>
+                    </div>
+                    
+                    <div class="diagram-item bg-indigo-800/80 rounded-lg p-4 shadow-md">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-search-plus text-2xl text-indigo-300 mr-2"></i>
+                            <h3 class="text-lg font-bold">Sensitivity Improver</h3>
+                        </div>
+                        <p class="text-sm">Focuses on false negative cases, seeking evidence of cognitive concerns that the LLM may have missed.</p>
+                    </div>
+                    
+                    <div class="diagram-item bg-indigo-800/80 rounded-lg p-4 shadow-md">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-compress-alt text-2xl text-indigo-300 mr-2"></i>
+                            <h3 class="text-lg font-bold">Summarizer 1</h3>
+                        </div>
+                        <p class="text-sm">Summarizes improvements suggested by the Specificity Improver for each case into one new improved prompt.</p>
+                    </div>
+                    
+                    <div class="diagram-item bg-indigo-800/80 rounded-lg p-4 shadow-md">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-compress-alt text-2xl text-indigo-300 mr-2"></i>
+                            <h3 class="text-lg font-bold">Summarizer 2</h3>
+                        </div>
+                        <p class="text-sm">Summarizes findings from the Sensitivity Improver and refines prompt by incorporating findings and SOP.</p>
+                    </div>
+                </div>
+                
+                <div class="w-full diagram-item">
+                    <h3 class="text-xl font-bold mb-4 text-indigo-300">Iterative Process</h3>
+                    <div class="bg-indigo-800/50 rounded-lg p-5">
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>If sensitivity < 0.8: Task directed to Sensitivity Improver → Summarizer 1 → Specialist</li>
+                            <li>Similar process followed for specificity enhancement</li>
+                            <li>Maximum of three iterations configured by default</li>
+                            <li>Process concludes when:
+                                <ul class="list-disc pl-5 mt-1">
+                                    <li>Both sensitivity and specificity ≥ 0.8, OR</li>
+                                    <li>Change in sensitivity < 0.1</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Agentic Workflow - Prompts (Tanvir Ahmed Eamon) -->
+    <div class="slide slide-hidden" id="slide7">
+        <div class="slide-content bg-gradient-to-r from-indigo-900 to-purple-900 text-white p-10">
+            <h2 class="text-3xl font-bold mb-6 border-b border-indigo-500 pb-2">Agentic Workflow: Prompts & Iterations</h2>
+            
+            <div class="grid grid-cols-3 gap-6">
+                <div class="col-span-3 diagram-item">
+                    <p class="mb-4">The agentic workflow required <span class="font-bold text-indigo-300">only two iterations</span> to achieve minimum thresholds for sensitivity and specificity (0.8).</p>
+                </div>
+                
+                <div class="diagram-item bg-indigo-800/80 rounded-lg p-5 shadow-lg">
+                    <h3 class="text-xl font-bold mb-3 text-center text-white">Initial Prompt (P0)</h3>
+                    <div class="bg-gray-800 p-4 rounded-lg text-gray-200">
+                        <p class="mb-2"><span class="text-indigo-300 font-bold">System:</span> You are a neurologist.</p>
+                        <p><span class="text-indigo-300 font-bold">User:</span> Is this note indicative of any cognitive concern, yes or no?</p>
+                    </div>
+                </div>
+                
+                <div class="diagram-item bg-indigo-800/80 rounded-lg p-5 shadow-lg">
+                    <h3 class="text-xl font-bold mb-3 text-center text-white">Agent Prompt 1 (AP1)</h3>
+                    <div class="bg-gray-800 p-4 rounded-lg text-gray-200">
+                        <p>Is this note indicative of any cognitive concern, yes or no? Please consider the patient's medical history, symptoms, and physical examination findings, as well as any relevant keywords or phrases, to determine if there are any red flags for cognitive impairment or decline.</p>
+                    </div>
+                </div>
+                
+                <div class="diagram-item bg-indigo-800/80 rounded-lg p-5 shadow-lg">
+                    <h3 class="text-xl font-bold mb-3 text-center text-white">Agent Prompt 2 (AP2)</h3>
+                    <div class="bg-gray-800 p-4 rounded-lg text-gray-200 h-full overflow-auto">
+                        <p>Is this note indicative of any cognitive concern, yes or no?</p>
+                        <p class="mt-2">This question can be answered by reviewing the note for mentions of:</p>
+                        <ul class="list-disc pl-5 mt-1">
+                            <li>Medications commonly used to treat cognitive impairment</li>
+                            <li>Diagnoses or symptoms related to dementia, Alzheimer's disease, or memory issues</li>
+                            <li>Cognitive assessments (e.g. MOCA, MMSE)</li>
+                            <li>Behavioral symptoms</li>
+                            <li>Reported cognitive changes or objective evidence of impairment</li>
+                            <li>Preserved independence in functional abilities</li>
+                            <li>Absence of delirium or major psychiatric disorders</li>
+                        </ul>
+                        <p class="mt-2">If any of these criteria are met, the answer is "yes". Otherwise, the answer is "no".</p>
+                    </div>
+                </div>
+                
+                <div class="col-span-3 diagram-item">
+                    <h3 class="text-xl font-bold mb-4 text-indigo-300">Iteration Process Findings</h3>
+                    <div class="bg-indigo-800/50 rounded-lg p-5">
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>First iteration: SOP provided to Summarizer 1 instead of Specificity Improver
+                                <ul class="list-disc pl-5 mt-1">
+                                    <li>Resulted in unexpected outcomes - specificity decreased from 0.2 to 0.05</li>
+                                </ul>
+                            </li>
+                            <li>Second iteration: SOP provided to Specificity Improver
+                                <ul class="list-disc pl-5 mt-1">
+                                    <li>Successfully increased specificity from 0.20 to 1.00</li>
+                                    <li>AP2 classified 33 cases as uncertain</li>
+                                    <li>F1-score increased from 0.70 to 0.91</li>
+                                    <li>Sensitivity decreased from 0.94 to 0.84</li>
+                                    <li>Significant improvements in accuracy (0.59 → 0.90) and PPV (0.56 → 1.00)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Expert-Driven Workflow (Tanvir Ahmed Eamon) -->
+<div class="slide slide-hidden" id="slide8">
+    <div class="flex flex-col h-full justify-between p-8 bg-gradient-to-br from-blue-100 to-white">
+        <div>
+            <h2 class="text-3xl font-bold text-blue-800 mb-6">
+                Expert-Driven Workflow
+                <span class="text-lg font-normal text-gray-500 ml-2">
+                    Presented by: Tanvir Ahmed Eamon
+                </span>
+            </h2>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold text-blue-700 mb-4">Workflow Process</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                        <li>Begin with initial prompt (P0) for individual notes</li>
+                        <li>Aggregate responses to classify patients</li>
+                        <li>Generate evaluation metrics report</li>
+                        <li>Expert review of false positives & negatives</li>
+                        <li>Revise prompts based on clinical expertise</li>
+                        <li>Submit improved prompts to LLM for testing</li>
+                        <li>Further optimize using ChatGPT-4o</li>
+                    </ol>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold text-blue-700 mb-4">Expert-Driven Results</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
+                            <p>Required 4 iterations to achieve optimal performance</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
+                            <p>Final prompt (XP4) achieved F1-score of 0.90</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
+                            <p>Balanced sensitivity (0.87) and specificity (0.91)</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
+                            <p>High precision: PPV (0.93) and NPV (0.93)</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
+                            <p>Overall accuracy of 89%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <h4 class="text-blue-800 font-semibold mb-2 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Key Insight
+                </h4>
+                <p class="text-gray-700">Expert-driven workflow achieved high performance but required more iterations and clinical expertise compared to the agentic approach.</p>
+            </div>
+        </div>
+        
+        <div class="flex justify-between items-center mt-4">
+            <div class="flex items-center text-sm text-gray-500">
+                <span>Slide 8/15</span>
+            </div>
+            <div class="text-sm text-gray-500">
+                Green University of Bangladesh | AI Course (221_D14)
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // DOM Elements
+const slides = document.querySelectorAll('.slide');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const progressBar = document.getElementById('progressBar');
+const slideIndicator = document.getElementById('slideIndicator');
+
+// Variables
+let currentSlide = 0;
+const totalSlides = slides.length;
+
+// Initialize
+updateProgressBar();
+updateSlideIndicator();
+animateDiagramItems(currentSlide);
+
+// Create control buttons if they don't exist
+if (!prevBtn || !nextBtn) {
+    createControlButtons();
+}
+
+// Functions
+function createControlButtons() {
+    // Create controls container if it doesn't exist
+    let controls = document.querySelector('.controls');
+    if (!controls) {
+        controls = document.createElement('div');
+        controls.className = 'controls';
+        document.body.appendChild(controls);
+    }
+
+    // Create previous button
+    const prevButton = document.createElement('button');
+    prevButton.id = 'prevBtn';
+    prevButton.className = 'control-btn';
+    prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+    prevButton.addEventListener('click', prevSlide);
+    controls.appendChild(prevButton);
+
+    // Create next button
+    const nextButton = document.createElement('button');
+    nextButton.id = 'nextBtn';
+    nextButton.className = 'control-btn';
+    nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+    nextButton.addEventListener('click', nextSlide);
+    controls.appendChild(nextButton);
+}
+
+function updateProgressBar() {
+    const progress = ((currentSlide + 1) / totalSlides) * 100;
+    progressBar.style.width = `${progress}%`;
+}
+
+function updateSlideIndicator() {
+    slideIndicator.textContent = `Slide ${currentSlide + 1}/${totalSlides}`;
+}
+
+function goToSlide(slideIndex) {
+    // Handle out of bounds
+    if (slideIndex < 0) {
+        slideIndex = 0;
+    } else if (slideIndex >= totalSlides) {
+        slideIndex = totalSlides - 1;
+    }
+
+    // Update classes
+    slides.forEach((slide, index) => {
+        if (index === slideIndex) {
+            slide.classList.remove('slide-hidden');
+            slide.classList.add('slide-visible');
+        } else {
+            slide.classList.remove('slide-visible');
+            slide.classList.add('slide-hidden');
+        }
+    });
+
+    // Update current slide
+    currentSlide = slideIndex;
+
+    // Update UI
+    updateProgressBar();
+    updateSlideIndicator();
+    
+    // Animate diagram items
+    animateDiagramItems(currentSlide);
+    
+    // Update presenter name based on slide
+    updatePresenterName(slideIndex);
+}
+
+function nextSlide() {
+    goToSlide(currentSlide + 1);
+}
+
+function prevSlide() {
+    goToSlide(currentSlide - 1);
+}
+
+function animateDiagramItems(slideIndex) {
+    // Reset all animations
+    document.querySelectorAll('.diagram-item').forEach(item => {
+        item.classList.remove('animate');
+    });
+    
+    // Animate items in current slide
+    const currentItems = slides[slideIndex].querySelectorAll('.diagram-item');
+    
+    currentItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.classList.add('animate');
+        }, 100 * index); // Stagger animations
+    });
+}
+
+function updatePresenterName(slideIndex) {
+    const presenterName = document.getElementById('presenterName');
+    
+    // Define presenters for each slide
+    if (slideIndex >= 0 && slideIndex <= 4) {
+        presenterName.textContent = 'Ibrahim Refat';
+    } else if (slideIndex >= 5 && slideIndex <= 7) {
+        presenterName.textContent = 'Tanvir Ahmed Eamon';
+    } else if (slideIndex >= 8) {
+        presenterName.textContent = 'Ibrahim Al Rifat';
+    }
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+        nextSlide();
+    } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+    } else if (e.key >= '1' && e.key <= '9') {
+        // Go to slide number (1-9)
+        const slideNum = parseInt(e.key) - 1;
+        if (slideNum < totalSlides) {
+            goToSlide(slideNum);
+        }
+    }
+});
+
+// Touch navigation
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    const threshold = 50; // Minimum distance to consider as swipe
+    
+    if (touchEndX - touchStartX > threshold) {
+        // Swipe right (previous)
+        prevSlide();
+    } else if (touchStartX - touchEndX > threshold) {
+        // Swipe left (next)
+        nextSlide();
+    }
+}
+
+// Initialize click listeners
+if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+</script>
+
+</body>
+</html>
