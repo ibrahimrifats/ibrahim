@@ -9,137 +9,266 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
+        /* Universe background */
+        body {
+            background: #000;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        #universe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+        }
+        
+        .rocket-star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes moveRight {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(calc(100vw + 100px)); }
+        }
+        
+        @keyframes moveLeft {
+            0% { transform: translateX(calc(100vw + 100px)); }
+            100% { transform: translateX(-100px); }
+        }
+        
+        @keyframes moveDown {
+            0% { transform: translateY(-100px); }
+            100% { transform: translateY(calc(100vh + 100px)); }
+        }
+        
+        @keyframes moveUp {
+            0% { transform: translateY(calc(100vh + 100px)); }
+            100% { transform: translateY(-100px); }
+        }
+        
+        /* Glass effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .glass-button {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
         .gradient-text {
             background: linear-gradient(45deg, #3490dc, #6574cd);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        
+        .neon-text {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 
+                         0 0 20px rgba(255, 255, 255, 0.5),
+                         0 0 30px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Project card overlay */
         .project-card:hover .project-overlay {
             opacity: 1;
         }
+        
+        /* Certificate card hover */
         .certificate-card {
             transition: transform 0.3s ease;
         }
+        
         .certificate-card:hover {
             transform: translateY(-5px);
         }
+        
+        /* Navigation */
+        nav {
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.7) !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+        }
     </style>
 </head>
-<body class="bg-gray-900 text-white font-serif">
+<body class="text-white font-serif">
+    <!-- Universe Background -->
+    <div id="universe"></div>
+    
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg fixed w-full z-50">
+    <nav class="glass fixed w-full z-50">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center space-x-2">
-                    <i class="fas fa-code text-indigo-600 text-2xl"></i>
-                    <span class="font-bold text-xl text-gray-800">IBRAHIM</span>
+                    <i class="fas fa-code text-indigo-400 text-2xl"></i>
+                    <span class="font-bold text-xl text-white neon-text">IBRAHIM</span>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-indigo-600 transition">Home</a>
-                    <a href="#skills" class="text-gray-700 hover:text-indigo-600 transition">Skills</a>
-                    <a href="#projects" class="text-gray-700 hover:text-indigo-600 transition">Projects</a>
-                    <a href="#certificates" class="text-gray-700 hover:text-indigo-600 transition">Certificates</a>
-                    <a href="#contact" class="text-gray-700 hover:text-indigo-600 transition">Contact</a>
-                    <a href="blog-premium.html" class="text-gray-700 hover:text-indigo-600 transition">Blog</a>
+                    <a href="#home" class="text-gray-300 hover:text-white transition">Home</a>
+                    <a href="#skills" class="text-gray-300 hover:text-white transition">Skills</a>
+                    <a href="#projects" class="text-gray-300 hover:text-white transition">Projects</a>
+                    <a href="#certificates" class="text-gray-300 hover:text-white transition">Certificates</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a>
+                    <a href="blog-premium.html" class="text-gray-300 hover:text-white transition">Blog</a>
                 </div>
                 <button class="md:hidden" onclick="toggleMenu()">
-                    <i class="fas fa-bars text-2xl text-gray-800"></i>
+                    <i class="fas fa-bars text-2xl text-white"></i>
                 </button>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white p-4">
-            <a href="#home" class="block py-2 text-gray-700 hover:text-indigo-600">Home</a>
-            <a href="blog-premium.html" class="text-gray-700 hover:text-indigo-600 transition">Blog</a>
-            <a href="#skills" class="block py-2 text-gray-700 hover:text-indigo-600">Skills</a>
-            <a href="#projects" class="block py-2 text-gray-700 hover:text-indigo-600">Projects</a>
-            <a href="#certificates" class="block py-2 text-gray-700 hover:text-indigo-600">Certificates</a>
-            <a href="#contact" class="block py-2 text-gray-700 hover:text-indigo-600">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden glass p-4">
+            <a href="#home" class="block py-2 text-gray-300 hover:text-white">Home</a>
+            <a href="blog-premium.html" class="block py-2 text-gray-300 hover:text-white">Blog</a>
+            <a href="#skills" class="block py-2 text-gray-300 hover:text-white">Skills</a>
+            <a href="#projects" class="block py-2 text-gray-300 hover:text-white">Projects</a>
+            <a href="#certificates" class="block py-2 text-gray-300 hover:text-white">Certificates</a>
+            <a href="#contact" class="block py-2 text-gray-300 hover:text-white">Contact</a>
         </div>
     </nav>
-
+    
     <!-- Hero Section -->
-    <section id="home" class="pt-24 pb-16 bg-gradient-to-br from-indigo-500 to-purple-600 text-white">
+    <section id="home" class="pt-24 pb-16">
         <div class="container mx-auto px-4 py-16">
             <div class="flex flex-col md:flex-row items-center justify-between">
                 <div class="md:w-1/2 text-center md:text-left" data-aos="fade-right">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Ibrahim Rifat</h1>
-                    <p class="text-xl mb-8">Turning ideas into elegant solutions</p>
-                    <p class="text-xl mb-8">CSE student at Green University of Bangladesh, focused on tech innovation and entrepreneurship. </p>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 neon-text">Ibrahim Rifat</h1>
+                    <p class="text-xl mb-8 text-gray-300">Turning ideas into elegant solutions</p>
+                    <p class="text-xl mb-8 text-gray-300">CSE student at Green University of Bangladesh, focused on tech innovation and entrepreneurship.</p>
                     <div class="flex justify-center md:justify-start space-x-4">
-                        <a href="#contact" class="bg-white text-indigo-600 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition">Get in Touch</a>
-                        <a href="#projects" class="border-2 border-white text-white px-6 py-3 rounded-full font-bold hover:bg-white hover:text-indigo-600 transition">View Projects</a>
+                        <a href="#contact" class="glass-button text-white px-6 py-3 rounded-full font-bold">Get in Touch</a>
+                        <a href="#projects" class="glass-button text-white px-6 py-3 rounded-full font-bold">View Projects</a>
                     </div>
                 </div>
                 <div class="md:w-1/4 mt-8 md:mt-0" data-aos="fade-left">
-                    <img src="working-from.gif" alt="Hero Image" class="rounded-lg shadow-xl">
+                    <img src="working-from.gif" alt="Hero Image" class="rounded-lg shadow-xl glass-card">
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Skills Section -->
-    <section id="skills" class="py-16 bg-black border border-white ">
+    <section id="skills" class="py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 ">Technical Skills</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 neon-text">Technical Skills</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class=" p-6 rounded-xl shadow-lg hover:shadow-xl transition bg-black border border-white p-4" data-aos="fade-up">
+                <div class="glass-card p-6 rounded-xl" data-aos="fade-up">
                     <div class="text-center mb-4">
-                        <i class="fas fa-code text-4xl "></i>
+                        <i class="fas fa-code text-4xl text-indigo-400"></i>
                     </div>
                     <h3 class="text-xl font-bold text-center mb-4">Programming</h3>
                     <div class="space-y-3">
                         <div class="relative pt-1">
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-sm font-semibold">Python</span>
-                                
                             </div>
-                            <div class="bg-gray-200 rounded-full h-2">
+                            <div class="bg-gray-800 rounded-full h-2">
                                 <div class="bg-orange-600 rounded-full h-2" style="width: 90%"></div>
                             </div>
                         </div>
                         <div class="relative pt-1">
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-sm font-semibold">C++</span>
-                                
                             </div>
-                            <div class="bg-gray-200 rounded-full h-2">
+                            <div class="bg-gray-800 rounded-full h-2">
                                 <div class="bg-blue-600 rounded-full h-2" style="width: 90%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="bg-black border border-white p-4 p-6 rounded-xl shadow-lg hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
+                <div class="glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="100">
                     <div class="text-center mb-4">
-                        <i class="fas fa-layer-group text-4xl text-indigo-600"></i>
+                        <i class="fas fa-layer-group text-4xl text-indigo-400"></i>
                     </div>
                     <h3 class="text-xl font-bold text-center mb-4">Frameworks</h3>
                     <div class="space-y-3">
                         <div class="relative pt-1">
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-sm font-semibold">Django</span>
-                                
                             </div>
-                            <div class="bg-gray-200 rounded-full h-2">
+                            <div class="bg-gray-800 rounded-full h-2">
                                 <div class="bg-green-800 rounded-full h-2" style="width: 85%"></div>
                             </div>
                         </div>
                         <div class="relative pt-1">
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-sm font-semibold">Flask</span>
-                               
                             </div>
-                            <div class="bg-gray-200 rounded-full h-2">
+                            <div class="bg-gray-800 rounded-full h-2">
                                 <div class="bg-gray-600 rounded-full h-2" style="width: 80%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="bg-black border border-white p-4 p-6 rounded-xl shadow-lg hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
+                <div class="glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="200">
                     <div class="text-center mb-4">
-                        <i class="fas fa-tools text-4xl text-indigo-600"></i>
+                        <i class="fas fa-tools text-4xl text-indigo-400"></i>
                     </div>
                     <h3 class="text-xl font-bold text-center mb-4">Tools</h3>
                     <ul class="space-y-2">
@@ -157,10 +286,9 @@
                         </li>
                     </ul>
                 </div>
-
-                <div class="bg-black border border-white p-4 rounded-xl shadow-lg hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="300">
+                <div class="glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="300">
                     <div class="text-center mb-4">
-                        <i class="fas fa-users text-4xl text-indigo-600"></i>
+                        <i class="fas fa-users text-4xl text-indigo-400"></i>
                     </div>
                     <h3 class="text-xl font-bold text-center mb-4">Soft Skills</h3>
                     <ul class="space-y-2">
@@ -181,198 +309,184 @@
             </div>
         </div>
     </section>
-
+    
     <!-- Projects Section -->
-    <section id="projects" class="py-16 bg-gray-800">
+    <section id="projects" class="py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 ">Featured Projects</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 neon-text">Featured Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Restaurant Order Book App -->
-                <div class=" border border-white p-4 rounded-xl shadow-lg overflow-hidden project-card" data-aos="fade-up">
+                <div class="glass-card rounded-xl overflow-hidden project-card" data-aos="fade-up">
                     <img src="restaurant.jpg" alt="Restaurant App" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Restaurant Order Book App</h3>
-                        <p class="text-gray-400 mb-4">A comprehensive restaurant management system with real-time order tracking and inventory management.</p>
+                        <p class="text-gray-300 mb-4">A comprehensive restaurant management system with real-time order tracking and inventory management.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">Django</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">React</span>
-                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">PostgreSQL</span>
+                            <span class="px-3 py-1 bg-indigo-900 text-indigo-300 rounded-full text-sm">Django</span>
+                            <span class="px-3 py-1 bg-blue-900 text-blue-300 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-green-900 text-green-300 rounded-full text-sm">PostgreSQL</span>
                         </div>
                         <div class="flex justify-between items-center">
-                            <a href="#" class=" hover:text-indigo-800 font-medium">
+                            <a href="#" class="text-indigo-300 hover:text-indigo-100 font-medium">
                                 <i class="fab fa-github mr-2"></i>View Code
                             </a>
-                            <a href="#" class=" hover:text-indigo-800 font-medium">
+                            <a href="#" class="text-indigo-300 hover:text-indigo-100 font-medium">
                                 <i class="fas fa-external-link-alt mr-2"></i>Live Demo
                             </a>
                         </div>
                     </div>
                 </div>
-
                 <!-- Railway Ticket Booking System -->
-                <div class=" border border-white p-4 rounded-xl shadow-lg overflow-hidden project-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="glass-card rounded-xl overflow-hidden project-card" data-aos="fade-up" data-aos-delay="100">
                     <img src="train.jpg" alt="Railway Booking" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Railway Ticket Booking</h3>
-                        <p class="text-gray-400 mb-4">Online platform for booking railway tickets with real-time seat availability and secure payment integration.</p>
+                        <p class="text-gray-300 mb-4">Online platform for booking railway tickets with real-time seat availability and secure payment integration.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">C-programming</span>
-                            
+                            <span class="px-3 py-1 bg-indigo-900 text-indigo-300 rounded-full text-sm">C-programming</span>
                         </div>
                         <div class="flex justify-between items-center">
-                            <a href="#" class=" hover:text-indigo-800 font-medium">
+                            <a href="#" class="text-indigo-300 hover:text-indigo-100 font-medium">
                                 <i class="fab fa-github mr-2"></i>View Code
                             </a>
-                            <a href="#" class=" hover:text-indigo-800 font-medium">
+                            <a href="#" class="text-indigo-300 hover:text-indigo-100 font-medium">
                                 <i class="fas fa-external-link-alt mr-2"></i>Live Demo
                             </a>
                         </div>
                     </div>
                 </div>
-
                 <!-- TODO App -->
-                <div class="bg-black-700 border border-white p-4 rounded-xl shadow-lg overflow-hidden project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="glass-card rounded-xl overflow-hidden project-card" data-aos="fade-up" data-aos-delay="200">
                     <img src="todo.jpg" alt="TODO App" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">TODO App</h3>
-                        <p class="text-gray-400 mb-4">Feature-rich task management application with categories, priorities, and deadline reminders.</p>
+                        <p class="text-gray-300 mb-4">Feature-rich task management application with categories, priorities, and deadline reminders.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">React</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Django</span>
-                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">MongoDB</span>
+                            <span class="px-3 py-1 bg-indigo-900 text-indigo-300 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-blue-900 text-blue-300 rounded-full text-sm">Django</span>
+                            <span class="px-3 py-1 bg-green-900 text-green-300 rounded-full text-sm">MongoDB</span>
                         </div>
                         <div class="flex justify-between items-center">
-                            <a href="#" class=" hover:text-indigo-800 font-medium">
+                            <a href="#" class="text-indigo-300 hover:text-indigo-100 font-medium">
                                 <i class="fab fa-github mr-2"></i>View Code
                             </a>
-                            <a href="#" class=" hover:text-indigo-800 font-medium">
+                            <a href="#" class="text-indigo-300 hover:text-indigo-100 font-medium">
                                 <i class="fas fa-external-link-alt mr-2"></i>Live Demo
                             </a>
                         </div>
                     </div>
                 </div>
-
                 <!-- Warrior Project -->
-        <div class="border border-white p-4 rounded-xl shadow-lg overflow-hidden project-card" data-aos="fade-up" data-aos-delay="100">
-            <img src="map.jpg" alt="map" class="w-full h-48 object-cover">
-            <div class="p-6">
-                <h3 class="text-xl font-bold mb-2">Warrior: A Simple JavaScript Project</h3>
-                <p class="text-gray-400 mb-4">⚔️🔥🪖</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                    <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">D3.js and Leaflet.js</span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <a href="https://ibrahim-sage.vercel.app/Conquer-map.html" class="hover:text-indigo-800 font-medium">
-                        <i class="fab fa-github mr-2"></i>View Code
-                    </a>
-                    <a href="https://ibrahim-sage.vercel.app/Conquer-map.html" class="hover:text-indigo-800 font-medium">
-                        <i class="fas fa-external-link-alt mr-2"></i>Live Demo
-                    </a>
+                <div class="glass-card rounded-xl overflow-hidden project-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="map.jpg" alt="map" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Warrior: A Simple JavaScript Project</h3>
+                        <p class="text-gray-300 mb-4">⚔️🔥🪖</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-indigo-900 text-indigo-300 rounded-full text-sm">D3.js and Leaflet.js</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <a href="https://ibrahim-sage.vercel.app/Conquer-map.html" class="text-indigo-300 hover:text-indigo-100 font-medium">
+                                <i class="fab fa-github mr-2"></i>View Code
+                            </a>
+                            <a href="https://ibrahim-sage.vercel.app/Conquer-map.html" class="text-indigo-300 hover:text-indigo-100 font-medium">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-                
-            </div>
-        </div>
-
-        
-        
     </section>
-
+    
     <!-- Certificates Section -->
-    <section id="certificates" class="py-16 border border-white ">
-        <div class="container mx-auto px-4 ">
+    <section id="certificates" class="py-16">
+        <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Certificates & Achievements</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Competitive Programming Certificates -->
-                <div class="certificate-card bg-white rounded-xl shadow-lg p-6" data-aos="fade-up">
+                <div class="certificate-card glass-card p-6" data-aos="fade-up">
                     <img src="icpc.png" alt="ICPC Certificate" class="w-full h-48 object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-bold mb-2">2022-ICPC Asia Dhaka Preliminary</h3>
-                    <p class="text-gray-600 mb-4">Successfully participated in the International Collegiate Programming Contest</p>
-                    <a href="#" class="text-indigo-600 hover:text-indigo-800 flex items-center">
+                    <p class="text-gray-300 mb-4">Successfully participated in the International Collegiate Programming Contest</p>
+                    <a href="#" class="text-indigo-300 hover:text-indigo-100 flex items-center">
                         <i class="fas fa-certificate mr-2"></i>
                         View Credential
                     </a>
                 </div>
-
-                <div class="certificate-card bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="certificate-card glass-card p-6" data-aos="fade-up" data-aos-delay="100">
                     <img src="Mohammad Ibrahim Rifat (IBRAHIM REFAT)'s certificate for Meta Hacker Cup - 2023-1.png" alt="Meta Hacker Cup" class="w-full h-48 object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-bold mb-2">Meta Hacker Cup Round 1</h3>
-                    <p class="text-gray-600 mb-4">Qualified for Round 1 in Meta's global programming competition</p>
-                    <a href="#" class="text-indigo-600 hover:text-indigo-800 flex items-center">
+                    <p class="text-gray-300 mb-4">Qualified for Round 1 in Meta's global programming competition</p>
+                    <a href="#" class="text-indigo-300 hover:text-indigo-100 flex items-center">
                         <i class="fas fa-certificate mr-2"></i>
                         View Credential
                     </a>
                 </div>
-
-                <div class="certificate-card bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="certificate-card glass-card p-6" data-aos="fade-up" data-aos-delay="200">
                     <img src="googleCodejamCertificate_page-0001.jpg" alt="Google Code Jam" class="w-full h-48 object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-bold mb-2">Google Code Jam</h3>
-                    <p class="text-gray-600 mb-4">Participated in Google's prestigious coding competition</p>
-                    <a href="#" class="text-indigo-600 hover:text-indigo-800 flex items-center">
+                    <p class="text-gray-300 mb-4">Participated in Google's prestigious coding competition</p>
+                    <a href="#" class="text-indigo-300 hover:text-indigo-100 flex items-center">
                         <i class="fas fa-certificate mr-2"></i>
                         View Credential
                     </a>
                 </div>
             </div>
-
             <!-- Online Course Certificates -->
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-gray-50 rounded-lg p-4 hover:shadow-md transition" data-aos="fade-up">
+                <div class="glass-card rounded-lg p-4 hover:shadow-md transition" data-aos="fade-up">
                     <h4 class="font-semibold">Machine Learning</h4>
-                    <p class="text-sm text-gray-600">Coursera</p>
-                    <a href="https://www.coursera.org/account/accomplishments/certificate/NCAC95WUJK2N" class="text-indigo-600 text-sm hover:underline">View Certificate</a>
+                    <p class="text-sm text-gray-300">Coursera</p>
+                    <a href="https://www.coursera.org/account/accomplishments/certificate/NCAC95WUJK2N" class="text-indigo-300 text-sm hover:underline">View Certificate</a>
                 </div>
-
-                <div class="bg-gray-50 rounded-lg p-4 hover:shadow-md transition" data-aos="fade-up" data-aos-delay="100">
+                <div class="glass-card rounded-lg p-4 hover:shadow-md transition" data-aos="fade-up" data-aos-delay="100">
                     <h4 class="font-semibold">LangChain</h4>
-                    <p class="text-sm text-gray-600">Coursera</p>
-                    <a href="#" class="text-indigo-600 text-sm hover:underline">View Certificate</a>
+                    <p class="text-sm text-gray-300">Coursera</p>
+                    <a href="#" class="text-indigo-300 text-sm hover:underline">View Certificate</a>
                 </div>
-
-                <div class="bg-gray-50 rounded-lg p-4 hover:shadow-md transition" data-aos="fade-up" data-aos-delay="200">
+                <div class="glass-card rounded-lg p-4 hover:shadow-md transition" data-aos="fade-up" data-aos-delay="200">
                     <h4 class="font-semibold">Data Structures</h4>
-                    <p class="text-sm text-gray-600">Coursera</p>
-                    <a href="https://www.coursera.org/account/accomplishments/certificate/2PSV24C7WESH" class="text-indigo-600 text-sm hover:underline">View Certificate</a>
+                    <p class="text-sm text-gray-300">Coursera</p>
+                    <a href="https://www.coursera.org/account/accomplishments/certificate/2PSV24C7WESH" class="text-indigo-300 text-sm hover:underline">View Certificate</a>
                 </div>
-
-                <div class="bg-gray-50 rounded-lg p-4 hover:shadow-md transition" data-aos="fade-up" data-aos-delay="300">
+                <div class="glass-card rounded-lg p-4 hover:shadow-md transition" data-aos="fade-up" data-aos-delay="300">
                     <h4 class="font-semibold">Python Programming</h4>
-                    <p class="text-sm text-gray-600">Coursera</p>
-                    <a href="https://www.coursera.org/account/accomplishments/certificate/3EM6J8TRFN38" class="text-indigo-600 text-sm hover:underline">View Certificate</a>
+                    <p class="text-sm text-gray-300">Coursera</p>
+                    <a href="https://www.coursera.org/account/accomplishments/certificate/3EM6J8TRFN38" class="text-indigo-300 text-sm hover:underline">View Certificate</a>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-gradient-to-br from-indigo-500 to-purple-600">
+    <section id="contact" class="py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-white">Get In Touch</h2>
-            <div class="max-w-3xl mx-auto border border-white p-4 rounded-xl shadow-lg p-8">
+            <h2 class="text-3xl font-bold text-center mb-12 neon-text">Get In Touch</h2>
+            <div class="max-w-3xl mx-auto glass-card rounded-xl p-8">
                 <form class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block  mb-2">Name</label>
-                            <input type="text" class="w-full px-4 py-3 text-black rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition">
+                            <label class="block text-gray-300 mb-2">Name</label>
+                            <input type="text" class="w-full px-4 py-3 bg-gray-800 bg-opacity-50 text-white rounded-lg border border-gray-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition">
                         </div>
                         <div>
-                            <label class="block  mb-2">Email</label>
-                            <input type="email" class="w-full px-4 py-3 text-black rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition">
+                            <label class="block text-gray-300 mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 bg-gray-800 bg-opacity-50 text-white rounded-lg border border-gray-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition">
                         </div>
                     </div>
                     <div>
-                        <label class="block mb-2">Message</label>
-                        <textarea rows="4" class="w-full px-4 py-3 text-black rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition"></textarea>
+                        <label class="block text-gray-300 mb-2">Message</label>
+                        <textarea rows="4" class="w-full px-4 py-3 bg-gray-800 bg-opacity-50 text-white rounded-lg border border-gray-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition"></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-gray-800 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">Send Message</button>
+                    <button type="submit" class="w-full glass-button text-white py-3 rounded-lg font-semibold">Send Message</button>
                 </form>
             </div>
         </div>
     </section>
-
+    
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12 border border-white">
+    <footer class="py-12">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="space-y-4">
@@ -416,24 +530,112 @@
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
                 <p class="text-gray-400">&copy; 2024 All rights reserved.</p>
             </div>
         </div>
     </footer>
-
-    <!-- Initialize AOS -->
+    
+    <!-- Initialize AOS and Universe -->
     <script>
         AOS.init({
             duration: 1000,
             once: true
         });
-
+        
         // Mobile menu toggle
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
+        
+        // Create universe background
+        function createUniverse() {
+            const universe = document.getElementById('universe');
+            const starCount = 200;
+            const rocketStarCount = 10;
+            
+            // Create regular stars
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 3;
+                
+                // Random animation delay
+                const delay = Math.random() * 5;
+                
+                star.style.left = `${left}%`;
+                star.style.top = `${top}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.animationDelay = `${delay}s`;
+                
+                universe.appendChild(star);
+            }
+            
+            // Create rocket stars (moving stars)
+            for (let i = 0; i < rocketStarCount; i++) {
+                const rocketStar = document.createElement('div');
+                rocketStar.classList.add('rocket-star');
+                
+                // Random size
+                const size = Math.random() * 3 + 1;
+                
+                // Random direction
+                const directions = ['moveRight', 'moveLeft', 'moveDown', 'moveUp'];
+                const direction = directions[Math.floor(Math.random() * directions.length)];
+                
+                // Random position based on direction
+                let top, left;
+                if (direction === 'moveRight') {
+                    left = -100;
+                    top = Math.random() * 100;
+                } else if (direction === 'moveLeft') {
+                    left = 100;
+                    top = Math.random() * 100;
+                } else if (direction === 'moveDown') {
+                    top = -100;
+                    left = Math.random() * 100;
+                } else {
+                    top = 100;
+                    left = Math.random() * 100;
+                }
+                
+                // Random animation duration
+                const duration = Math.random() * 10 + 5;
+                
+                // Random animation delay
+                const delay = Math.random() * 5;
+                
+                rocketStar.style.left = `${left}%`;
+                rocketStar.style.top = `${top}%`;
+                rocketStar.style.width = `${size}px`;
+                rocketStar.style.height = `${size}px`;
+                rocketStar.style.animation = `${direction} ${duration}s linear infinite`;
+                rocketStar.style.animationDelay = `${delay}s`;
+                
+                universe.appendChild(rocketStar);
+            }
+        }
+        
+        // Initialize universe
+        createUniverse();
+        
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
     </script>
 </body>
 </html>
